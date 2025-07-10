@@ -1,0 +1,285 @@
+---
+import { Image, Icon, H3 } from "ui";
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <ul class="menu">
+        <li class="menu-item active"><a href="/">Главная</a></li>
+        <li class="menu-item"><a href="/catalog">Каталог</a></li>
+        <li class="menu-item"><a href="/services">Услуги</a></li>
+        <li class="menu-item"><a href="/portfolio">Наши работы </a></li>
+        <li class="menu-item"><a href="/contacts">Контакты</a></li>
+      </ul>
+
+      <a href="/" class="footer__logo">
+        <Image src="logo-dark.svg" />
+      </a>
+
+      <div class="footer__top-right">
+        <div class="footer__contact">
+          <div class="footer__contact-city">
+            <Icon src="location.svg" />
+            Москва
+          </div>
+          <a
+            href="tel:+79854343433"
+            target="_blank"
+            class="footer__contact-phone"
+            title="Телефон"
+          >
+            +7 (985) 434-34-33
+          </a>
+          <p class="footer__contact-address">
+            Варшавское шоссе, 150, корп. 2 БЦ “Селектика”
+          </p>
+        </div>
+
+        <div class="footer__contact">
+          <div class="footer__contact-city">
+            <Icon src="location.svg" />
+            Санкт-Петербург
+          </div>
+          <a
+            href="tel:+79990210070"
+            target="_blank"
+            class="footer__contact-phone"
+            title="Телефон"
+          >
+            +7 (999) 021-00-70
+          </a>
+          <p class="footer__contact-address">
+            Ул. Зольная, д.15 БЦ  “Морская столица”
+          </p>
+        </div>
+
+        <div class="footer__socials">
+          <a href="#" class="icon" target="_blank">
+            <Image src="icons/vk-dark.svg" />
+          </a>
+          <a href="#" class="icon" target="_blank">
+            <Image src="icons/whatsapp-dark.svg" />
+          </a>
+          <a href="#" class="icon" target="_blank">
+            <Image src="icons/telegram-dark.svg" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <a
+        href="https://seo-tex.ru/"
+        target="_blank"
+        title="Разработка сайта"
+        class="footer__dev"
+      >
+        <div class="icon">
+          <svg
+            width="27"
+            height="28"
+            viewBox="0 0 27 28"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.4857 0.651367C5.70161 0.651367 0 6.27452 0 14.1441C0 16.2745 0.416494 18.231 1.17772 19.9702L7.95637 13.7963L5.55801 11.0282L20.7383 8.01365L15.7404 22.7963L13.342 20.0282L6.76437 26.0282C8.7176 27.0716 10.9867 27.6514 13.4857 27.6514C21.3127 27.6514 27 22.0282 27 14.1586C27 6.28904 21.3127 0.651367 13.4857 0.651367Z"
+              fill="currentColor"></path>
+          </svg>
+        </div>
+        <span>
+          Разработка <br />
+          и продвижение
+        </span>
+      </a>
+
+      <p>© ProfStek <span id="currentYear">2025</span></p>
+    </div>
+  </div>
+</footer>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .footer {
+    margin-top: rem(50);
+    padding: rem(50) 0 rem(80);
+    color: #fff;
+    background: var(--text-color);
+
+    @include media("xl") {
+      padding-bottom: rem(120);
+    }
+    @include media("sm") {
+      margin-top: rem(25);
+      padding: rem(35) 0 rem(120);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+    }
+
+    &__top {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr rem(188) 1fr;
+      gap: rem(65);
+
+      @include media("xl") {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      @include media("lg") {
+        flex-direction: column;
+        align-items: center;
+        gap: rem(40);
+      }
+
+      &-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(20);
+
+        @include media("3xl") {
+          flex-wrap: wrap;
+        }
+        @include media("xl") {
+          order: -1;
+        }
+        @include media("lg") {
+          width: 100%;
+          order: unset;
+        }
+      }
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(40);
+
+      @include media("3xl") {
+        gap: rem(25);
+      }
+      @include media("sm") {
+        flex-direction: column;
+      }
+
+      &-item {
+        & > a {
+          font-size: rem(20);
+          transition: var(--transition-ease);
+
+          @include media("3xl") {
+            font-size: rem(17);
+          }
+        }
+
+        &:hover a {
+          color: var(--primary);
+          border-bottom: rem(1) dashed var(--primary);
+        }
+      }
+    }
+
+    &__logo {
+      width: rem(188);
+      display: block;
+
+      @include media("xl") {
+        order: -2;
+      }
+      @include media("lg") {
+        width: rem(180);
+      }
+      @include media("sm") {
+        width: rem(160);
+      }
+
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &__contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(2);
+
+      @include media("3xl") {
+        flex: 1 0 rem(120);
+      }
+      @include media("sm") {
+        flex-basis: 100%;
+        align-items: center;
+        text-align: center;
+        gap: rem(6);
+      }
+
+      &-city {
+        margin-bottom: rem(4);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(5);
+        --icon-size: #{rem(20)};
+      }
+
+      &-address {
+        font-size: rem(12);
+      }
+    }
+
+    &__socials {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(20);
+      --icon-size: #{rem(38)};
+
+      @include media("3xl") {
+        width: 100%;
+      }
+      @include media("sm") {
+        margin-top: rem(10);
+        justify-content: center;
+      }
+    }
+
+    &__bottom {
+      padding-top: rem(25);
+      width: 100%;
+      border-top: rem(1) solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(20);
+    }
+
+    &__dev {
+      margin-top: auto;
+      color: #a6a6a6;
+      font-size: 0.75rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      transition: var(--transition-ease);
+      --icon-size: 1.875rem;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+</style>

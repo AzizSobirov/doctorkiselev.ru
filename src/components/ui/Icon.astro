@@ -1,0 +1,86 @@
+---
+interface Props {
+  class?: string;
+  src: string;
+  alt?: string;
+  loading?: "lazy" | "eager";
+  tabindex?: string;
+  role?: string;
+}
+
+const {
+  class: classname,
+  src,
+  alt = "",
+  loading = "lazy",
+  role,
+  ...rest
+} = Astro.props;
+
+// const path = `/public/assets/img/${src}`;
+// const images = import.meta.glob<{ default: ImageMetadata }>(
+//   "/public/assets/img/**/*.{jpeg,jpg,png,gif,svg}"
+// );
+
+// if (!images[path]) {
+//   throw new Error(
+//     `"${path}" does not exist in glob: "/public/assets/img/*.{jpeg,jpg,png,gif,svg}"`
+//   );
+// }
+
+let image: any = true;
+// const getImg = async () => {
+//   try {
+//     const data = await images[path]();
+//     image = data.default;
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// await getImg();
+
+const additional: any = { ...rest };
+
+if (role) {
+  additional.role = role;
+}
+---
+
+{
+  image && (
+    <div class="icon" {...additional}>
+      <img
+        class:list={[classname]}
+        src={`/assets/img/icons/${src}`}
+        width={image.width}
+        height={image.height}
+        alt={alt}
+        loading={loading}
+      />
+    </div>
+  )
+}
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .icon {
+    min-width: var(--icon-size, rem(24));
+    width: var(--icon-size, rem(24));
+    height: var(--icon-size, rem(24));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img,
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      object-fit: contain;
+    }
+  }
+</style>

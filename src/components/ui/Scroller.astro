@@ -1,0 +1,27 @@
+---
+interface Props {
+  class?: string;
+  speed?: "slow" | "medium" | "fast";
+  direction?: "left" | "right" | "up" | "down";
+  scroll?: boolean;
+}
+
+const {
+  class: classname,
+  speed = "fast",
+  direction = "left",
+  scroll,
+} = Astro.props;
+---
+
+<div
+  class="scroller"
+  class:list={classname}
+  data-speed={speed}
+  data-direction={direction}
+  data-scroll={scroll}
+>
+  <div class="scroller__inner">
+    <slot />
+  </div>
+</div>

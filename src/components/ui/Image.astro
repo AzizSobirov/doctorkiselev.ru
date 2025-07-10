@@ -1,0 +1,53 @@
+---
+interface Props {
+  class?: string;
+  src: string;
+  alt?: string;
+  loading?: "lazy" | "eager";
+}
+
+const {
+  class: classname,
+  src,
+  alt = "",
+  loading = "lazy",
+  ...rest
+} = Astro.props;
+
+// const path = `/public/assets/img/${src}`;
+// const images = import.meta.glob<{ default: ImageMetadata }>(
+//   "/public/assets/img/**/*.{jpeg,jpg,png,gif,svg}"
+// );
+
+// if (!images[path]) {
+//   throw new Error(
+//     `"${path}" does not exist in glob: "/public/assets/img/*.{jpeg,jpg,png,gif,svg}"`
+//   );
+// }
+
+let image: any = true;
+// const getImg = async () => {
+//   try {
+//     const data = await images[path]();
+//     image = data.default;
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// await getImg();
+---
+
+{
+  image && (
+    <img
+      class:list={[classname]}
+      src={`/assets/img/${src}`}
+      // width={image.width}
+      // height={image.height}
+      alt={alt}
+      loading={loading}
+      {...rest}
+    />
+  )
+}

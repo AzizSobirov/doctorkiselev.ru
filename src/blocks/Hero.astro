@@ -1,0 +1,17 @@
+---
+import { Section, P, BgImg, Image, Icon, Button } from "ui";
+
+interface Props {
+  img?: string;
+  isMain?: boolean;
+}
+
+const { img = "hero/1.png", isMain = false } = Astro.props;
+---
+
+<!-- Hero -->
+<Section name="hero"> hero </Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+</style>

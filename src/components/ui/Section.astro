@@ -1,0 +1,31 @@
+---
+interface Props {
+  id?: string;
+  name: string;
+  only?: boolean;
+  main?: boolean;
+}
+
+const { name, only = false, main = false, ...rest } = Astro.props;
+const additional: any = { class: name, ...rest };
+
+if (main) {
+  additional.class += " is-main";
+}
+---
+
+<section {...additional}>
+  {
+    only ? (
+      <slot />
+    ) : (
+      <>
+        <slot name="header" />
+        <div class="container">
+          <slot />
+        </div>
+        <slot name="footer" />
+      </>
+    )
+  }
+</section>

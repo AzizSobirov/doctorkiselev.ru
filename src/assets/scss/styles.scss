@@ -1,0 +1,46 @@
+@use "./helpers" as *;
+@use "./base";
+
+#app {
+  width: 100%;
+  overflow: hidden;
+}
+
+main {
+  padding-top: rem(200);
+  width: 100%;
+
+  @include media("xl") {
+    padding-top: 0;
+  }
+}
+
+section {
+  padding: rem(50) 0;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(75);
+  }
+
+  @include media("3xl") {
+    .container {
+      gap: rem(50);
+    }
+  }
+  @include media("sm") {
+    padding: rem(35) 0;
+
+    .container {
+      gap: rem(25);
+    }
+  }
+}
+
+// @include show(".quality", true, true);

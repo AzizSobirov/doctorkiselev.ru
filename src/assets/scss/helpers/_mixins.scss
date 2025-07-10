@@ -1,0 +1,110 @@
+@use "./variables" as *;
+@use "./functions" as *;
+
+
+@mixin media($breakpoint, $param: max-width) {
+  @if map-get($breakpoints, $breakpoint) {
+    @media screen and ($param: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @media screen and ($param: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin center($position: absolute) {
+  position: $position;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin ellipsis($width) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: $width;
+}
+
+@mixin font-face($font-family, $weight) {
+  @font-face {
+    font-family: "#{$font-family}";
+    @if $weight == 200 {
+      src: url("/assets/fonts/#{$font-family}-Thin.woff2") format("woff2");
+    } @else if $weight == 300 {
+      src: url("/assets/fonts/#{$font-family}-Light.woff2") format("woff2");
+    } @else if $weight == 400 {
+      src: url("/assets/fonts/#{$font-family}-Regular.woff2") format("woff2");
+    } @else if $weight == 500 {
+      src: url("/assets/fonts/#{$font-family}-Medium.woff2") format("woff2");
+    } @else if $weight == 600 {
+      src: url("/assets/fonts/#{$font-family}-SemiBold.woff2") format("woff2");
+    } @else if $weight == 700 {
+      src: url("/assets/fonts/#{$font-family}-Bold.woff2") format("woff2");
+    } @else if $weight == 800 {
+      src: url("/assets/fonts/#{$font-family}-ExtraBold.woff2") format("woff2");
+    } @else if $weight == 900 {
+      src: url("/assets/fonts/#{$font-family}-Black.woff2") format("woff2");
+    }
+    font-weight: #{$weight};
+    font-display: swap;
+  }
+}
+
+@mixin space-x($margin: 0.25rem) {
+  & > :not([hidden]) ~ :not([hidden]) {
+    --space-x-reverse: 0;
+    margin-right: calc($margin * var(--space-x-reverse));
+    margin-left: calc($margin * calc(1 - var(--space-x-reverse)));
+  }
+}
+
+@mixin space-y($margin: 0.25rem) {
+  & > :not([hidden]) ~ :not([hidden]) {
+    --space-y-reverse: 0;
+    margin-top: calc($margin * calc(1 - var(--space-y-reverse)));
+    margin-bottom: calc($margin * var(--space-y-reverse));
+  }
+}
+
+@mixin flex-grid($columns: 12, $gutter: 16px, $base: true) {
+  @if $base {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  margin-left: -($gutter / 2);
+  margin-right: -($gutter / 2);
+
+  > * {
+    flex: 0 0 calc((100% / #{$columns}) - #{$gutter});
+    margin: 0 ($gutter / 2);
+  }
+}
+
+@mixin show($selector, $show-header: false, $show-footer: false) {
+  // Hide all sections except the specified one (class or ID)
+  section:not(#{$selector}) {
+    display: none !important;
+  }
+
+  // Control the visibility of the header
+  @if not $show-header {
+    header {
+      display: none !important;
+    }
+  }
+
+  // Control the visibility of the footer
+  @if not $show-footer {
+    footer {
+      display: none !important;
+    }
+  }
+
+  // Ensure the specified selector is visible
+  #{$selector} {
+    display: block !important;
+  }
+}

@@ -1,0 +1,48 @@
+---
+interface WP_Nav {
+  name: string;
+  href: string;
+  children?: WP_Nav[];
+}
+
+interface Props {
+  list: WP_Nav[];
+}
+
+const { list } = Astro.props;
+---
+
+<ul class="menu">
+  {
+    list.map((item) => (
+      <li
+        class="menu-item"
+        class:list={item.children && "menu-item-has-children"}
+      >
+        <a href={item.href}>{item.name}</a>
+
+        {item.children && (
+          <ul class="sub-menu">
+            {item.children.map((child) => (
+              <li
+                class="menu-item"
+                class:list={child.children && "menu-item-has-children"}
+              >
+                <a href={child.href}>{child.name}</a>
+                {child.children && (
+                  <ul class="sub-menu">
+                    {child.children.map((subchild) => (
+                      <li class="menu-item">
+                        <a href={subchild.href}>{subchild.name}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))
+  }
+</ul>

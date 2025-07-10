@@ -1,0 +1,171 @@
+---
+import { H4 } from "ui";
+import TheForm from "../../TheForm.astro";
+---
+
+<div class="modal-overlay">
+  <div class="modal" data-template="callback">
+    <div class="modal-form">
+      <div class="btn-close" data-modal="close"></div>
+      <TheForm />
+    </div>
+  </div>
+
+  <div class="modal" data-template="success">
+    <div class="modal-form">
+      <div class="btn-close" data-modal="close"></div>
+      <TheForm success={true} />
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  /* Overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  /* Modal */
+  .modal {
+    width: fit-content;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    &.show {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .modal-form {
+    position: relative;
+    padding: rem(50);
+    min-height: rem(430);
+    width: rem(810);
+    color: #fff;
+    background: var(--primary);
+    border-radius: rem(40);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: rem(30);
+
+    @include media("xl") {
+      max-width: calc(100vw - 40px);
+    }
+    @include media("sm") {
+      padding: rem(30) rem(20);
+      min-height: rem(250);
+      max-width: calc(100vw - 40px);
+      border-radius: rem(20);
+      gap: rem(20);
+    }
+    @include media("xs") {
+      max-width: calc(100vw - 25px);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: translate(25%, 0%);
+      width: rem(420);
+      height: rem(420);
+      background: url("/assets/img/form-img.png") center/contain no-repeat;
+      pointer-events: none;
+
+      @include media("lg") {
+        transform: translate(10%, -7%);
+        width: rem(380);
+        height: rem(380);
+      }
+      @include media("md") {
+        transform: translate(10%, -20%);
+        width: rem(320);
+        height: rem(320);
+      }
+      @include media("sm") {
+        display: none;
+      }
+    }
+
+    .btn-close {
+      position: absolute;
+      top: rem(25);
+      right: rem(25);
+      z-index: 2;
+      width: rem(24);
+      height: rem(24);
+      background: url('data:image/svg+xml,<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L16.5 16.5" stroke="%23ffffff" /><path d="M16.5 1L1 16.5" stroke="%23ffffff" /></svg>')
+        center/contain no-repeat;
+      cursor: pointer;
+
+      @include media("sm") {
+        top: -35px;
+        right: 10px;
+      }
+    }
+
+    .text-h2 {
+      color: inherit;
+      font-size: rem(28);
+
+      @include media("sm") {
+        font-size: rem(24);
+      }
+    }
+
+    .form {
+      position: relative;
+      z-index: 2;
+    }
+
+    form {
+      margin-top: 0;
+      max-width: rem(340);
+
+      @include media("sm") {
+        max-width: 100%;
+      }
+
+      button {
+        color: var(--primary);
+        background: #fff;
+
+        &:hover {
+          opacity: 1;
+          color: #fff;
+          background: var(--secondary);
+          border-color: var(--secondary);
+        }
+      }
+    }
+  }
+</style>

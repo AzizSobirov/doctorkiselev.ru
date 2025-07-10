@@ -1,0 +1,29 @@
+{
+  "name": "starter-kit",
+  "title": "Starter Kit Astro",
+  "description": "Astro Starter Kit By Aziz Sobirov",
+  "site": "https://docs.azizdev.uz/",
+  "author": "Aziz Sobirov",
+  "license": "",
+  "type": "module",
+  "version": "3.0.0",
+  "scripts": {
+    "dev": "astro dev --port 3000",
+    "host": "astro dev --host --port 3000 ",
+    "build": "astro build",
+    "build-check": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "add": "node scripts/add-block.js"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^5.11.0",
+    "autoprefixer": "^10.4.19",
+    "dotenv": "^16.4.5",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^10.1.8",
+    "sass": "^1.75.0",
+    "typescript": "^5.4.5"
+  }
+}
