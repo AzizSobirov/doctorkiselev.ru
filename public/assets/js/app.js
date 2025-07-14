@@ -89,10 +89,27 @@ const header = document.querySelector(".header");
 if (header) {
   const menu = header.querySelector(".header__catalog");
   const services = menu.querySelectorAll(".menu-item-has-children");
+  let lastScrollY = window.scrollY;
 
-  window.addEventListener("scroll", () => {
-    header.classList.toggle("sticky", window.scrollY > 0);
-  });
+  if (window.innerWidth > 1280) {
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        // Scrolling Down
+        header.classList.remove("up");
+        header.classList.add("down");
+      } else {
+        // Scrolling Up
+        header.classList.remove("down");
+        header.classList.add("up");
+      }
+
+      header.classList.toggle("sticky", currentScrollY > 0);
+      lastScrollY = currentScrollY;
+    });
+  }
 
   services.forEach((service) => {
     const subMenu = service.querySelector(".sub-menu");
@@ -100,8 +117,23 @@ if (header) {
     service.addEventListener("mouseenter", () => {
       subMenu.style.display = "flex"; // Ensure the submenu is visible
 
+      // Reset any previous positioning
+      subMenu.style.left = "";
+      subMenu.style.right = "";
+
       setTimeout(() => {
         subMenu.dataset.state = "active";
+
+        // Check if submenu overflows the viewport
+        const rect = subMenu.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+
+        // If submenu extends beyond the right edge of the viewport
+        if (rect.right > viewportWidth) {
+          // Position it to align with the right edge of the parent
+          subMenu.style.left = "auto";
+          subMenu.style.right = "0";
+        }
       }, 10);
     });
 
@@ -111,6 +143,9 @@ if (header) {
       subMenu.addEventListener("transitionend", function handler(event) {
         if (subMenu.dataset.state != "active") {
           subMenu.style.display = "none"; // Hide after fade-out
+          // Reset positioning when hiding
+          subMenu.style.left = "";
+          subMenu.style.right = "";
           subMenu.removeEventListener("transitionend", handler);
         }
       });

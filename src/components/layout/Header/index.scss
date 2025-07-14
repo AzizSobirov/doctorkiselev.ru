@@ -12,6 +12,16 @@
     position: static;
   }
 
+  @media screen and (min-width: rem(1281)) {
+    &.sticky {
+      background: var(--background);
+
+      &.down {
+        transform: translateY(rem(-78));
+      }
+    }
+  }
+
   &__top {
     padding: rem(25) rem(40);
     width: 100%;
@@ -24,11 +34,23 @@
     justify-content: space-between;
     gap: rem(30);
 
+    @include media("3xl") {
+      padding: rem(25);
+    }
+    @include media("xl") {
+      display: none;
+    }
+
     .menu {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: rem(40);
+
+      @include media("3xl") {
+        font-size: rem(14);
+        gap: rem(35);
+      }
 
       a:hover {
         color: var(--primary);
@@ -39,6 +61,12 @@
     &-additional {
       gap: rem(20);
 
+      @include media(rem(1480)) {
+        .text-sm {
+          font-size: rem(12);
+        }
+      }
+
       .row {
         gap: rem(5);
       }
@@ -47,25 +75,63 @@
     &-contacts {
       gap: rem(15);
 
+      @include media(rem(1480)) {
+        gap: rem(10);
+      }
+      @include media(rem(1420)) {
+        display: none;
+      }
+
       a:last-child {
         margin-left: rem(10);
+
+        @include media(rem(1480)) {
+          margin-left: 0;
+        }
       }
     }
   }
 
   &__bottom {
-    margin-top: rem(25);
+    padding: rem(20) 0;
     width: 100%;
     gap: rem(40);
+
+    @include media("3xl") {
+      padding: rem(15) 0;
+    }
+
+    &-contacts {
+      display: none;
+      gap: rem(15);
+      --icon-size: #{rem(28)};
+
+      @include media("xl") {
+        display: flex;
+      }
+
+      a {
+        margin-left: rem(10);
+        gap: rem(10);
+      }
+    }
   }
 
   &__logo {
     display: block;
     @include size(rem(82));
+
+    @include media("xl") {
+      --size: #{rem(56)};
+    }
   }
 
   &__catalog {
     flex-grow: 1;
+
+    @include media("xl") {
+      display: none;
+    }
 
     .menu {
       width: 100%;
@@ -73,6 +139,14 @@
       align-items: center;
       justify-content: space-between;
       gap: rem(20);
+
+      @include media("3xl") {
+        gap: rem(15) rem(10);
+      }
+      @include media("2xl") {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
 
       & > .menu-item-has-children {
         position: relative;
@@ -109,6 +183,10 @@
         &:hover {
           color: var(--primary);
         }
+
+        @include media("3xl") {
+          padding: 0 rem(15);
+        }
       }
     }
 
@@ -120,7 +198,7 @@
       padding: rem(20);
       width: fit-content;
       background: #fff;
-      box-shadow: 0 0 55px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 0 rem(20) 0 rgba(0, 0, 0, 0.15);
       border: rem(1) solid var(--primary);
       border-radius: rem(10);
       transform: translateY(rem(10));
@@ -148,7 +226,6 @@
 
       li {
         font-size: rem(14);
-        font-family: var(--font-secondary);
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -159,8 +236,12 @@
           display: block;
           width: rem(5);
           height: rem(5);
-          background: var(--secondary);
+          background: var(--primary);
           border-radius: 50%;
+        }
+
+        a:hover {
+          color: var(--primary);
         }
       }
     }
