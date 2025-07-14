@@ -10,14 +10,9 @@
   --transition-ease: 0.3s ease;
   --transition-bezier: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   --content-width: #{rem(1720)};
-  --content-padding: #{rem(20)};
+  --content-padding: #{rem(40)};
 }
 
-@include media("3xl") {
-  :root {
-    --content-width: #{rem(1400)};
-  }
-}
 @include media("2xl") {
   :root {
     --content-width: #{rem(1280)};
@@ -26,6 +21,7 @@
 @include media("xl") {
   :root {
     --content-width: #{rem(1024)};
+    --content-padding: #{rem(20)};
   }
 }
 @include media("lg") {

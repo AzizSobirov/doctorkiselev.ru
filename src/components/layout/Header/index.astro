@@ -4,79 +4,112 @@ import "./index.scss";
 ---
 
 <header class="header">
-  <div class="header__top">
-    <div class="container">
-      <nav class="header__menu">
+  <div class="container">
+    <div class="header__top row-between">
+      <nav class="header__top-menu">
         <ul class="menu">
-          <li class="menu-item"><a href="/">Главная</a></li>
-          <li class="menu-item"><a href="/services">Услуги</a></li>
-          <li class="menu-item"><a href="/portfolio">Наши работы</a></li>
+          <li class="menu-item"><a href="/pricing">Цены на услуги</a></li>
+          <li class="menu-item"><a href="/about">О клинике</a></li>
+          <li class="menu-item"><a href="/doctors">Специалисты</a></li>
+          <li class="menu-item"><a href="/reviews">Отзывы</a></li>
           <li class="menu-item"><a href="/contacts">Контакты</a></li>
         </ul>
       </nav>
 
-      <div class="header__contacts">
-        <div class="group">
-          <div class="group-city">Москва</div>
-          <p class="group-address">
-            Варшавское шоссе, 150, корп. 2 БЦ “Селектика”
-          </p>
-          <a
-            href="tel:+79854343433"
-            target="_blank"
-            class="group-phone"
-            title="Телефон">+7 (985) 434-34-33</a
-          >
-          <a
-            href="mailto:msc@profstek.ru"
-            target="_blank"
-            class="group-email"
-            title="Почта">msc@profstek.ru</a
-          >
+      <div class="header__top-additional group-row">
+        <div class="row" aria-label="Время работы ">
+          <Icon src="clock.svg" />
+          <div class="text-sm">Ежедневно с 9:00 до 20:00</div>
         </div>
-
-        <div class="group">
-          <div class="group-city">Санкт-Петербург</div>
-          <p class="group-address">Ул. Зольная, д.15 БЦ  “Морская столица”</p>
-          <a
-            href="tel:+79990210070"
-            target="_blank"
-            class="group-phone"
-            title="Телефон">+7 (999) 021-00-70</a
-          >
-          <a
-            href="mailto:spb@profstek.ru"
-            target="_blank"
-            class="group-email"
-            title="Почта">spb@profstek.ru</a
-          >
+        <div class="row" aria-label="Адрес клиники">
+          <Icon src="marker.svg" />
+          <div class="text-sm">г. Москва, ул. Грина, д.1 к.3</div>
         </div>
       </div>
 
-      <Button variant="outline" data-modal="callback">Оставить заявку</Button>
+      <div class="header__top-contacts group-row">
+        <a href="#" title="Whatsapp" target="_blank">
+          <Icon src="whatsapp.svg" />
+        </a>
+
+        <a href="#" title="Telegram" target="_blank">
+          <Icon src="telegram.svg" />
+        </a>
+
+        <a
+          href="tel:+79163771754"
+          title="Телефон"
+          target="_blank"
+          class="text-lg"
+        >
+          +7 (916) 377-17-54
+        </a>
+      </div>
     </div>
-  </div>
 
-  <div class="header__catalog">
-    <a href="/" class="header__logo">
-      <Image src="logo.svg" alt="logo" />
-    </a>
+    <div class="header__bottom row-between">
+      <a href="/" class="header__logo">
+        <Image src="logo.svg" alt="logo" />
+      </a>
 
-    <nav class="header__menu">
-      <ul class="menu">
-        <li class="menu-item"><a href="#">Мануальная терапия</a></li>
-        <li class="menu-item"><a href="#">Остеопатия</a></li>
-        <li class="menu-item"><a href="#">Неврология </a></li>
-        <li class="menu-item"><a href="#">Лечение грыжи </a></li>
-      </ul>
-    </nav>
+      <nav class="header__catalog">
+        <ul class="menu">
+          <li class="menu-item"><a href="#">Мануальная терапия</a></li>
+          <li class="menu-item"><a href="#">Остеопатия</a></li>
+          <li class="menu-item"><a href="#">Неврология </a></li>
+          <li class="menu-item menu-item-has-children">
+            <a href="#">Лечение грыжи </a>
+            <ul class="sub-menu">
+              <li class="menu-item">
+                <a href="#">Грыжа шейного отдела</a>
+              </li>
+              <li class="menu-item">
+                <a href="#">Грыжа поясничного отдела</a>
+              </li>
+              <li class="menu-item">
+                <a href="#">Грыжа грудного отдела</a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="#">Лечение протрузии </a></li>
+          <li class="menu-item"><a href="#">Рефлексотерапия </a></li>
+          <li class="menu-item menu-item-has-children">
+            <a href="#"> Симптомы </a>
+            <ul class="sub-menu">
+              <li class="menu-item">
+                <a href="#">Боль в спине</a>
+              </li>
+              <li class="menu-item">
+                <a href="#">Боль в шее</a>
+              </li>
+              <li class="menu-item">
+                <a href="#">Боль в пояснице</a>
+              </li>
+              <li class="menu-item">
+                <a href="#">Головная боль</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 
   <div class="mobile__menu">
     <div class="mobile__menu-tabs">
       <div
         class="mobile__menu-tab"
-        id="tab"
+        data-toggle="catalog"
+        role="button"
+        tabindex="0"
+        aria-label="Каталог"
+      >
+        <Image src="logo-white.svg" />
+        <span>Услуги</span>
+      </div>
+
+      <div
+        class="mobile__menu-tab"
         data-toggle="menu"
         role="button"
         tabindex="0"
@@ -104,64 +137,68 @@ import "./index.scss";
         </svg>
         <span>Меню</span>
       </div>
-      <a href="/catalog" class="mobile__menu-tab" id="tab-link" title="Каталог">
+
+      <a href="/about" class="mobile__menu-tab" id="tab-link" title="О нас">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-door-open"
-          ><path d="M13 4h3a2 2 0 0 1 2 2v14"></path><path d="M2 20h3"
-          ></path><path d="M13 20h9"></path><path d="M10 12v.01"></path><path
-            d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"
-          ></path></svg
-        >
-        <span>Каталог</span>
-      </a>
-      <a href="/services" class="mobile__menu-tab" id="tab-link" title="Услуги">
-        <svg
-          width="20"
-          height="23"
-          viewBox="0 0 20 23"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clip-path="url(#clip0_2089_51)">
-            <path
-              d="M8 16.5736L12 12.5148M8 12.5148H8.009M11.991 16.5736H12M10 21.6471C12.1217 21.6471 14.1565 20.792 15.6568 19.2695C17.1572 17.7472 18 15.6824 18 13.5295C18 7.44126 10 1.35303 10 1.35303C9.612 3.8766 9.232 5.23123 8 7.44126C6.8 6.8781 6.5 6.42656 6 5.15817C4 7.44126 2 10.4854 2 13.5295C2 15.6824 2.84285 17.7472 4.34315 19.2695C5.84344 20.792 7.87827 21.6471 10 21.6471Z"
-              stroke="currentColor"
-              stroke-width="2.34"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </g>
-          <defs>
-            <clipPath id="clip0_2089_51">
-              <rect width="20" height="23" fill="white"></rect>
-            </clipPath>
-          </defs>
-        </svg>
-        <span>Услуги</span>
-      </a>
-      <a href="/contacts" class="mobile__menu-tab" title="Контакты">
-        <svg
-          width="18"
-          height="20"
-          viewBox="0 0 18 20"
+          width="17"
+          height="17"
+          viewBox="0 0 17 17"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M16 2H15V0H13V2H5V0H3V2H2C1.46957 2 0.960859 2.21071 0.585786 2.58579C0.210714 2.96086 0 3.46957 0 4V18C0 18.5304 0.210714 19.0391 0.585786 19.4142C0.960859 19.7893 1.46957 20 2 20H16C17.1 20 18 19.1 18 18V4C18 2.9 17.1 2 16 2ZM9 5C10.66 5 12 6.34 12 8C12 9.66 10.66 11 9 11C7.34 11 6 9.66 6 8C6 6.34 7.34 5 9 5ZM15 17H3V16C3 14 7 12.9 9 12.9C11 12.9 15 14 15 16V17Z"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8.49995 0.166504C3.8976 0.166504 0.166626 3.89744 0.166626 8.49982C0.166626 13.1022 3.8976 16.8332 8.49995 16.8332C13.1024 16.8332 16.8333 13.1022 16.8333 8.49982C16.8333 3.89744 13.1024 0.166504 8.49995 0.166504ZM8.49995 15.1665C4.82397 15.1665 1.83331 12.1758 1.83331 8.49982C1.83331 4.82381 4.82393 1.83318 8.49995 1.83318C12.176 1.83318 15.1666 4.82381 15.1666 8.49982C15.1666 12.1758 12.176 15.1665 8.49995 15.1665ZM9.54346 5.1665C9.54346 5.77072 9.10354 6.20818 8.50842 6.20818C7.88924 6.20818 7.4601 5.77068 7.4601 5.15494C7.4601 4.56314 7.90085 4.12486 8.50842 4.12486C9.10354 4.12486 9.54346 4.56314 9.54346 5.1665ZM7.66846 7.6665H9.3351V12.6665H7.66846V7.6665Z"
             fill="currentColor"></path>
         </svg>
-
-        <span>Контакты</span>
+        <span>О нас</span>
       </a>
+
+      <div
+        class="mobile__menu-tab"
+        data-toggle="contacts"
+        role="button"
+        tabindex="0"
+        aria-label="Связаться"
+      >
+        <svg
+          width="16"
+          height="17"
+          viewBox="0 0 16 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 2.5V1M11 2.5V1M8 16C4.99475 16 3.4925 16 2.55875 15.0115C1.625 14.023 1.625 12.4315 1.625 9.25C1.625 6.0685 1.625 4.477 2.55875 3.4885C3.4925 2.5 4.99475 2.5 8 2.5C11.0052 2.5 12.5075 2.5 13.4412 3.4885C14.375 4.477 14.375 6.0685 14.375 9.25C14.375 12.4315 14.375 14.023 13.4412 15.0115C12.5075 16 11.0052 16 8 16Z"
+            stroke="currentColor"
+            stroke-width="1.3"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+          <path
+            d="M9.51349 6.61975C9.51349 7.01758 9.35546 7.39911 9.07415 7.68041C8.79285 7.96172 8.41132 8.11975 8.01349 8.11975C7.61567 8.11975 7.23414 7.96172 6.95283 7.68041C6.67153 7.39911 6.51349 7.01758 6.51349 6.61975C6.51349 6.22193 6.67153 5.8404 6.95283 5.55909C7.23414 5.27779 7.61567 5.11975 8.01349 5.11975C8.41132 5.11975 8.79285 5.27779 9.07415 5.55909C9.35546 5.8404 9.51349 6.22193 9.51349 6.61975ZM5.04724 12.037C5.84074 10.8145 7.10149 10.357 8.01349 10.3578C8.92549 10.3585 10.1495 10.8153 10.943 12.0378C10.994 12.1165 11.0082 12.2133 10.9617 12.2958C10.7765 12.625 10.1997 13.2783 9.78424 13.3225C9.30574 13.3728 8.05399 13.3803 8.01424 13.3803C7.97449 13.3803 6.68524 13.3728 6.20674 13.3225C5.78974 13.2775 5.21374 12.625 5.02774 12.295C4.98199 12.2133 4.99624 12.1165 5.04724 12.037Z"
+            stroke="currentColor"
+            stroke-width="1.3"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+        <span>Связаться</span>
+
+        <div class="mobile__menu-contacts group">
+          <a href="#" class="icon" target="_blank">
+            <Image src="icons/phone.svg" />
+          </a>
+          <a href="#" class="icon" target="_blank">
+            <Image src="icons/whatsapp.svg" />
+          </a>
+          <a href="#" class="icon" target="_blank">
+            <Image src="icons/telegram.svg" />
+          </a>
+          <a href="#" class="icon" target="_blank">
+            <Image src="icons/email.svg" />
+          </a>
+        </div>
+      </div>
     </div>
 
     <div class="mobile__menu-content">
@@ -179,15 +216,15 @@ import "./index.scss";
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M1 1L22 22" stroke="white"></path>
-          <path d="M1 1L22 22" stroke="white"></path>
-          <path d="M1 1L22 22" stroke="white"></path>
-          <path d="M22 1L1 22" stroke="white"></path>
-          <path d="M22 1L1 22" stroke="white"></path>
-          <path d="M22 1L1 22" stroke="white"></path>
+          <path d="M1 1L22 22" stroke="#0988D0"></path>
+          <path d="M1 1L22 22" stroke="#0988D0"></path>
+          <path d="M1 1L22 22" stroke="#0988D0"></path>
+          <path d="M22 1L1 22" stroke="#0988D0"></path>
+          <path d="M22 1L1 22" stroke="#0988D0"></path>
+          <path d="M22 1L1 22" stroke="#0988D0"></path>
         </svg>
       </div>
-      <div id="content"></div>
+      <div id="menu-content"></div>
     </div>
   </div>
 </header>

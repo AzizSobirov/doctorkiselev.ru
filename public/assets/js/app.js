@@ -87,41 +87,48 @@ modal.init();
 // header
 const header = document.querySelector(".header");
 if (header) {
-  const menu = header.querySelector(".header__menu");
+  const menu = header.querySelector(".header__catalog");
   const services = menu.querySelectorAll(".menu-item-has-children");
-  const contacts = header.querySelector(".header__contacts");
-  let lastScrollY = window.scrollY;
 
-  if (window.innerWidth > 1024) {
-    window.addEventListener("scroll", () => {
-      const header = document.querySelector("header");
-      const currentScrollY = window.scrollY;
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("sticky", window.scrollY > 0);
+  });
 
-      if (currentScrollY > lastScrollY) {
-        // Scrolling Down
-        header.classList.remove("up");
-        header.classList.add("down");
-      } else {
-        // Scrolling Up
-        header.classList.remove("down");
-        header.classList.add("up");
-      }
+  services.forEach((service) => {
+    const subMenu = service.querySelector(".sub-menu");
 
-      header.classList.toggle("sticky", currentScrollY > 0);
-      lastScrollY = currentScrollY;
+    service.addEventListener("mouseenter", () => {
+      subMenu.style.display = "flex"; // Ensure the submenu is visible
+
+      setTimeout(() => {
+        subMenu.dataset.state = "active";
+      }, 10);
     });
-  }
 
-  const tabs = header.querySelectorAll("#tab");
-  const tabLinks = header.querySelectorAll("#tab-link");
+    service.addEventListener("mouseleave", () => {
+      subMenu.dataset.state = "inactive";
+
+      subMenu.addEventListener("transitionend", function handler(event) {
+        if (subMenu.dataset.state != "active") {
+          subMenu.style.display = "none"; // Hide after fade-out
+          subMenu.removeEventListener("transitionend", handler);
+        }
+      });
+    });
+  });
+
+  const tabsEl = header.querySelector(".mobile__menu-tabs");
+  const tabs = tabsEl.querySelectorAll("[data-toggle]");
   const tabsBody = header.querySelector(".mobile__menu-content");
-  const tabsContent = tabsBody.querySelector("#content");
-  const tabsContentClose = tabsBody.querySelector("#close");
+  const tabsContent = header.querySelector("#menu-content");
+  const tabsContentClose = header.querySelector(".mobile__menu-close");
+  const tabsContacts = tabsEl.querySelector(".mobile__menu-contacts");
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       const isActive = tab.classList.contains("active");
       tabs.forEach((tab) => tab.classList.remove("active"));
+      tabsContacts.style.maxHeight = 0;
 
       if (isActive) {
         tabsBody.classList.remove("show");
@@ -142,39 +149,52 @@ if (header) {
       // If tab was not already active, show the content
       if (!isActive) {
         tab.classList.add("active");
-        tabsBody.style.display = "flex";
 
-        requestAnimationFrame(() => {
-          tabsBody.classList.add("show");
-        });
+        if (tab.dataset.toggle != "contacts") {
+          tabsBody.style.display = "flex";
+
+          requestAnimationFrame(() => {
+            tabsBody.classList.add("show");
+          });
+        } else {
+          tabsContacts.style.maxHeight = tabsContacts.scrollHeight + "px";
+          tabsBody.classList.remove("show");
+
+          // Wait for the animation to finish before setting display to 'none'
+          tabsBody.addEventListener("transitionend", function handler(event) {
+            if (
+              event.propertyName === "transform" &&
+              !tabsBody.classList.contains("show")
+            ) {
+              tabsBody.style.display = "none";
+              tabsContent.innerHTML = "";
+              tabsBody.removeEventListener("transitionend", handler);
+            }
+          });
+        }
 
         if (tab.dataset.toggle == "menu") {
-          tabsContent.innerHTML = menu.innerHTML + contacts.outerHTML;
-        } else {
-          tabsContent.innerHTML = servicesSubMenu.outerHTML;
+          // Get the top menu content
+          const topMenu = header.querySelector(".header__top-menu .menu");
+          const topMenuHtml = topMenu ? topMenu.innerHTML : "";
+
+          tabsContent.innerHTML = `
+            <ul class="menu">
+            ${topMenuHtml}
+            </ul>
+          `;
+        } else if (tab.dataset.toggle == "catalog") {
+          // Get the bottom menu (catalog) content
+          const catalogMenu = header.querySelector(".header__catalog .menu");
+          const catalogMenuHtml = catalogMenu ? catalogMenu.innerHTML : "";
+
+          tabsContent.innerHTML = `
+            <ul class="menu">
+            ${catalogMenuHtml}
+            </ul>
+          `;
         }
       }
-    });
-  });
-
-  tabLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      tabs.forEach((tab) => {
-        tab.classList.remove("active");
-      });
-
-      // Add animation for hiding
-      tabsBody.classList.remove("show");
-      tabsBody.addEventListener("transitionend", function handler(event) {
-        if (
-          event.propertyName === "transform" &&
-          !tabsBody.classList.contains("show")
-        ) {
-          tabsBody.style.display = "none";
-          tabsContent.innerHTML = "";
-          tabsBody.removeEventListener("transitionend", handler);
-        }
-      });
     });
   });
 
