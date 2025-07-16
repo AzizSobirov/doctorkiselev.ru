@@ -12,6 +12,7 @@ body {
   color: var(--text-color, #111);
   font-family: var(--font-primary, sans-serif);
   line-height: inherit;
+  letter-spacing: -0.01em;
   text-wrap: balance;
   background: var(--background, #fff);
 

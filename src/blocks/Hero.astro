@@ -10,12 +10,312 @@ const { img = "hero/1.png", isMain = false } = Astro.props;
 ---
 
 <!-- Hero -->
-<Section name="hero"> hero </Section>
+<Section name="hero">
+  <div class="hero__content">
+    <div class="hero__video">
+      <video autoplay muted loop poster="/assets/img/hero/poster-1.png">
+        <source src="/assets/videos/hero.mp4" type="video/mp4" />
+      </video>
+
+      <svg class="hero__video-mask">
+        <defs>
+          <mask id="heroMask">
+            <path d="" fill="white" id="maskPath"></path>
+          </mask>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="hero__text group">
+      <div class="text-xl">Клиника лечения позвоночника и суставов</div>
+      <div class="text-h1">Доктор <strong>Киселев</strong></div>
+
+      <ul class="hero__text-tags group-row">
+        <li class="hero__text-tag row">Персональный подход</li>
+        <li class="hero__text-tag row">17 лет опыта</li>
+        <li class="hero__text-tag row">Результат после 1 сеанса*</li>
+      </ul>
+
+      <ul class="hero__text-advantages group">
+        <li class="hero__text-advantage row">
+          *В 80% улучшение после первого <br />
+          визита
+        </li>
+        <li class="hero__text-advantage row">
+          Оптимальное сочетание методов <br />
+          и фиксированная стоимость
+        </li>
+      </ul>
+
+      <div class="hero__text-btns group">
+        <div class="text-sm">Запишитесь на прием прямо сейчас!</div>
+        <div class="group-row">
+          <Button data-modal="callback">ЗАПИСАТЬСЯ</Button>
+          <a
+            href="tel:+79163771754"
+            target="_blank"
+            title="Телефон"
+            class="row"
+          >
+            <Icon src="call.svg" />
+            +7 (916) 377-17-54
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__doctor">
+      <Image class="hero__doctor-img" src="doctor.png" />
+      <button
+        class="hero__doctor-play"
+        data-fancybox="video"
+        data-src="/assets/videos/doctor.mp4"
+      >
+        <Icon src="play.svg" />
+      </button>
+
+      <div class="group">
+        <div class="hero__doctor-name">
+          <strong>Киселев</strong> Антон Сергеевич
+        </div>
+        <div class="hero__doctor-text">Основатель клиники</div>
+      </div>
+
+      <svg class="hero__doctor-mask">
+        <defs>
+          <mask id="heroMask2">
+            <path d="" fill="white" id="maskPath2"></path>
+          </mask>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</Section>
+
+<script lang="js" is:inline>
+  const heroVideo = document.querySelector(".hero__video");
+  const heroDoctor = document.querySelector(".hero__doctor");
+
+  const updateHeroMask = () => {
+    if (heroVideo) {
+      const maskPath = heroVideo.querySelector(".hero__video-mask #maskPath");
+
+      const { width: w, height: h } = heroVideo.getBoundingClientRect();
+
+      const r1 = 40; // radius 1
+      const r2 = 74; // radius 2
+      const c1 = 205; // First cut height
+      const cw1 = 460; // First cut width
+      const c2 = 128; // Second cut height
+      const cw2 = 608; // Second cut width
+
+      const path = `
+        M 0,${r2} 
+        Q 0,0 ${r2},0
+        L ${w - r2},0
+        Q ${w},0 ${w},${r2}
+        L ${w},${h - c1 - r2}
+        Q ${w},${h - c1} ${w - r2},${h - c1}
+        L ${w - cw1 + r1},${h - c1}
+        Q ${w - cw1},${h - c1} ${w - cw1},${h - c1 + r1}
+        L ${w - cw1},${h - c2 - r1}
+        Q ${w - cw1},${h - c2} ${w - cw1 - r1},${h - c2}
+        L ${w - cw2 + r2},${h - c2}
+        Q ${w - cw2},${h - c2} ${w - cw2},${h - c2 + r2}
+        L ${w - cw2 + 1},${h - r2}
+        Q ${w - cw2 + 1},${h} ${w - cw2 - r2 + 1},${h}
+        L ${r2},${h}
+        Q 0,${h} 0,${h - r2}
+        Z
+    `
+        .replace(/\s+/g, " ")
+        .trim();
+
+      maskPath.setAttribute("d", path);
+    }
+
+    if (heroDoctor) {
+      const maskPath = heroDoctor.querySelector(
+        ".hero__doctor-mask #maskPath2"
+      );
+
+      const { width: w, height: h } = heroDoctor.getBoundingClientRect();
+
+      const r1 = 40;
+      const r2 = 50;
+      const c1 = 114; // First cut height
+      const cw1 = 145; // First cut width
+
+      const path = `
+        M 0,${h - c1 + r2}
+        Q 0,${h - c1} ${r2},${h - c1}
+        L ${cw1 - r1},${h - c1}
+        Q ${cw1},${h - c1} ${cw1},${h - c1 - r1}
+        L ${cw1},${r1}
+        Q ${cw1},0 ${cw1 + r1},0
+        L ${w - r1},0 
+        Q ${w},0  ${w},${r1}
+        L ${w},${h - r1}
+        Q ${w},${h} ${w - r1},${h}
+        L ${r2},${h}
+        Q 0,${h} 0,${h - r2}
+        Z
+    `
+        .replace(/\s+/g, " ")
+        .trim();
+
+      maskPath.setAttribute("d", path);
+    }
+  };
+
+  window.addEventListener("load", updateHeroMask);
+  window.addEventListener("resize", updateHeroMask);
+</script>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .hero {
-    min-height: 200vh;
+    &__content {
+      position: relative;
+      padding: rem(70) rem(38);
+      height: rem(756);
+      width: 100%;
+      overflow: hidden;
+    }
+
+    &__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+      mask: url(#heroMask);
+      -webkit-mask: url(#heroMask);
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+    }
+
+    &__text {
+      color: #fff;
+      gap: rem(40);
+
+      .text-h1 {
+        margin: rem(-20) 0;
+      }
+
+      &-tags {
+        flex-wrap: wrap;
+        gap: rem(40);
+      }
+
+      &-tag {
+        position: relative;
+        padding: rem(12) rem(20);
+        color: var(--text-dark);
+        background: #fff;
+        border-radius: rem(10);
+        gap: rem(8);
+
+        &::before {
+          content: "";
+          display: inline-block;
+          width: rem(15);
+          height: rem(15);
+          background: url('data:image/svg+xml,<svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.92398 8L14 11.0939L13.0585 12.9503L7.94152 9.72376V16H6.05848L6.09942 9.72376L0.982456 12.9503L0 11.0939L5.11696 8L0 4.90608L0.982456 3.00553L6.09942 6.27624L6.05848 0H7.94152V6.27624L13.0585 3.00553L14 4.90608L8.92398 8Z" fill="%238DA3DE" /></svg>')
+            center/contain no-repeat;
+        }
+      }
+
+      &-advantages {
+        gap: rem(25);
+      }
+
+      &-advantage {
+        position: relative;
+        gap: rem(12);
+
+        &::before {
+          content: "";
+          display: block;
+          background: url('data:image/svg+xml,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_121_1779)"><path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="%23ACF7E0" /><path d="M11.9117 23.2177L20.1388 31.4448C26.9527 29.6278 32 23.4196 32 16C32 15.8486 32 15.6972 32 15.5457L25.5394 9.5899L11.9117 23.2177Z" fill="%2375DFBC" /><path d="M16.4038 19.5836C17.1104 20.2902 17.1104 21.5016 16.4038 22.2082L14.94 23.6719C14.2334 24.3786 13.0221 24.3786 12.3154 23.6719L5.90533 17.2114C5.19871 16.5047 5.19871 15.2934 5.90533 14.5868L7.36906 13.123C8.07568 12.4164 9.28704 12.4164 9.99366 13.123L16.4038 19.5836Z" fill="%2343A4A4" /><path d="M22.0063 8.42902C22.7129 7.72239 23.9242 7.72239 24.6309 8.42902L26.0946 9.89274C26.8012 10.5994 26.8012 11.8107 26.0946 12.5173L14.9905 23.571C14.2839 24.2776 13.0725 24.2776 12.3659 23.571L10.9022 22.1072C10.1955 21.4006 10.1955 20.1893 10.9022 19.4826L22.0063 8.42902Z" fill="%2343A4A4" /></g><defs><clipPath id="clip0_121_1779"><rect width="32" height="32" fill="white" /></clipPath></defs></svg>')
+            center/contain no-repeat;
+          @include size(rem(32));
+        }
+      }
+
+      &-btns {
+        gap: rem(25);
+
+        .group-row {
+          flex-wrap: wrap;
+          gap: rem(20) rem(30);
+        }
+
+        a.row {
+          font-size: rem(22);
+          gap: rem(10);
+          --icon-size: #{rem(32)};
+        }
+      }
+    }
+
+    &__doctor {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      width: rem(592);
+      height: rem(192);
+      border-radius: rem(40);
+
+      &-play,
+      &-img,
+      &-name,
+      &-text {
+        display: none;
+      }
+
+      &-play {
+        --icon-size: #{rem(72)};
+      }
+
+      &-img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        min-width: rem(356);
+        width: rem(356);
+        height: auto;
+      }
+
+      &-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background: red;
+        pointer-events: none;
+        mask: url(#heroMask2);
+        -webkit-mask: url(#heroMask2);
+      }
+    }
   }
 </style>

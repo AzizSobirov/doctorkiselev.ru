@@ -1,34 +1,26 @@
 @use "scss/helpers" as *;
 
 .text-h1 {
-  font-size: rem(50);
-  font-weight: 700;
+  font-size: clamp(2.5rem, 1.6779rem + 3.6538vw, 6.0625rem);
+  font-weight: 300;
+  line-height: 1.2;
 
-  @include media(lg) {
-    font-size: rem(36);
-  }
-  @include media(sm) {
-    font-size: rem(32);
-  }
-  @include media(xs) {
-    font-size: rem(28);
+  strong,
+  b {
+    font-weight: 700;
   }
 }
 
 .text-h2 {
   color: var(--primary);
-  font-size: rem(44);
-  font-weight: 700;
+  font-size: clamp(1.5rem, 0.9808rem + 2.3077vw, 3.75rem);
+  font-weight: 400;
   line-height: 1.2;
 
-  @include media(lg) {
-    font-size: rem(32);
-  }
-  @include media(sm) {
-    font-size: rem(28);
-  }
-  @include media(xs) {
-    font-size: rem(24);
+  strong,
+  b {
+    color: var(--primary);
+    font-weight: 700;
   }
 }
 

@@ -35,6 +35,18 @@ const Tag = href ? "a" : "button";
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
+  @property --color-gradient-start {
+    syntax: "<color>";
+    initial-value: #43a4a4;
+    inherits: false;
+  }
+
+  @property --color-gradient-end {
+    syntax: "<color>";
+    initial-value: #8da3dd;
+    inherits: false;
+  }
+
   .btn {
     color: initial;
     font-size: rem(18);
@@ -46,17 +58,24 @@ const Tag = href ? "a" : "button";
     transition: var(--transition-ease);
 
     &-primary {
-      width: rem(195);
-      height: rem(45);
+      width: rem(265);
+      height: rem(54);
       color: #fff;
-      font-size: rem(18);
-      font-weight: 300;
-      background: var(--primary);
-      border-radius: 9999px;
-      gap: rem(10);
+      font-size: rem(16);
+      font-weight: 600;
+      background: linear-gradient(
+        150deg,
+        var(--color-gradient-start),
+        var(--color-gradient-end)
+      );
+      border-radius: rem(15);
+      transition:
+        --color-gradient-start 0.3s ease-in-out,
+        --color-gradient-end 0.3s ease-in-out;
 
       &:hover {
-        background: var(--secondary);
+        --color-gradient-start: #8da3dd;
+        --color-gradient-end: #43a4a4;
       }
 
       @include media("sm") {
