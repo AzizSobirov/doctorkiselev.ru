@@ -35,10 +35,9 @@
 }
 
 .text-h4 {
-  color: var(--primary);
+  color: var(--secondary);
   font-size: rem(20);
   font-weight: 700;
-  text-transform: uppercase;
 
   @include media(sm) {
     font-size: rem(18);
