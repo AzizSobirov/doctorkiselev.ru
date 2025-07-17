@@ -1,0 +1,272 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button, BgImg } from "ui";
+---
+
+<!-- Founder -->
+<Section name="founder">
+  <div class="founder__video">
+    <BgImg src="founder/poster.png" />
+
+    <button
+      class="founder__video-play col"
+      data-fancybox="founder"
+      data-src="/assets/videos/hero.mp4"
+      data-poster="/assets/img/founder/poster.png"
+      data-aos="zoom-in"
+      aria-label="Посмотреть видео-приветствие основателя клиники"
+    >
+      <Icon src="video.png" />
+      <span class="text-sm">
+        Посмотрите <br />
+        видео-приветствие
+      </span>
+    </button>
+
+    <div class="founder__video-desc" data-aos="zoom-in">
+      <Icon src="doctor.png" />
+      <p>
+        Лечение <strong>каждого пациента</strong> проходит под контролем основателя
+        клиники
+      </p>
+    </div>
+  </div>
+
+  <div class="founder__about group">
+    <H3 class="founder__about-name" data-aos="fade-up"
+      >Киселев Антон Сергеевич</H3
+    >
+    <div class="founder__about-job" data-aos="fade-up" data-aos-delay="50">
+      Основатель клиники
+    </div>
+    <p class="founder__about-text" data-aos="fade-up" data-aos-delay="100">
+      Врач невролог, мануальный терапевт, остеопат, рефлексотерапевт Специалист
+      по безоперационному лечению позвоночника и суставов
+    </p>
+    <ul class="founder__about-tags group-row">
+      <li
+        class="founder__about-tag row"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+        Опыт работы более 17 лет
+      </li>
+      <li
+        class="founder__about-tag row"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        Преподаватель учебного центра @4Clinic
+      </li>
+      <li
+        class="founder__about-tag row"
+        data-aos="fade-up"
+        data-aos-delay="250"
+      >
+        Преподаватель Международной Ассоциации Карбокситерапии
+      </li>
+      <li
+        class="founder__about-tag row"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        Спикер на международных конгрессах по реабилитации и физиотерапии
+      </li>
+    </ul>
+    <Button data-modal="callback" data-aos="fade-up" data-aos-delay="350"
+      >ЗАПИСАТЬСЯ НА ПРИЕМ</Button
+    >
+  </div>
+
+  <style lang="scss" is:global>
+    @use "scss/helpers" as *;
+
+    .founder {
+      position: relative;
+
+      .container {
+        flex-direction: row;
+        align-items: center;
+        gap: rem(20);
+
+        @include media("xl") {
+          flex-direction: column;
+        }
+      }
+
+      &__video {
+        position: relative;
+        width: 60%;
+        height: rem(654);
+        border-radius: rem(74);
+        overflow: hidden;
+
+        @include media("3xl") {
+          height: rem(600);
+        }
+        @include media("xl") {
+          width: 100%;
+          height: rem(550);
+          border-radius: rem(40);
+        }
+        @include media("sm") {
+          height: rem(340);
+          border-radius: rem(20);
+        }
+        @include media("xs") {
+          height: rem(240);
+        }
+
+        &-play {
+          position: absolute;
+          top: rem(40);
+          right: rem(40);
+          padding: rem(24) rem(12);
+          backdrop-filter: blur(10px);
+          background: rgba(255, 255, 255, 0.33);
+          border: 1px solid rgba(255, 255, 255, 0.62);
+          border-radius: rem(34);
+          text-align: center;
+          align-items: center;
+          gap: rem(10);
+          --icon-size: #{rem(74)};
+
+          @include media("xl") {
+            top: rem(30);
+            right: rem(30);
+          }
+          @include media("sm") {
+            top: rem(15);
+            right: rem(15);
+            padding: rem(12) rem(8);
+            border-radius: rem(20);
+            gap: rem(5);
+            --icon-size: #{rem(50)};
+
+            .text-sm {
+              font-size: rem(12);
+            }
+          }
+          @include media("xs") {
+            top: rem(10);
+            right: rem(10);
+            padding: rem(8) rem(6);
+            --icon-size: #{rem(40)};
+
+            .text-sm {
+              font-size: rem(10);
+            }
+          }
+        }
+
+        &-desc {
+          position: absolute;
+          bottom: rem(60);
+          left: rem(30);
+          padding: rem(30) rem(30) rem(30) rem(150);
+          width: 100%;
+          max-width: rem(650);
+          background: #fff;
+          border-radius: rem(34);
+          --icon-size: #{rem(140)};
+
+          @include media("xl") {
+            bottom: rem(30);
+            max-width: calc(100% - rem(60));
+          }
+          @include media("sm") {
+            bottom: rem(15);
+            left: rem(15);
+            padding: rem(15) rem(15) rem(15) rem(95);
+            max-width: calc(100% - rem(30));
+            border-radius: rem(20);
+            --icon-size: #{rem(80)};
+          }
+          @include media("xs") {
+            bottom: rem(10);
+            left: rem(10);
+            padding: rem(10) rem(10) rem(10) rem(70);
+            --icon-size: #{rem(60)};
+          }
+
+          .icon {
+            position: absolute;
+            bottom: rem(5);
+            left: rem(10);
+          }
+
+          p {
+            font-size: clamp(0.75rem, 0.6346rem + 0.5128vw, 1.25rem);
+          }
+
+          strong {
+            color: var(--secondary);
+          }
+        }
+      }
+
+      &__about {
+        width: 40%;
+        gap: rem(15);
+
+        @include media("xl") {
+          width: 100%;
+        }
+
+        &-name {
+          margin-bottom: rem(-5);
+        }
+
+        &-job {
+          font-size: clamp(1.125rem, 1.0962rem + 0.1282vw, 1.25rem);
+        }
+
+        &-text {
+          font-size: clamp(0.875rem, 0.8462rem + 0.1282vw, 1rem);
+        }
+
+        &-tags {
+          margin: rem(25) 0 rem(15);
+          width: 100%;
+          flex-wrap: wrap;
+          gap: rem(20);
+
+          @include media("lg") {
+            gap: rem(15) rem(20);
+          }
+          @include media("sm") {
+            margin: rem(15) 0 rem(10);
+            gap: rem(10);
+          }
+        }
+
+        &-tag {
+          position: relative;
+          padding: rem(15);
+          color: var(--text-dark);
+          background: #fff;
+          border-radius: rem(17);
+          gap: rem(8);
+
+          &::before {
+            content: "";
+            display: inline-block;
+            @include size(rem(13));
+            background: var(--primary);
+            border-radius: 50%;
+          }
+
+          @include media("sm") {
+            padding: rem(8) rem(10);
+            font-size: rem(14);
+            gap: rem(6);
+            --size: #{rem(10)};
+          }
+        }
+
+        .btn {
+          width: rem(305);
+        }
+      }
+    }
+  </style>
+</Section>
