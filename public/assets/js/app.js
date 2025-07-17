@@ -253,6 +253,88 @@ if (header) {
   });
 }
 
+// hero
+const hero = document.querySelector(".hero");
+if (hero) {
+  const heroVideo = document.querySelector(".hero__video");
+  const heroDoctor = document.querySelector(".hero__doctor");
+
+  const updateHeroMask = () => {
+    if (heroVideo) {
+      const maskPath = heroVideo.querySelector(".hero__video-mask #maskPath");
+
+      const { width: w, height: h } = heroVideo.getBoundingClientRect();
+
+      const r1 = 40; // radius 1
+      const r2 = 74; // radius 2
+      const c1 = 205; // First cut height
+      const cw1 = 460; // First cut width
+      const c2 = 128; // Second cut height
+      const cw2 = 608; // Second cut width
+
+      const path = `
+        M 0,${r2} 
+        Q 0,0 ${r2},0
+        L ${w - r2},0
+        Q ${w},0 ${w},${r2}
+        L ${w},${h - c1 - r2}
+        Q ${w},${h - c1} ${w - r2},${h - c1}
+        L ${w - cw1 + r1},${h - c1}
+        Q ${w - cw1},${h - c1} ${w - cw1},${h - c1 + r1}
+        L ${w - cw1},${h - c2 - r1}
+        Q ${w - cw1},${h - c2} ${w - cw1 - r1},${h - c2}
+        L ${w - cw2 + r2},${h - c2}
+        Q ${w - cw2},${h - c2} ${w - cw2},${h - c2 + r2}
+        L ${w - cw2 + 1},${h - r2}
+        Q ${w - cw2 + 1},${h} ${w - cw2 - r2 + 1},${h}
+        L ${r2},${h}
+        Q 0,${h} 0,${h - r2}
+        Z
+    `
+        .replace(/\s+/g, " ")
+        .trim();
+
+      maskPath.setAttribute("d", path);
+    }
+
+    if (heroDoctor) {
+      const maskPath = heroDoctor.querySelector(
+        ".hero__doctor-mask #maskPath2"
+      );
+
+      const { width: w, height: h } = heroDoctor.getBoundingClientRect();
+
+      const r1 = 40;
+      const r2 = 50;
+      const c1 = 114; // First cut height
+      const cw1 = 145; // First cut width
+
+      const path = `
+        M 0,${h - c1 + r2}
+        Q 0,${h - c1} ${r2},${h - c1}
+        L ${cw1 - r1},${h - c1}
+        Q ${cw1},${h - c1} ${cw1},${h - c1 - r1}
+        L ${cw1},${r1}
+        Q ${cw1},0 ${cw1 + r1},0
+        L ${w - r1},0 
+        Q ${w},0  ${w},${r1}
+        L ${w},${h - r1}
+        Q ${w},${h} ${w - r1},${h}
+        L ${r2},${h}
+        Q 0,${h} 0,${h - r2}
+        Z
+    `
+        .replace(/\s+/g, " ")
+        .trim();
+
+      maskPath.setAttribute("d", path);
+    }
+  };
+
+  window.addEventListener("load", updateHeroMask);
+  window.addEventListener("resize", updateHeroMask);
+}
+
 // Footer
 const currentYear = document.getElementById("current-year");
 if (currentYear) {
