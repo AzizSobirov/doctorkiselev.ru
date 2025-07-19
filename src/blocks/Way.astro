@@ -1,14 +1,138 @@
 ---
-import { Section,H2,H3,P, Image, Icon, Button } from "ui";
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- Way -->
-<Section name="way"> .way </Section>
+<Section name="way">
+  <div class="way__header group">
+    <div class="way__header-top group-row">
+      <div class="way__header-title">Кратчайший путь к</div>
+      <div class="way__header-mark">здоровью</div>
+      <div class="way__header-subtitle">ПОЗВОНОЧИНКА <br /> И СУСТАВОВ</div>
+    </div>
+    <div class="way__header-bottom group-row">
+      <video class="way__header-video" autoplay loop muted>
+        <source src="/assets/videos/DNA.mp4" />
+      </video>
+      <div class="group">
+        <div class="way__header-start">НАЧИНАЕТСЯ ЗДЕСЬ</div>
+        <p class="way__header-desc">
+          Современные методы лечения, наш опыт и лучшее оборудование помогут
+          улучшить качество жизни
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="way__content"></div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .way {
     position: relative;
+
+    &__header {
+      width: 100%;
+      gap: rem(12);
+
+      @include media("lg") {
+        gap: rem(20);
+      }
+
+      &-top,
+      &-bottom {
+        width: 100%;
+        gap: rem(24);
+      }
+
+      &-top {
+        @include media("lg") {
+          flex-wrap: wrap;
+          gap: rem(15) rem(24);
+        }
+        @include media("sm") {
+          gap: rem(10);
+        }
+      }
+
+      &-bottom {
+        @include media("lg") {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: rem(15);
+        }
+
+        .group {
+          gap: rem(5);
+        }
+      }
+
+      &-title {
+        font-size: clamp(1.75rem, 1.2885rem + 2.0513vw, 3.75rem);
+        font-weight: 500;
+        text-transform: uppercase;
+
+        @include media("lg") {
+          width: 100%;
+        }
+      }
+
+      &-mark {
+        padding: rem(20) rem(40);
+        color: var(--primary);
+        font-size: clamp(0.875rem, 0.4135rem + 2.0513vw, 2.875rem);
+        text-transform: uppercase;
+        border: rem(2) solid var(--primary);
+        border-radius: rem(45);
+
+        @include media("sm") {
+          padding: rem(10) rem(20);
+          border-radius: rem(25);
+          border-width: rem(1);
+        }
+        @include media("xs") {
+          padding: rem(8) rem(15);
+        }
+      }
+
+      &-subtitle {
+        font-size: clamp(1rem, 0.6538rem + 1.5385vw, 2.5rem);
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      &-video {
+        width: 40%;
+        height: rem(155);
+        border-radius: rem(55);
+        object-fit: cover;
+
+        @include media("lg") {
+          width: 100%;
+          height: rem(140);
+          border-radius: rem(40);
+        }
+        @include media("sm") {
+          height: rem(100);
+          border-radius: rem(25);
+        }
+      }
+
+      &-start {
+        color: var(--primary);
+        font-size: clamp(2.25rem, -1.6071rem + 6.0268vw, 5.625rem);
+        font-weight: 500;
+        text-transform: uppercase;
+
+        @include media("lg") {
+          font-size: clamp(1.75rem, 0.7404rem + 4.4872vw, 6.125rem);
+        }
+      }
+
+      &-desc {
+        font-size: clamp(0.875rem, 0.7885rem + 0.3846vw, 1.25rem);
+      }
+    }
   }
 </style>
