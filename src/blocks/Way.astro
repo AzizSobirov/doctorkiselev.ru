@@ -36,7 +36,14 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
       </div>
     </div>
   </div>
-  <div class="way__content"></div>
+  <div class="way__content">
+    <div class="way__content-bg">
+      <video autoplay muted loop>
+        <source src="/assets/videos/way.mp4" />
+      </video>
+    </div>
+
+  </div>
 </Section>
 
 <style lang="scss" is:global>
@@ -145,6 +152,21 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 
       &-desc {
         font-size: clamp(0.875rem, 0.7885rem + 0.3846vw, 1.25rem);
+      }
+    }
+
+    &__content {
+      position: relative;
+      width: 100%;
+      height: rem(790);
+
+      &-bg {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: -1;
+        @include size(rem(790));
       }
     }
   }

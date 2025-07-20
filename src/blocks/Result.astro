@@ -1,14 +1,65 @@
 ---
-import { Section,H2,H3,P, Image, Icon, Button } from "ui";
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- Result -->
-<Section name="result"> .result </Section>
+<Section name="result">
+  <div class="result__header group-row">
+    <div class="result__header-subtitle">
+      Решаем сложные <br />
+      случаи
+    </div>
+    <div class="result__header-title">без операции</div>
+  </div>
+
+  <div class="result__content">
+   <div class="card">
+          <div class="card__img">
+            <div class="card__img-before">
+              <Image src="result/before.png" />
+            </div>
+            <div class="card__img-after">
+              <Image src="result/after.png" />
+            </div>
+          </div>
+          <div class="card__content">
+            <ul class="group">
+              <li>
+                <strong>Диагноз:</strong> Грыжа диска, воспалительные процессы
+                на позвонках в пояснице, сильные простреливающие боли в ногу,
+                онемение большого пальца на ноге.
+              </li>
+              <li>
+                <strong>Лечение:</strong> Проведено комплексное лечение с
+                устранением воспаления, снятием болевого синдрома и улучшение
+                подвижности.
+              </li>
+              <li>
+                <strong>Результат:</strong> На фоне лечения – снижение
+                интенсивности и объёма воспаления, боль купирована.
+              </li>
+            </ul>
+            <Button href="#"> ЭТО МОЙ СЛУЧАЙ</Button>
+          </div>
+        </div>
+  </div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .result {
     position: relative;
+
+    &__header {
+      gap: rem(24);
+    }
+
+    &__contnet {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(20);
+    }
   }
 </style>
