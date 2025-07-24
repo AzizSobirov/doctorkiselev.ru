@@ -335,6 +335,87 @@ if (hero) {
   window.addEventListener("resize", updateHeroMask);
 }
 
+// Result
+const result = document.querySelector(".result");
+if (result) {
+  const cards = result.querySelectorAll(".card");
+  cards.forEach((card) => {
+    const img = card.querySelector(".card__img");
+    const slider = card.querySelector(".card__img-slider");
+    const thumb = card.querySelector(".card__img-thumb");
+    const before = card.querySelector(".card__img-before");
+    const after = card.querySelector(".card__img-after");
+    const labelBefore = card.querySelector(".label--before");
+    const labelAfter = card.querySelector(".label--after");
+
+    let isDragging = false;
+    let initialPosition = 50; // Start at 50%
+
+    // Set initial position
+    updateSliderPosition(initialPosition);
+
+    // Function to update slider position
+    function updateSliderPosition(position) {
+      // Constrain position between 0 and 100
+      position = Math.max(0, Math.min(100, position));
+
+      // Update the clip-path for the after image
+      after.style.clipPath = `inset(0 0 0 ${position}%)`;
+
+      // Position the thumb
+      thumb.style.left = `${position}%`;
+
+      // Update label positions
+      labelBefore.style.opacity = position < 20 ? "0" : "1";
+      labelBefore.style.left = `${Math.max(10, position - 15)}%`;
+
+      labelAfter.style.opacity = position > 80 ? "0" : "1";
+      labelAfter.style.left = `${Math.min(85, position + 10)}%`;
+    }
+
+    // Event listeners for mouse/touch interactions
+    slider.addEventListener("mousedown", startDrag);
+    slider.addEventListener("touchstart", startDrag, { passive: true });
+
+    function startDrag(e) {
+      isDragging = true;
+      img.classList.add("dragging");
+
+      // Prevent default for mouse events only
+      if (e.type === "mousedown") {
+        e.preventDefault();
+      }
+
+      moveSlider(e);
+
+      document.addEventListener("mousemove", moveSlider);
+      document.addEventListener("touchmove", moveSlider, { passive: true });
+      document.addEventListener("mouseup", stopDrag);
+      document.addEventListener("touchend", stopDrag);
+    }
+
+    function moveSlider(e) {
+      if (!isDragging) return;
+
+      // Get the position relative to the image
+      const rect = img.getBoundingClientRect();
+      const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+      const position = (x / rect.width) * 100;
+
+      updateSliderPosition(position);
+    }
+
+    function stopDrag() {
+      isDragging = false;
+      img.classList.remove("dragging");
+      document.removeEventListener("mousemove", moveSlider);
+      document.removeEventListener("touchmove", moveSlider);
+      document.removeEventListener("mouseup", stopDrag);
+      document.removeEventListener("touchend", stopDrag);
+    }
+  });
+}
+
 // Footer
 const currentYear = document.getElementById("current-year");
 if (currentYear) {

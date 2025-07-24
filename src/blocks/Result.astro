@@ -13,13 +13,23 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
   </div>
 
   <div class="result__content">
-   <div class="card">
+    {
+      Array.from({ length: 2 }).map(() => (
+        <div class="card">
           <div class="card__img">
             <div class="card__img-before">
               <Image src="result/before.png" />
+              <span class="label label--before">До</span>
             </div>
             <div class="card__img-after">
               <Image src="result/after.png" />
+              <span class="label label--after">После</span>
+            </div>
+
+            <div class="card__img-slider">
+              <div class="card__img-thumb">
+                <div class="card__img-thumb-arrows" />
+              </div>
             </div>
           </div>
           <div class="card__content">
@@ -42,6 +52,8 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
             <Button href="#"> ЭТО МОЙ СЛУЧАЙ</Button>
           </div>
         </div>
+      ))
+    }
   </div>
 </Section>
 
@@ -55,11 +67,142 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
       gap: rem(24);
     }
 
-    &__contnet {
+    &__content {
       width: 100%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: rem(20);
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(4);
+
+      &__img {
+        position: relative;
+        width: 100%;
+        height: rem(615);
+        background: #ffffff;
+        border-radius: rem(60);
+        overflow: hidden;
+        user-select: none;
+
+        &-before,
+        &-after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        &-before {
+          z-index: 1;
+        }
+
+        &-after {
+          clip-path: inset(0 0 0 50%);
+          z-index: 2;
+        }
+
+        .label {
+          position: absolute;
+          top: 50%;
+          transform: translate(0, -50%);
+          color: #fff;
+          font-size: rem(40);
+          transition: opacity 0.3s ease;
+          z-index: 5;
+
+          &--before {
+            left: 35%;
+          }
+
+          &--after {
+            left: 60%;
+          }
+        }
+
+        &-slider {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 3;
+          cursor: ew-resize;
+        }
+
+        &-thumb {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          width: rem(4);
+          background-color: var(--primary);
+          transform: translateX(-50%);
+          pointer-events: none;
+
+          &-arrows {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include size(rem(78));
+            background-color: var(--primary);
+            background-image: url('data:image/svg+xml,<svg width="51" height="25" viewBox="0 0 51 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M38.5 1.5L49.5 12.5L38.5 23.5" stroke="white" stroke-width="2" /><path d="M13 23L2 12L13 1" stroke="white" stroke-width="2" /></svg>');
+            background-size: 70% auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        &.dragging {
+          cursor: grabbing;
+        }
+      }
+
+      &__content {
+        padding: rem(40);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(20);
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: rem(20);
+        }
+
+        strong {
+          color: var(--primary);
+        }
+
+        .btn {
+          margin-top: rem(12);
+          width: rem(305);
+        }
+      }
     }
   }
 </style>
