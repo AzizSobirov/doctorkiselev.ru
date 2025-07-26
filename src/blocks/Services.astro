@@ -1,17 +1,47 @@
 ---
 import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+import { services } from "@/store";
 ---
 
 <!-- Services -->
 <Section name="services">
-  <H2>Услуги <strong>нашей клиники</strong></H2>
+  <H2 class="uppercase" data-aos="fade-up">
+    Услуги <strong>нашей клиники</strong>
+  </H2>
 
   <div class="services__list">
-    <div class="services__item">
-      <a href="/service" class="services__item-link"></a>
+    {
+      services.map((service, index) => (
+        <div
+          class="services__item"
+          data-aos="fade-up"
+          data-aos-delay={`${index * 50}`}
+        >
+          <a href="/service" class="services__item-link" />
 
-      
-    </div>
+          <button class="services__item-btn icon">
+            <svg
+              width="59"
+              height="59"
+              viewBox="0 0 59 59"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="29.5" cy="29.5" r="29.5" fill="white" />
+              <path
+                d="M22 15L36.5 29.5L22 44"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <Image class="services__item-img" src={`services/${index + 1}.svg`} />
+          <span class="services__item-title">{service}</span>
+        </div>
+      ))
+    }
   </div>
 </Section>
 
@@ -20,5 +50,143 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 
   .services {
     position: relative;
+
+    &__list {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: rem(20);
+
+      @include media("xs") {
+        gap: rem(12);
+      }
+    }
+
+    &__item {
+      position: relative;
+      padding: rem(55) rem(40) rem(50);
+      height: rem(560);
+      color: var(--primary);
+      background-color: currentColor;
+      border-radius: rem(65);
+      flex: 1 0 var(--basis, rem(380));
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      --icon-size: #{rem(60)};
+
+      &:hover {
+        opacity: 0.8 !important;
+      }
+
+      @include media("3xl") {
+        padding: rem(30);
+        height: rem(450);
+        --basis: #{rem(300)};
+      }
+      @include media("lg") {
+        padding: rem(20);
+        height: rem(320);
+        border-radius: rem(35);
+        --icon-size: #{rem(50)};
+      }
+      @include media("sm") {
+        height: rem(280);
+        --basis: 100% !important;
+      }
+      @include media("xs") {
+        height: rem(220);
+        --icon-size: #{rem(40)};
+      }
+
+      &:nth-child(1) {
+        padding: rem(55);
+        --primary: #43a4a4;
+        --basis: #{rem(750)};
+
+        @include media("3xl") {
+          padding: rem(30);
+          --basis: #{rem(600)};
+        }
+        @include media("lg") {
+          padding: rem(20);
+        }
+
+        .services__item-img {
+          top: 0;
+          left: 1%;
+
+          @include media("3xl") {
+            max-height: 85%;
+          }
+        }
+        .services__item-title {
+          align-self: flex-end;
+
+          @include media("lg") {
+            align-self: flex-start;
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        --primary: #68c0cc;
+      }
+
+      &:nth-child(3) {
+        --primary: #8ca3de;
+      }
+
+      &:nth-child(4) {
+        --primary: #8cb9de;
+      }
+
+      &:nth-child(5) {
+        --primary: #a48d43;
+      }
+
+      &:nth-child(6) {
+        --primary: #cb686a;
+      }
+
+      &-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+      }
+
+      &-img {
+        position: absolute;
+        top: 10%;
+        left: 3%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+
+        @include media("3xl") {
+          max-height: 70%;
+        }
+      }
+
+      &-btn {
+        position: relative;
+        z-index: 2;
+        align-self: flex-end;
+        transition: var(--transition-ease);
+      }
+
+      &-title {
+        position: relative;
+        z-index: 2;
+        margin-top: auto;
+        color: #fff;
+        font-size: clamp(1.25rem, 1.0769rem + 0.7692vw, 2rem);
+      }
+    }
   }
 </style>
