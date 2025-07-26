@@ -367,7 +367,7 @@ if (result) {
 
       // Update label positions
       labelBefore.style.opacity = position < 20 ? "0" : "1";
-      labelBefore.style.left = `${Math.max(10, position - 15)}%`;
+      labelBefore.style.left = `${Math.max(10, position - 17)}%`;
 
       labelAfter.style.opacity = position > 80 ? "0" : "1";
       labelAfter.style.left = `${Math.min(85, position + 10)}%`;

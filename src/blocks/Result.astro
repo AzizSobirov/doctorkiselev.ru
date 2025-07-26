@@ -5,18 +5,18 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 <!-- Result -->
 <Section name="result">
   <div class="result__header group-row">
-    <div class="result__header-subtitle">
+    <div class="result__header-subtitle" data-aos="fade-up">
       Решаем сложные <br />
       случаи
     </div>
-    <div class="result__header-title">без операции</div>
+    <div class="result__header-title" data-aos="fade-up">без операции</div>
   </div>
 
   <div class="result__content">
     {
       Array.from({ length: 2 }).map(() => (
         <div class="card">
-          <div class="card__img">
+          <div class="card__img" data-aos="fade-up">
             <div class="card__img-before">
               <Image src="result/before.png" />
               <span class="label label--before">До</span>
@@ -34,22 +34,24 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
           </div>
           <div class="card__content">
             <ul class="group">
-              <li>
+              <li data-aos="fade-up">
                 <strong>Диагноз:</strong> Грыжа диска, воспалительные процессы
                 на позвонках в пояснице, сильные простреливающие боли в ногу,
                 онемение большого пальца на ноге.
               </li>
-              <li>
+              <li data-aos="fade-up" data-aos-delay="50">
                 <strong>Лечение:</strong> Проведено комплексное лечение с
                 устранением воспаления, снятием болевого синдрома и улучшение
                 подвижности.
               </li>
-              <li>
+              <li data-aos="fade-up" data-aos-delay="100">
                 <strong>Результат:</strong> На фоне лечения – снижение
                 интенсивности и объёма воспаления, боль купирована.
               </li>
             </ul>
-            <Button href="#"> ЭТО МОЙ СЛУЧАЙ</Button>
+            <Button href="#" data-aos="fade-up" data-aos-delay="150">
+              ЭТО МОЙ СЛУЧАЙ
+            </Button>
           </div>
         </div>
       ))
@@ -65,6 +67,50 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 
     &__header {
       gap: rem(24);
+
+      @include media("lg") {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: rem(5);
+
+        br {
+          display: none;
+        }
+      }
+
+      &-subtitle {
+        font-size: clamp(1.25rem, 0.9615rem + 1.2821vw, 2.5rem);
+        text-align: right;
+        text-transform: uppercase;
+
+        @include media("lg") {
+          text-align: left;
+        }
+      }
+
+      &-title {
+        position: relative;
+        font-size: clamp(2rem, 0.9471rem + 4.6795vw, 6.5625rem);
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--primary);
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: rem(-20);
+          transform: translate(100%, -50%);
+          height: rem(5);
+          width: 50vw;
+          background: var(--primary);
+
+          @include media("lg") {
+            right: rem(-15);
+            height: rem(3);
+          }
+        }
+      }
     }
 
     &__content {
@@ -72,6 +118,10 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: rem(20);
+
+      @include media("lg") {
+        grid-template-columns: 1fr;
+      }
     }
 
     .card {
@@ -90,6 +140,21 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
         border-radius: rem(60);
         overflow: hidden;
         user-select: none;
+
+        @include media("3xl") {
+          height: rem(480);
+        }
+        @include media("xl") {
+          height: rem(380);
+          border-radius: rem(40);
+        }
+        @include media("sm") {
+          height: rem(320);
+        }
+        @include media("xs") {
+          height: rem(240);
+          border-radius: rem(25);
+        }
 
         &-before,
         &-after {
@@ -127,6 +192,13 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
           transition: opacity 0.3s ease;
           z-index: 5;
 
+          @include media("xl") {
+            font-size: rem(24);
+          }
+          @include media("xs") {
+            font-size: rem(20);
+          }
+
           &--before {
             left: 35%;
           }
@@ -156,6 +228,13 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
           transform: translateX(-50%);
           pointer-events: none;
 
+          @include media("xl") {
+            width: rem(3);
+          }
+          @include media("xs") {
+            width: rem(2);
+          }
+
           &-arrows {
             position: absolute;
             top: 50%;
@@ -171,6 +250,13 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
             display: flex;
             align-items: center;
             justify-content: center;
+
+            @include media("xl") {
+              --size: #{rem(60)};
+            }
+            @include media("xs") {
+              --size: #{rem(50)};
+            }
           }
         }
 
@@ -187,11 +273,28 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
         align-items: flex-start;
         gap: rem(20);
 
+        @include media("3xl") {
+          padding: rem(20);
+        }
+        @include media("xs") {
+          padding: rem(15) 0;
+          font-size: rem(14);
+          gap: rem(15);
+        }
+
         ul {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           gap: rem(20);
+
+          @include media("xs") {
+            gap: rem(10);
+          }
+        }
+
+        li:last-child strong {
+          color: var(--secondary);
         }
 
         strong {
@@ -201,6 +304,11 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
         .btn {
           margin-top: rem(12);
           width: rem(305);
+
+          @include media("xs") {
+            margin-top: rem(5);
+            width: rem(280);
+          }
         }
       }
     }
