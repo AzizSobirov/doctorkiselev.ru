@@ -1,0 +1,117 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Clinic -->
+<Section name="clinic">
+  <div
+    class="clinic__video group"
+    data-aos="zoom-in-up"
+    data-fancybox="clinic"
+    data-src="/assets/videos/hero.mp4"
+    data-poster="/assets/img/clinic/poster.png"
+    aria-label="Клиника Доктора Киселева"
+    role="button"
+  >
+    <video poster="/assets/img/clinic/poster.png">
+      <source src="/assets/videos/hero.mp4" type="video/mp4" />
+    </video>
+
+    <button class="clinic__video-play">
+      <Icon src="play-2.svg" />
+    </button>
+
+    <blockquote class="clinic__video-quote">
+      Клиника Доктора Киселева — современный медицинский центр,
+      специализирующийся на безоперационном лечении заболеваний позвоночника и
+      суставов. Мы сочетаем передовые методики, индивидуальный подход и глубокую
+      заботу о каждом пациенте. Наша миссия — восстановить здоровье, вернуть
+      свободу движений и улучшить качество жизни без хирургического
+      вмешательства.
+    </blockquote>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .clinic {
+    position: relative;
+
+    &__video {
+      position: relative;
+      padding: rem(40);
+      width: 100%;
+      height: rem(720);
+      border-radius: rem(65);
+      overflow: hidden;
+      cursor: pointer;
+
+      @include media("3xl") {
+        height: rem(650);
+      }
+      @include media("lg") {
+        padding: rem(20);
+        height: rem(450);
+        border-radius: rem(40);
+      }
+      @include media("sm") {
+        padding: rem(12);
+        height: auto;
+      }
+
+      video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        @include media("sm") {
+          position: relative;
+          z-index: 1;
+          height: rem(220);
+          border-radius: rem(25);
+        }
+      }
+
+      &-play {
+        align-self: flex-end;
+        --icon-size: #{rem(100)};
+
+        @include media("lg") {
+          --icon-size: #{rem(80)};
+        }
+        @include media("sm") {
+          position: absolute;
+          top: rem(25);
+          right: rem(25);
+          z-index: 2;
+          --icon-size: #{rem(60)};
+        }
+      }
+
+      &-quote {
+        margin-top: auto;
+        padding: rem(20);
+        width: 100%;
+        max-width: rem(865);
+        color: #fff;
+        line-height: 1.35;
+        background: linear-gradient(180deg, #43a4a4 0%, #1a7373 100%);
+        border-radius: rem(25);
+
+        @include media("lg") {
+          padding: rem(15);
+          font-size: rem(14);
+        }
+        @include media("sm") {
+          margin-top: rem(15);
+        }
+      }
+    }
+  }
+</style>

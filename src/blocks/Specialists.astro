@@ -1,0 +1,96 @@
+---
+import TheSpecialist from "@/components/TheSpecialist.astro";
+import { specialists } from "@/store";
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Specialists -->
+<Section name="specialists">
+  <div class="specialists__header group-row">
+    <div class="specialists__header-title" data-aos="fade-up">
+      Наши <br /> специалисты
+    </div>
+    <p class="specialists__header-desc" data-aos="fade-up" data-aos-delay="50">
+      Команда нашей клиники — это опытные врачи-неврологи, реабилитологи и
+      физиотерапевты, объединённые одной целью: восстановить здоровье пациентов
+      без операций и лишнего риска.
+      <br /><br />
+      Каждый специалист прошёл серьёзную профессиональную подготовку, регулярно повышает
+      квалификацию и владеет современными методиками лечения опорно-двигательных
+      нарушений. Мы не назначаем шаблонных процедур — только персональный подход,
+      основанный на точной диагностике и глубоком понимании причин боли.
+      <br /><br />
+      Профессионализм, внимательность и результат — вот то, за что нас ценят.
+    </p>
+  </div>
+
+  <div class="specialists__wrapper">
+    <div class="specialists__info">
+      {
+        specialists.map((specialist) => (
+          <TheSpecialist name={specialist.name} spec={specialist.spec} />
+        ))
+      }
+    </div>
+
+    <div class="specialists__list">
+      {
+        specialists.map((specialist) => (
+          <div class="specialists__item">{specialist.name}</div>
+        ))
+      }
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .specialists {
+    position: relative;
+
+    &__header {
+      gap: rem(45);
+
+      @include media("xl") {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(25);
+      }
+      @include media("sm") {
+        gap: rem(20);
+      }
+
+      &-title {
+        padding-right: rem(20);
+        color: var(--primary);
+        text-align: right;
+        font-weight: 600;
+        font-size: clamp(2rem, 1.3077rem + 3.0769vw, 5rem);
+        line-height: 1.1;
+        border-right: rem(4) solid var(--primary);
+
+        @include media("xl") {
+          padding-left: rem(20);
+          padding-right: 0;
+          border-left: rem(3) solid var(--primary);
+          border-right: none;
+          text-align: left;
+
+          br {
+            display: none;
+          }
+        }
+        @include media("sm") {
+          padding-left: rem(10);
+        }
+      }
+
+      &-desc {
+        @include media("sm") {
+          font-size: rem(14);
+        }
+      }
+    }
+  }
+</style>

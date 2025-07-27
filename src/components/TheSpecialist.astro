@@ -1,0 +1,22 @@
+---
+import { H2, H3, P } from "ui";
+
+interface Props {
+  name?: string;
+  spec?: string;
+}
+
+const {
+  name = "<strong>Киселев</strong> Антон Сергеевич",
+  spec = "Основатель клиники",
+} = Astro.props;
+---
+
+<div class="specialist"></div>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .specialist {
+  }
+</style>
