@@ -24,19 +24,39 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
     </p>
   </div>
 
-  <div class="specialists__wrapper">
+  <div class="specialists__wrapper group-row">
     <div class="specialists__info">
       {
-        specialists.map((specialist) => (
-          <TheSpecialist name={specialist.name} spec={specialist.spec} />
+        specialists.map((specialist, index) => (
+          <TheSpecialist
+            class={index === 0 ? "active" : ""}
+            name={specialist.name}
+            spec={specialist.spec}
+          />
         ))
       }
     </div>
 
     <div class="specialists__list">
       {
-        specialists.map((specialist) => (
-          <div class="specialists__item">{specialist.name}</div>
+        specialists.map((specialist, index) => (
+          <div data-aos="fade-up" data-aos-delay={index * 50}>
+            <div
+              class="specialists__item"
+              class:list={index === 0 ? "active" : ""}
+            >
+              <Image class="specialists__item-img" src="clinic/doctor.png" />
+              <div class="group">
+                <div
+                  class="specialists__item-name"
+                  set:html={specialist.name}
+                />
+                <div class="specialists__item-spec text-sm">
+                  {specialist.spec}
+                </div>
+              </div>
+            </div>
+          </div>
         ))
       }
     </div>
@@ -90,6 +110,118 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
         @include media("sm") {
           font-size: rem(14);
         }
+      }
+    }
+
+    &__wrapper {
+      padding-top: rem(160);
+      align-items: flex-start;
+      gap: rem(20);
+
+      @include media("2xl") {
+        flex-direction: column;
+        gap: rem(80);
+      }
+      @include media("sm") {
+        padding-top: rem(100);
+        gap: rem(60);
+      }
+    }
+
+    &__info {
+      width: 60%;
+
+      @include media("2xl") {
+        width: 100%;
+      }
+
+      .specialist:not(.active) {
+        display: none;
+      }
+    }
+
+    &__list {
+      width: 40%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(60) rem(20);
+
+      @include media("3xl") {
+        gap: rem(40) rem(15);
+      }
+      @include media("2xl") {
+        width: 100%;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      @include media("xl") {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @include media("lg") {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include media("sm") {
+        grid-template-columns: 1fr;
+        gap: rem(25);
+      }
+    }
+
+    &__item {
+      position: relative;
+      padding-left: rem(155);
+      padding-right: rem(10);
+      height: rem(156);
+      background: #fff;
+      border-radius: rem(35);
+      cursor: pointer;
+      transition: var(--transition-ease);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      @include media("3xl") {
+        padding-left: rem(125);
+        height: rem(130);
+      }
+      @include media("sm") {
+        height: rem(110);
+        border-radius: rem(20);
+      }
+
+      &.active {
+        color: #fff;
+        background: var(--primary);
+
+        strong {
+          color: #fff;
+        }
+      }
+
+      &-img {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: rem(150);
+        max-height: rem(200);
+        object-position: bottom;
+        object-fit: contain;
+
+        @include media("3xl") {
+          width: rem(120);
+        }
+        @include media("sm") {
+          left: rem(10);
+          width: rem(100);
+          max-height: rem(150);
+        }
+      }
+
+      .group {
+        gap: rem(10);
+      }
+
+      strong {
+        color: var(--primary);
+        display: block;
       }
     }
   }

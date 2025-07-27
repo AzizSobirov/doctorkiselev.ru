@@ -416,6 +416,29 @@ if (result) {
   });
 }
 
+// specialists
+const specialists = document.querySelector(".specialists");
+if (specialists) {
+  const specialistItems = specialists.querySelectorAll(".specialists__item");
+  const specialistInfoItems = specialists.querySelectorAll(
+    ".specialists__info .specialist"
+  );
+
+  specialistItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      // Remove active class from all items
+      specialistItems.forEach((el) => el.classList.remove("active"));
+      // Add active class to the clicked item
+      item.classList.add("active");
+
+      // Show the corresponding info item
+      specialistInfoItems.forEach((el) => el.classList.remove("active"));
+      // Add active class to the corresponding info item
+      specialistInfoItems[index].classList.add("active");
+    });
+  });
+}
+
 // Footer
 const currentYear = document.getElementById("current-year");
 if (currentYear) {

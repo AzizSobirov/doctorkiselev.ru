@@ -1,22 +1,182 @@
 ---
-import { H2, H3, P } from "ui";
+import { H2, H3, P, Image, Button } from "ui";
 
 interface Props {
+  class?: string;
   name?: string;
   spec?: string;
 }
 
 const {
+  class: classname = "",
   name = "<strong>Киселев</strong> Антон Сергеевич",
   spec = "Основатель клиники",
 } = Astro.props;
 ---
 
-<div class="specialist"></div>
+<div class="specialist" class:list={classname}>
+  <div class="specialist__img" data-aos="fade-up">
+    <Image src="clinic/doctor.png" />
+  </div>
+
+  <div class="specialist__info">
+    <div class="group">
+      <div class="specialist__info-name" set:html={name} data-aos="fade-up" />
+      <div class="specialist__info-spec" data-aos="fade-up">{spec}</div>
+    </div>
+
+    <ul class="specialist__directions group-row">
+      <li data-aos="fade-up">Невролог</li>
+      <li data-aos="fade-up" data-aos-delay="25">Мануальный терапевт</li>
+      <li data-aos="fade-up" data-aos-delay="50">Рефлексотерапевт</li>
+      <li data-aos="fade-up" data-aos-delay="75">Остеопат</li>
+      <li data-aos="fade-up" data-aos-delay="100">Спортивный врач</li>
+    </ul>
+
+    <div class="specialist__actions group">
+      <Button data-modal="callback" data-aos="fade-up" data-aos-delay="150"
+        >Записаться на прием</Button
+      >
+      <Button
+        href="/doctor"
+        variant="outline"
+        data-aos="fade-up"
+        data-aos-delay="200">Подробнее о специалисте</Button
+      >
+    </div>
+  </div>
+</div>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .specialist {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: rem(20);
+
+    @include media("lg") {
+      flex-direction: column;
+    }
+
+    &__img {
+      position: relative;
+      @include size(rem(560));
+      border-radius: rem(50);
+      background: #fff;
+
+      @include media("3xl") {
+        --size: #{rem(480)};
+      }
+      @include media(rem(1580)) {
+        --size: #{rem(400)};
+      }
+      @include media("lg") {
+        min-width: 100%;
+        width: 100%;
+        min-height: unset;
+        height: rem(380);
+      }
+      @include media("sm") {
+        height: rem(220);
+        border-radius: rem(25);
+      }
+
+      img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        max-height: 150%;
+        object-fit: contain;
+        object-position: bottom;
+      }
+    }
+
+    &__info {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(20);
+
+      .group {
+        gap: rem(15);
+      }
+
+      &-name {
+        font-size: clamp(1.5rem, 1.3269rem + 0.7692vw, 2.25rem);
+
+        strong {
+          color: var(--primary);
+          display: block;
+        }
+      }
+    }
+
+    &__directions {
+      margin-top: rem(20);
+      width: 100%;
+      flex-wrap: wrap;
+      gap: rem(20);
+
+      @include media("3xl") {
+        margin-top: rem(10);
+      }
+
+      @include media("lg") {
+        gap: rem(15) rem(20);
+      }
+      @include media("sm") {
+        margin: rem(15) 0 rem(10);
+        gap: rem(10);
+      }
+
+      li {
+        position: relative;
+        padding: rem(15);
+        color: var(--text-dark);
+        background: #fff;
+        border-radius: rem(17);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(10);
+
+        &::before {
+          content: "";
+          display: inline-block;
+          @include size(rem(13));
+          background: var(--primary);
+          border-radius: 50%;
+        }
+
+        @include media("sm") {
+          padding: rem(8) rem(10);
+          font-size: rem(14);
+          gap: rem(6);
+          --size: #{rem(10)};
+        }
+      }
+    }
+
+    &__actions {
+      @include media("2xl") {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+
+    .btn {
+      width: rem(305);
+      text-transform: uppercase;
+
+      @include media("xs") {
+        width: 100%;
+      }
+    }
   }
 </style>

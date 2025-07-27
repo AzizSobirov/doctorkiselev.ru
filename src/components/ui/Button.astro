@@ -109,15 +109,17 @@ const Tag = href ? "a" : "button";
     }
 
     &-outline {
-      height: rem(56);
-      width: rem(220);
+      width: rem(265);
+      height: rem(54);
       color: var(--primary);
-      border: rem(1) solid var(--primary);
-      border-radius: 9999px;
+      font-size: rem(16);
+      font-weight: 600;
+      border-radius: rem(15);
+      border: rem(2) solid var(--primary);
 
       &:hover {
-        color: #fff;
         background: var(--primary);
+        color: #fff;
       }
     }
   }
