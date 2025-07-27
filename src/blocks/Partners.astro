@@ -1,0 +1,107 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Partners -->
+<Section name="partners">
+  <div class="partners__wrapper group-row">
+    <div class="partners__title">
+      Наши <br />
+      <strong>партнеры</strong>
+    </div>
+
+    <div class="partners__list group-row">
+      <Image src="partners/1.svg" alt="Partner 1" />
+      <Image src="partners/2.svg" alt="Partner 2" />
+      <Image src="partners/3.svg" alt="Partner 3" />
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .partners {
+    position: relative;
+
+    &__wrapper {
+      position: relative;
+      padding-bottom: rem(50);
+      width: 100%;
+      gap: rem(60);
+
+      @include media("xl") {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(25);
+      }
+      @include media("sm") {
+        padding-bottom: rem(30);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: rem(12);
+        background: linear-gradient(180deg, #f3f3f3 0%, #bfbfbf 100%);
+      }
+    }
+
+    &__title {
+      color: var(--primary);
+      text-align: right;
+      font-size: clamp(2rem, 1.3077rem + 3.0769vw, 5rem);
+      line-height: 1.1;
+
+      @include media("xl") {
+        text-align: left;
+
+        br {
+          display: none;
+        }
+      }
+
+      strong {
+        font-weight: 600;
+      }
+    }
+
+    &__list {
+      flex-grow: 1;
+      justify-content: space-between;
+      gap: rem(40);
+
+      @include media("xl") {
+        flex-wrap: wrap;
+        gap: rem(30);
+      }
+      @include media("sm") {
+        justify-content: flex-start;
+      }
+
+      img {
+        max-height: rem(135);
+        max-width: 20vw;
+        width: auto;
+        object-fit: contain;
+        object-position: center;
+
+        @include media("xl") {
+          max-width: calc(100% / 3 - rem(40));
+          max-height: rem(120);
+        }
+        @include media("sm") {
+          max-height: rem(60);
+          max-width: 100%;
+
+          &:last-child {
+            max-height: rem(45);
+          }
+        }
+      }
+    }
+  }
+</style>
