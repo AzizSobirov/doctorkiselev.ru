@@ -1,0 +1,310 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button, BgImg } from "ui";
+---
+
+<!-- Reviews -->
+<Section name="reviews">
+  <H2 class="uppercase" data-aos="fade-up"
+    >Отзывы <strong>наших пациентов</strong></H2
+  >
+  <div class="reviews__content">
+    <div class="reviews__swiper" data-aos="fade-up">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {
+            Array.from({ length: 5 }).map((_, index) => (
+              <div
+                class="swiper-slide group"
+                data-fancybox="reviews"
+                data-src="/assets/videos/hero.mp4"
+                data-poster="/assets/img/reviews/poster.png"
+              >
+                <BgImg src="reviews/poster.png" />
+
+                <button class="group btn-play">
+                  <Icon src="play-outlined.svg" />
+                  <span>
+                    Смотреть <br /> видео-отзыв
+                  </span>
+                </button>
+
+                <div class="name">АНАТОЛИЙ</div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="reviews__swiper-nav">
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+
+    <div class="reviews__text">
+      <p data-aos="fade-up">
+        Каждый день мы получаем десятки благодарных отзывов от пациентов,
+        которым мы помогли. Мы благодарны каждому пациенту который оставил отзыв
+        о нас, тем самым мы можем оценить качество нашей работы.
+      </p>
+
+      <ul class="reviews__platforms group">
+        <li
+          class="reviews__platform group-row"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <Image class="reviews__platform-logo" src="partners/yandex.svg" />
+          <div class="reviews__platform-stars row">
+            <Icon src="star-filled.svg" />
+            <Icon src="star-filled.svg" />
+            <Icon src="star-filled.svg" />
+            <Icon src="star-filled.svg" />
+            <Icon src="star-outlined.svg" />
+          </div>
+          <span class="reviews__platform-rating">4,9</span>
+        </li>
+
+        <li
+          class="reviews__platform group-row"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          <Image class="reviews__platform-logo" src="partners/3.svg" />
+          <div class="reviews__platform-stars row">
+            <Icon src="star-filled.svg" />
+            <Icon src="star-filled.svg" />
+            <Icon src="star-filled.svg" />
+            <Icon src="star-filled.svg" />
+            <Icon src="star-filled.svg" />
+          </div>
+          <span class="reviews__platform-rating">5,0</span>
+        </li>
+      </ul>
+
+      <Button
+        href="#"
+        variant="outline"
+        class="uppercase"
+        data-aos="fade-up"
+        data-aos-delay="200">Оставить отзыв</Button
+      >
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .reviews {
+    position: relative;
+
+    &__content {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr rem(415);
+      gap: rem(20);
+
+      @include media("3xl") {
+        grid-template-columns: 1fr rem(300);
+      }
+      @include media("1340px") {
+        grid-template-columns: 1fr rem(450);
+      }
+      @include media("xl") {
+        grid-template-columns: 1fr rem(350);
+      }
+      @include media("lg") {
+        grid-template-columns: 1fr;
+        gap: rem(30);
+      }
+    }
+
+    &__swiper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(25);
+
+      .swiper {
+        width: 100%;
+        height: rem(540);
+        display: grid;
+
+        @include media("3xl") {
+          height: rem(480);
+        }
+        @include media("lg") {
+          height: rem(420);
+          overflow: visible;
+        }
+        @include media("sm") {
+          height: rem(360);
+        }
+
+        &-wrapper {
+          min-width: 0 !important;
+        }
+
+        &-slide {
+          padding: rem(25);
+          width: 100%;
+          height: 100%;
+          border-radius: rem(40);
+          overflow: hidden;
+          cursor: pointer;
+
+          @include media("lg") {
+            width: rem(320);
+          }
+          @include media("sm") {
+            padding: rem(15);
+            width: rem(280);
+            border-radius: rem(30);
+          }
+          @include media("xs") {
+            width: rem(280);
+          }
+          @include media("xxs") {
+            width: rem(260);
+          }
+        }
+
+        .btn-play {
+          color: #fff;
+          font-weight: 300;
+          text-align: right;
+          align-self: flex-end;
+          align-items: flex-end;
+          gap: rem(12);
+          --icon-size: #{rem(52)};
+        }
+
+        .name {
+          margin-top: auto;
+          padding: rem(8) rem(25);
+          color: #fff;
+          font-size: rem(18);
+          font-weight: 300;
+          background: var(--primary);
+          border-radius: 9999px;
+        }
+      }
+
+      &-nav {
+        position: absolute;
+        bottom: rem(20);
+        right: rem(-20);
+        transform: translateX(100%);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(25);
+
+        @include media("lg") {
+          display: none;
+        }
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        position: relative !important;
+        top: 0 !important;
+        z-index: 1 !important;
+        margin: 0 !important;
+        width: rem(45);
+        height: rem(45);
+        color: #fff;
+        background: #43a4a4;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        --swiper-navigation-sides-offset: 0;
+
+        @include media("lg") {
+          width: rem(55);
+          height: rem(55);
+        }
+        @include media("sm") {
+          width: rem(50);
+          height: rem(50);
+        }
+
+        &::after {
+          font-size: rem(24);
+
+          @include media("lg") {
+            font-size: rem(22);
+          }
+          @include media("sm") {
+            font-size: rem(18);
+          }
+        }
+
+        &.swiper-button-disabled {
+          color: #5e5e5e;
+          background: #c3c3c3;
+          opacity: 1;
+          pointer-events: none;
+        }
+      }
+    }
+
+    &__text {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(35);
+
+      @include media("xs") {
+        gap: rem(20);
+      }
+
+      &-yandex {
+        margin-bottom: rem(10);
+        padding: rem(15) rem(30);
+        width: 100%;
+        background: #fff;
+        border-radius: rem(15);
+        display: flex;
+        align-items: center;
+        gap: rem(10);
+        justify-content: space-between;
+
+        img {
+          transform: translateY(rem(3));
+        }
+
+        @include media("xs") {
+          padding: rem(10) rem(20);
+        }
+      }
+    }
+
+    &__platforms {
+      margin-bottom: rem(15);
+      width: 100%;
+      gap: rem(30);
+
+      @include media("3xl") {
+        gap: rem(20);
+      }
+    }
+
+    &__platform {
+      gap: rem(22);
+
+      &-logo {
+        min-width: rem(120);
+        width: rem(120);
+        max-height: rem(45);
+        object-fit: contain;
+        object-position: left center;
+      }
+    }
+  }
+</style>

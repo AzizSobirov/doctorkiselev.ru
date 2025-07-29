@@ -1,0 +1,123 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Certificate -->
+<Section name="certificate">
+  <div class="certificate__text group">
+    <H2 data-aos="fade-up"
+      >Подарочные сертификаты от нашей клиники — <strong
+        >забота, выраженная в действии</strong
+      ></H2
+    >
+    <p class="certificate__text-desc" data-aos="fade-up" data-aos-delay="50">
+      Здоровье — самый ценный подарок, который вы можете сделать своим близким.
+      В нашей клинике вы можете приобрести подарочные сертификаты на любые
+      услуги, выбрав удобный для вас номинал. Такой сертификат станет прекрасным
+      решением для тех, кто ценит заботу, внимание и настоящее благополучие.
+      <br /><br />
+      Подарите своим родным и друзьям возможность пройти профессиональную диагностику,
+      получить консультацию врача или начать курс лечения — именно то, что действительно
+      важно.
+      <br /><br />
+      Уточнить подробности, а также приобрести сертификат вы можете, связавшись с
+      нашими администраторами по телефону, указанному на сайте. Мы с радостью подберём
+      для вас оптимальный вариант и ответим на все вопросы.
+    </p>
+
+    <div class="certificate__text-btns group-row">
+      <Button data-modal="callback" data-aos="fade-up" data-aos-delay="100"
+        >ОСТАВИТЬ ЗАЯВКУ</Button
+      >
+      <a
+        href="tel:+79163771754"
+        target="_blank"
+        class="group-row"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+        <Icon src="call.svg" />
+        +7 (916) 377-17-54
+      </a>
+    </div>
+  </div>
+
+  <div class="certificate__img">
+    <Image src="certificate.png" data-aos="fade-up" data-aos-delay="150" />
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .certificate {
+    position: relative;
+
+    .container {
+      flex-direction: row;
+      align-items: center;
+
+      @include media("xl") {
+        flex-direction: column;
+      }
+    }
+
+    &__text {
+      width: 55%;
+      gap: rem(40);
+
+      @include media("xl") {
+        width: 100%;
+      }
+      @include media("sm") {
+        gap: rem(20);
+      }
+
+      &-desc {
+        max-width: rem(710);
+
+        @include media("sm") {
+          font-size: rem(14);
+        }
+      }
+
+      &-btns {
+        gap: rem(32);
+
+        @include media("sm") {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: rem(25);
+        }
+
+        button {
+          width: rem(305);
+          text-transform: uppercase;
+        }
+
+        .group-row {
+          color: var(--primary);
+          font-size: rem(22);
+          font-weight: 500;
+          gap: rem(10);
+          --icon-size: #{rem(32)};
+        }
+      }
+    }
+
+    &__img {
+      width: 45%;
+
+      @include media("xl") {
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        max-height: rem(724);
+        object-fit: contain;
+      }
+    }
+  }
+</style>

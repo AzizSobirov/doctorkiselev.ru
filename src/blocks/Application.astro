@@ -1,0 +1,163 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Application -->
+<Section name="application">
+  <div class="application__text">
+    <H2 data-aos="fade-up">
+      <strong>Освободитесь от боли —</strong> запишитесь на консультацию</H2
+    >
+
+    <form class="application__form the-form group">
+      <input
+        type="text"
+        name="name"
+        placeholder="Ваше имя"
+        required
+        data-aos="fade-up"
+        data-aos-delay="50"
+      />
+      <input
+        type="text"
+        name="phone"
+        placeholder="Ваш номер телефона"
+        required
+        data-aos="fade-up"
+        data-aos-delay="100"
+      />
+      <textarea
+        placeholder="Опишите Вашу проблематику"
+        data-aos="fade-up"
+        data-aos-delay="150"
+        name="message"></textarea>
+      <div class="group-row">
+        <Button class="uppercase" data-aos="fade-up" data-aos-delay="150"
+          >ОТПРАВИТЬ ЗАЯВКУ</Button
+        >
+        <P class="text-xs" data-aos="fade-up" data-aos-delay="200">
+          Отправляя заявку Вы соглашаетесь <br /> с <a
+            class="font-bold text-primary"
+            href="#"
+            target="_blank"
+          >
+            Политикой обработки персональных данных
+          </a>
+        </P>
+      </div>
+    </form>
+  </div>
+
+  <div class="application__video">
+    <video autoplay muted loop data-aos="fade-left">
+      <source src="/assets/videos/application.mp4" />
+    </video>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .application {
+    position: relative;
+
+    &__text {
+      width: 100%;
+      max-width: 60%;
+
+      @include media("lg") {
+        max-width: 100%;
+      }
+    }
+
+    &__form {
+      margin-top: rem(50);
+      width: 100%;
+      max-width: rem(850);
+      gap: rem(20);
+
+      @include media("lg") {
+        margin-top: rem(30);
+        gap: rem(15);
+      }
+
+      input,
+      textarea {
+        padding: rem(20) rem(15);
+        width: 100%;
+        background: #fff;
+        border: rem(1) solid var(--primary);
+        border-radius: rem(20);
+
+        @include media("lg") {
+          padding: rem(15);
+          border-radius: rem(15);
+        }
+
+        &::placeholder {
+          transition: var(--transition-ease);
+        }
+
+        &:focus {
+          outline: 1px solid var(--primary);
+
+          &::placeholder {
+            transform: translateX(-100%);
+          }
+        }
+      }
+
+      textarea {
+        min-height: rem(170);
+      }
+
+      .group-row {
+        margin-top: rem(15);
+        letter-spacing: 0;
+        gap: rem(20);
+
+        @include media("sm") {
+          margin-top: rem(10);
+          flex-direction: column;
+        }
+      }
+
+      button {
+        width: rem(305);
+      }
+    }
+
+    &__video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(15%, -50%);
+      pointer-events: none;
+
+      @include media("3xl") {
+        transform: translate(25%, -50%);
+      }
+      @include media("lg") {
+        all: unset;
+        order: -1;
+        width: 100%;
+      }
+
+      video {
+        height: rem(615);
+        width: rem(945);
+        border-radius: rem(65);
+        object-fit: cover;
+
+        @include media("lg") {
+          width: 100%;
+          height: auto;
+          border-radius: rem(40);
+        }
+        @include media("sm") {
+          border-radius: rem(20);
+        }
+      }
+    }
+  }
+</style>

@@ -468,7 +468,11 @@ let reviewsSwiper = new Swiper(".reviews .reviews__swiper .swiper", {
     475: {
       spaceBetween: 15,
     },
-    1280: {
+    1025: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    1340: {
       slidesPerView: 3,
       spaceBetween: 20,
     },
