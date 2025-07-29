@@ -446,13 +446,31 @@ if (currentYear) {
 }
 
 // Swiper
-const specialistsSwiper = new Swiper(".specialists__swiper", {
+let specialistsSwiper = new Swiper(".specialists__swiper", {
   slidesPerView: 1,
   effect: "fade",
   thumbs: {
     swiper: {
       el: ".specialists__thumbs",
       slidesPerView: 4,
+    },
+  },
+});
+
+let reviewsSwiper = new Swiper(".reviews .reviews__swiper .swiper", {
+  slidesPerView: "auto",
+  spaceBetween: 12,
+  navigation: {
+    nextEl: ".reviews .swiper-button-next",
+    prevEl: ".reviews .swiper-button-prev",
+  },
+  breakpoints: {
+    475: {
+      spaceBetween: 15,
+    },
+    1280: {
+      slidesPerView: 3,
+      spaceBetween: 20,
     },
   },
 });
