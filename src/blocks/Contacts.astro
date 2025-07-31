@@ -1,14 +1,166 @@
 ---
-import { Section,H2,H3,P, Image, Icon, Button } from "ui";
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- Contacts -->
-<Section name="contacts"> .contacts </Section>
+<Section name="contacts">
+  <div class="contacts__map" data-aos="fade-up">
+    <div class="contacts__details group">
+      <div class="contacts__title">Контакты</div>
+
+      <ul class="contacts__list group">
+        <li class="col">
+          <span class="text-sm">Адрес:</span>
+          <div class="row">
+            <Icon src="marker-2.svg" />
+            <p class="text-lg">г.Москва, ул. Грина д.1, к3</p>
+          </div>
+        </li>
+
+        <li class="col">
+          <span class="text-sm">Телефон:</span>
+          <div class="row">
+            <Icon src="call-2.svg" />
+            <a href="tel:+79163771754" target="_blank" class="text-lg">
+              +7 (916) 377-17-54
+            </a>
+          </div>
+        </li>
+
+        <li class="col">
+          <span class="text-sm">График работы:</span>
+          <div class="row">
+            <Icon src="clock-2.svg" />
+            <p class="text-lg">Ежедневно с 9:00 до 20:00</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="contacts__btns group-row">
+        <Button variant="white">ОТПРАВИТЬ ЗАЯВКУ</Button>
+
+        <div class="group-row">
+          <a href="#" target="_blank" title="Whatsapp">
+            <Icon src="whatsapp-white.svg" />
+          </a>
+          <a href="#" target="_blank" title="Telegram">
+            <Icon src="telegram-white.svg" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <iframe
+      src="https://yandex.uz/map-widget/v1/?ll=37.568743%2C55.561884&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjYyNjM1MBI30KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsINGD0LvQuNGG0LAg0JPRgNC40L3QsCwgMdC6MyIKDbxUFkIVkz5eQg%2C%2C&z=13.6"
+      width="560"
+      height="400"
+      allowfullscreen="true"></iframe>
+  </div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .contacts {
     position: relative;
+
+    &__map {
+      position: relative;
+      width: 100%;
+      height: rem(600);
+      border-radius: rem(65);
+
+      @include media("lg") {
+        display: flex;
+        flex-direction: column-reverse;
+        height: auto;
+        border-radius: 0;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: inherit;
+
+        @include media("lg") {
+          height: rem(400);
+          border-radius: rem(20) rem(20) 0 0;
+        }
+        @include media("sm") {
+          height: rem(280);
+        }
+      }
+    }
+
+    &__details {
+      position: absolute;
+      top: 0;
+      left: 8%;
+      padding: rem(34) rem(32);
+      width: rem(515);
+      max-width: 100%;
+      color: #fff;
+      background: var(--primary);
+      border-radius: 0 0 rem(40) rem(40);
+      gap: rem(24);
+
+      @include media("lg") {
+        position: relative;
+        left: 0;
+        width: 100%;
+        border-radius: 0 0 rem(20) rem(20);
+      }
+      @include media("sm") {
+        padding: rem(20);
+        gap: rem(15);
+      }
+    }
+
+    &__title {
+      font-size: clamp(1.25rem, 1.1635rem + 0.3846vw, 1.625rem);
+      font-weight: 700;
+    }
+
+    &__list {
+      width: 100%;
+      gap: rem(15);
+      --icon-size: #{rem(20)};
+
+      @include media("xs") {
+        .text-lg {
+          font-size: 1rem;
+        }
+      }
+
+      .col {
+        gap: rem(10);
+      }
+
+      .row {
+        gap: rem(15);
+      }
+    }
+
+    &__btns {
+      margin-top: rem(8);
+      gap: rem(24);
+      --icon-size: #{rem(40)};
+
+      @include media("sm") {
+        flex-wrap: wrap-reverse;
+        gap: rem(15) rem(20);
+        --icon-size: #{rem(36)};
+
+        .btn {
+          width: rem(240);
+          height: rem(45);
+        }
+      }
+
+      .group-row {
+        gap: rem(14);
+      }
+    }
   }
 </style>

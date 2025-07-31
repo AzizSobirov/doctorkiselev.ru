@@ -2,7 +2,7 @@
 interface Props {
   class?: string;
   id?: string;
-  variant?: "primary" | "secondary" | "outline" | "link";
+  variant?: "primary" | "secondary" | "outline" | "link" | "white";
   href?: string;
 }
 
@@ -19,6 +19,7 @@ const variantClasses = {
   secondary: "btn-secondary",
   outline: "btn-outline",
   link: "btn-link",
+  white: "btn-white",
 };
 
 const computedClass = ["btn", className, variantClasses[variant]]
@@ -106,6 +107,16 @@ const Tag = href ? "a" : "button";
         font-size: rem(16);
         gap: rem(20);
       }
+    }
+
+    &-white {
+      width: rem(305);
+      height: rem(54);
+      color: var(--primary);
+      font-size: rem(16);
+      font-weight: 600;
+      background: #fff;
+      border-radius: rem(15);
     }
 
     &-outline {
