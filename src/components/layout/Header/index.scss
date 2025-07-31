@@ -14,7 +14,7 @@
 
   @media screen and (min-width: rem(1281)) {
     &.sticky {
-      background: var(--background);
+      background: #fff;
 
       &.down {
         transform: translateY(rem(-78));
