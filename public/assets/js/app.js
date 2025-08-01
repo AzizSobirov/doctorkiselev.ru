@@ -84,6 +84,8 @@ const modal = {
 };
 modal.init();
 
+modal.open("callback");
+
 // header
 const header = document.querySelector(".header");
 if (header) {

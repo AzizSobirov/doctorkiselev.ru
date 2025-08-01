@@ -1,20 +1,59 @@
 ---
-import { H4 } from "ui";
-import TheForm from "../../TheForm.astro";
+import { Button, H4, Icon, Image } from "ui";
 ---
 
 <div class="modal-overlay">
   <div class="modal" data-template="callback">
     <div class="modal-form">
       <div class="btn-close" data-modal="close"></div>
-      <TheForm />
+
+      <div class="modal-title">Запишитесь на консультацию</div>
+
+      <form class="the-form">
+        <input type="text" name="name" placeholder="Ваше имя" required />
+        <input type="tel" name="phone" placeholder="Ваш телефон" required />
+        <Button class="uppercase">ОТПРАВИТЬ ЗАЯВКУ</Button>
+        <div class="text-xs">
+          Отправляя заявку Вы соглашаетесь <br />
+          с <a href="#" class="font-bold"
+            >Политикой обработки персональных данных</a
+          >
+        </div>
+      </form>
+
+      <div class="modal__footer">
+        <div class="text-lg">
+          Или запишитесь по телефону <a
+            class="font-bold"
+            href="tel:+79163771754"
+            target="_blank"
+          >
+            +7 (916) 377-17-54</a
+          >
+        </div>
+
+        <div class="group-row">
+          <a href="#" target="_blank" title="Whatsapp">
+            <Icon src="whatsapp-white.svg" />
+          </a>
+          <a href="#" target="_blank" title="Telegram">
+            <Icon src="telegram-white.svg" />
+          </a>
+        </div>
+      </div>
+
+      <div class="modal__img">
+        <Image src="modal-form.png" />
+      </div>
     </div>
   </div>
 
   <div class="modal" data-template="success">
     <div class="modal-form">
       <div class="btn-close" data-modal="close"></div>
-      <TheForm success={true} />
+
+      <div class="modal-title"><strong>Спасибо</strong> за заявку!</div>
+
     </div>
   </div>
 </div>
