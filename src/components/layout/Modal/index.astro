@@ -53,7 +53,13 @@ import { Button, H4, Icon, Image } from "ui";
       <div class="btn-close" data-modal="close"></div>
 
       <div class="modal-title"><strong>Спасибо</strong> за заявку!</div>
+      <p class="modal-desc">
+        Наш менеджер скоро свяжется <br /> с вами для уточнения деталей
+      </p>
 
+      <div class="modal__img">
+        <Image src="modal-success.png" />
+      </div>
     </div>
   </div>
 </div>
@@ -99,16 +105,57 @@ import { Button, H4, Icon, Image } from "ui";
       transform: scale(1);
       opacity: 1;
     }
+
+    &-title {
+      font-size: clamp(1.25rem, 1.0769rem + 0.7692vw, 2rem);
+    }
+
+    &__img {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(0, -50%);
+
+      @include media("sm") {
+        display: none;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(15) rem(20);
+
+      .text-lg {
+        @include media("sm") {
+          font-size: 1rem;
+        }
+      }
+
+      .text-lg a {
+        margin-left: rem(15);
+
+        @include media("sm") {
+          margin-left: rem(10);
+        }
+      }
+
+      .group-row {
+        gap: rem(15);
+      }
+    }
   }
 
   .modal-form {
     position: relative;
-    padding: rem(50);
-    min-height: rem(430);
-    width: rem(810);
+    padding: rem(30);
+    min-height: rem(465);
+    width: rem(700);
     color: #fff;
     background: var(--primary);
-    border-radius: rem(40);
+    border-radius: rem(30);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -129,32 +176,6 @@ import { Button, H4, Icon, Image } from "ui";
       max-width: calc(100vw - 25px);
     }
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      transform: translate(25%, 0%);
-      width: rem(420);
-      height: rem(420);
-      background: url("/assets/img/form-img.png") center/contain no-repeat;
-      pointer-events: none;
-
-      @include media("lg") {
-        transform: translate(10%, -7%);
-        width: rem(380);
-        height: rem(380);
-      }
-      @include media("md") {
-        transform: translate(10%, -20%);
-        width: rem(320);
-        height: rem(320);
-      }
-      @include media("sm") {
-        display: none;
-      }
-    }
-
     .btn-close {
       position: absolute;
       top: rem(25);
@@ -172,38 +193,45 @@ import { Button, H4, Icon, Image } from "ui";
       }
     }
 
-    .text-h2 {
-      color: inherit;
-      font-size: rem(28);
-
-      @include media("sm") {
-        font-size: rem(24);
-      }
-    }
-
-    .form {
+    .the-form {
       position: relative;
       z-index: 2;
     }
 
     form {
       margin-top: 0;
-      max-width: rem(340);
+      width: 100%;
+      max-width: rem(365);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(18);
 
+      @include media("md") {
+        max-width: rem(300);
+      }
       @include media("sm") {
+        margin-top: rem(5);
         max-width: 100%;
+        gap: rem(15);
+      }
+
+      input {
+        padding: rem(20) rem(15);
+        width: 100%;
+        color: #000;
+        background: #fff;
+        border-radius: rem(20);
+
+        @include media("sm") {
+          padding: rem(15);
+          border-radius: rem(15);
+        }
       }
 
       button {
-        color: var(--primary);
-        background: #fff;
-
-        &:hover {
-          opacity: 1;
-          color: #fff;
-          background: var(--secondary);
-          border-color: var(--secondary);
-        }
+        width: 100%;
+        box-shadow: 0 0 27px 0 rgba(0, 0, 0, 0.25);
       }
     }
   }
