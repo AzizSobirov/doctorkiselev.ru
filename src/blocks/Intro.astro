@@ -1,0 +1,59 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button, BgImg } from "ui";
+
+interface Props {
+  name: "pricing";
+}
+
+const { name }: Props = Astro.props;
+---
+
+<!-- Intro -->
+<Section name="intro">
+  {
+    name === "pricing" && (
+      <>
+        <div class="intro__pricing">
+          <BgImg src="intro/pricing.png" />
+          <H3 data-aos="fade-up">
+            <strong>Прайс-лист</strong>
+            <br />
+            Клиники Доктора Киселева
+          </H3>
+        </div>
+      </>
+    )
+  }
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .intro {
+    position: relative;
+
+    .text-h3 {
+      color: #fff;
+      font-weight: inherit;
+    }
+
+    &__pricing {
+      position: relative;
+      padding: rem(70) rem(74);
+      width: 100%;
+      border-radius: rem(32);
+      overflow: hidden;
+
+      @include media("xl") {
+        padding: rem(50) rem(60);
+      }
+      @include media("lg") {
+        padding: rem(40) rem(50);
+      }
+      @include media("sm") {
+        padding: rem(20);
+        border-radius: rem(20);
+      }
+    }
+  }
+</style>

@@ -2,11 +2,13 @@
 import { Section, H4, P, BgImg, Image, Icon, Button } from "ui";
 
 interface Props {
-  img?: string;
+  title: string;
+  subtitle?: string;
+  video: string;
   isMain?: boolean;
 }
 
-const { img = "hero/1.png", isMain = false } = Astro.props;
+const { title, subtitle, video, isMain = false } = Astro.props;
 ---
 
 <!-- Hero -->
@@ -15,7 +17,7 @@ const { img = "hero/1.png", isMain = false } = Astro.props;
     <div class="hero__content">
       <div class="hero__video">
         <video autoplay muted loop poster="/assets/img/hero/poster-1.png">
-          <source src="/assets/videos/hero.mp4" type="video/mp4" />
+          <source src={`/assets/videos/${video}`} type="video/mp4" />
         </video>
 
         <svg class="hero__video-mask">
@@ -28,12 +30,13 @@ const { img = "hero/1.png", isMain = false } = Astro.props;
       </div>
 
       <div class="hero__text group">
-        <div class="text-xl" data-aos="fade-up">
-          Клиника лечения позвоночника и суставов
-        </div>
-        <div class="text-h1" data-aos="fade-up" data-aos-delay="50">
-          Доктор <strong>Киселев</strong>
-        </div>
+        <div class="text-xl" data-aos="fade-up" set:html={subtitle} />
+        <div
+          class="text-h1"
+          data-aos="fade-up"
+          data-aos-delay="50"
+          set:html={title}
+        />
 
         <ul class="hero__text-tags group-row">
           <li

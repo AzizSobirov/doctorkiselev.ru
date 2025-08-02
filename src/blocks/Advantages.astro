@@ -1,0 +1,155 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button, H4 } from "ui";
+---
+
+<!-- Advantages -->
+<Section name="advantages">
+  <H3 data-aos="fade-up">Преимущества <strong>метода</strong></H3>
+
+  <div class="advantages__content">
+    <div class="advantages__text group">
+      <p class="advantages__text-desc" data-aos="fade-up" data-aos-delay="50">
+        <strong> Мануальная терапия</strong> — это востребованный и современный способ
+        оздоровления, который активно применяется по всему Миру. Методика базируется
+        на аккуратных и точных мануальных воздействиях, выполняемых профессиональными
+        специалистами. Основное внимание уделяется восстановлению функций опорно-двигательной
+        системы и устранению болевых ощущений, что делает её эффективным решением
+        при многих нарушениях здоровья.
+      </p>
+
+      <video
+        class="advantages__video"
+        autoplay
+        muted
+        loop
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <source src="/assets/videos/advantages.mp4" />
+      </video>
+    </div>
+
+    <div class="advantages__list">
+      <div class="hero__advantages group-row">
+        <div class="hero__advantages-item group-row" data-aos="fade-up">
+          <Image src="hero/advantage-5.png" />
+          <div class="group">
+            <p>Безопасные и <br /> мягкие методики</p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="50"
+        >
+          <Image src="hero/advantage-6.png" />
+          <div class="group">
+            <p>Быстрый результат — <br /> уже после 1–2 сеансов</p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <Image src="hero/advantage-7.png" />
+          <div class="group">
+            <p>Работаем с <br /> первопричиной боли</p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          <Image src="hero/advantage-8.png" />
+          <div class="group">
+            <p>Подходит взрослым <br /> и детям</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .advantages {
+    position: relative;
+
+    .text-h3 {
+      color: inherit;
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__content {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(85);
+
+      @include media("3xl") {
+        grid-template-columns: 1fr;
+        gap: rem(40);
+      }
+      @include media("sm") {
+        gap: rem(25);
+      }
+    }
+
+    &__text {
+      gap: rem(20);
+
+      @include media("3xl") {
+        flex-direction: row;
+        align-items: center;
+      }
+      @include media("lg") {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      @include media("sm") {
+        &-desc {
+          font-size: rem(14);
+        }
+      }
+    }
+
+    &__video {
+      width: 100%;
+      height: rem(225);
+      border-radius: rem(30);
+      object-fit: cover;
+
+      @include media("3xl") {
+        max-width: 50%;
+        height: rem(200);
+      }
+      @include media("lg") {
+        max-width: 100%;
+      }
+      @include media("sm") {
+        height: rem(120);
+      }
+    }
+
+    &__list {
+      width: 100%;
+
+      @include media("sm") {
+        .hero__advantages-item img {
+          min-height: unset;
+          height: rem(80);
+        }
+      }
+    }
+  }
+</style>

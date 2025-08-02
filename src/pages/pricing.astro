@@ -1,0 +1,17 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Цены на услуги">
+  <main>
+    <Blocks.Intro name="pricing" />
+    <Blocks.Pricing />
+    <Blocks.Appointment
+      title="Запишитесь — и мы поможем вам <strong>избавиться от боли</strong>"
+    />
+    <Blocks.Pricing />
+    <Blocks.Application />
+    <Blocks.Contacts />
+  </main>
+</App>

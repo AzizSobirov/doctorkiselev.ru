@@ -1,0 +1,219 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+import { pricing } from "store";
+
+interface Props {
+  title?: string;
+  isMain?: boolean;
+}
+
+const { title, isMain = false }: Props = Astro.props;
+---
+
+<!-- Pricing -->
+<Section name="pricing" main={isMain}>
+  {
+    isMain ? (
+      <>
+        <H2 class="uppercase" data-aos="fade-up" set:html={title} />
+
+        <div class="pricing__list group">
+          {pricing.map((item, index) => (
+            <div
+              class="pricing__item group-row"
+              data-aos="fade-up"
+              data-aos-delay={index * 50}
+            >
+              {item.discount && (
+                <div class="pricing__item-discount">{item.discount}</div>
+              )}
+              <div class="pricing__item-name">{item.name}</div>
+              <div class="group-row">
+                <div class="pricing__item-realprice">{item.realprice}</div>
+                <div class="pricing__item-price">{item.price}</div>
+                <Button data-modal="callback">ЗАПИСАТЬСЯ</Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </>
+    ) : (
+      <div class="pricing__groups group">
+        {Array.from({ length: 2 }).map(() => (
+          <div class="pricing__group group">
+            <H3 class="pricing__group-title">Мануальная терапия</H3>
+            <div class="pricing__list group">
+              {pricing.map((item, index) => (
+                <div
+                  class="pricing__item group-row"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 50}
+                >
+                  {item.discount && (
+                    <div class="pricing__item-discount">{item.discount}</div>
+                  )}
+                  <div class="pricing__item-name">{item.name}</div>
+                  <div class="group-row">
+                    <div class="pricing__item-realprice">{item.realprice}</div>
+                    <div class="pricing__item-price">{item.price}</div>
+                    <Button data-modal="callback">ЗАПИСАТЬСЯ</Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .pricing {
+    position: relative;
+
+    &.is-main {
+      .pricing__list {
+        position: relative;
+        max-width: calc(100% - rem(280));
+
+        @include media("xl") {
+          max-width: 100%;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 0;
+          z-index: -1;
+          transform: translate(90%, -50%);
+          @include size(rem(650));
+          background: url("/assets/img/pricing-img.png") no-repeat
+            center/contain;
+
+          @include media("3xl") {
+            transform: translate(85%, -50%);
+            --size: #{rem(600)};
+          }
+          @include media("xl") {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &__groups {
+      width: 100%;
+      gap: rem(80);
+    }
+
+    &__group {
+      width: 100%;
+      gap: rem(50);
+    }
+
+    &__list {
+      width: 100%;
+      gap: rem(35);
+
+      @include media("3xl") {
+        gap: rem(30);
+      }
+      @include media("lg") {
+        gap: rem(20);
+      }
+      @include media("sm") {
+        gap: rem(15);
+      }
+    }
+
+    &__item {
+      position: relative;
+      padding: rem(18);
+      width: 100%;
+      background-color: #fff;
+      border: rem(1) solid var(--primary);
+      border-radius: rem(30);
+      justify-content: space-between;
+      gap: rem(64);
+
+      @include media("lg") {
+        padding: rem(12);
+        border-radius: rem(20);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(15);
+      }
+
+      &-discount {
+        position: absolute;
+        top: 0;
+        left: rem(18);
+        transform: translate(0, -50%);
+        padding: rem(4) rem(20);
+        color: #fff;
+        text-transform: uppercase;
+        background: var(--primary);
+        border-radius: rem(12);
+
+        @include media("lg") {
+          position: relative;
+          left: 0;
+          top: 0;
+          transform: unset;
+          padding: rem(2) rem(10);
+          font-size: rem(14);
+          border-radius: rem(8);
+        }
+      }
+
+      & > .group-row {
+        margin-left: auto;
+        gap: rem(15) rem(25);
+        white-space: nowrap;
+
+        @include media("lg") {
+          width: 100%;
+        }
+        @include media("xs") {
+          flex-wrap: wrap;
+        }
+      }
+
+      &-realprice {
+        color: #777777;
+        text-decoration: line-through;
+      }
+
+      &-price {
+        min-width: rem(94);
+        color: var(--secondary);
+        font-size: clamp(1.25rem, 1.1923rem + 0.2564vw, 1.5rem);
+        font-weight: 700;
+
+        @include media("lg") {
+          min-width: fit-content;
+        }
+      }
+
+      .btn {
+        margin-left: rem(20);
+        min-width: rem(265);
+        text-transform: uppercase;
+
+        @include media("lg") {
+          margin-left: auto;
+          min-width: rem(200);
+          width: rem(200);
+          height: rem(45);
+        }
+        @include media("xs") {
+          width: 100%;
+        }
+      }
+    }
+  }
+</style>

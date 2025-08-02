@@ -9,24 +9,23 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
     >ОТВЕЧАЕМ <strong>на ВАШИ ВОПРОСЫ</strong></H2
   >
 
-  <ul class="faq__list">
+  <div class="faq__list">
     {
       faqs.map((faq, index) => (
-        <li
+        <div
           class="faq__item row"
           data-aos="fade-up"
           data-aos-delay={index * 50}
-          role="button"
           data-fancybox="faq"
           data-src="/assets/videos/hero.mp4"
         >
           <Image class="hidden" src="doctor.png" />
           <Icon src="play-solid.svg" />
           <span>{faq}</span>
-        </li>
+        </div>
       ))
     }
-  </ul>
+  </div>
 </Section>
 
 <style lang="scss" is:global>
@@ -56,6 +55,7 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
       background: #fff;
       border-radius: rem(35);
       gap: rem(25);
+      cursor: pointer;
       --icon-size: #{rem(42)};
 
       @include media("sm") {

@@ -1,0 +1,31 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Мануальная терапия">
+  <main>
+    <Blocks.Hero
+      title="Мануальная <strong>терапия</strong>"
+      video="manualnaya-terapiya.mp4"
+    />
+    <Blocks.Pricing
+      title="Стоимость сеанса <strong>мануальной терапии</strong>"
+      isMain={true}
+    />
+    <Blocks.Appointment
+      title="Запишитесь на консультацию <strong>мануального терапевта!</strong>"
+    />
+    <Blocks.Advantages />
+    <Blocks.Result />
+    <Blocks.Way />
+    <Blocks.Specialists />
+    <Blocks.Clinic />
+    <Blocks.Partners />
+    <Blocks.Reviews />
+    <Blocks.Application />
+    <Blocks.Certificate />
+    <Blocks.Faq />
+    <Blocks.Contacts />
+  </main>
+</App>

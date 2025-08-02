@@ -1,0 +1,158 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  title: string;
+}
+
+const { title }: Props = Astro.props;
+---
+
+<!-- Appointment -->
+<Section name="appointment">
+  <Fragment slot="header">
+    <div class="appointment__content">
+      <div class="container">
+        <div class="appointment__title" data-aos="fade-up" set:html={title} />
+
+        <form class="the-form">
+          <input
+            type="text"
+            name="phone"
+            placeholder="Ваш телефон"
+            required
+            data-aos="fade-up"
+          />
+          <Button class="uppercase" data-aos="fade-up">ОТПРАВИТЬ ЗАЯВКУ</Button>
+          <div class="group-row">
+            <div class="text-lg" data-aos="fade-up">
+              Или запишитесь по телефону <a
+                href="tel:+79163771754"
+                target="_blank">+7 (916) 377-17-54</a
+              >
+            </div>
+            <div class="group-row" data-aos="fade-up">
+              <a href="#" target="_blank" title="Написать в WhatsApp">
+                <Icon src="whatsapp-primary.svg" />
+              </a>
+              <a href="#" target="_blank" title="Написать в Telegram">
+                <Icon src="telegram-primary.svg" />
+              </a>
+            </div>
+          </div>
+          <div class="text-xs" data-aos="fade-up">
+            Отправляя заявку Вы соглашаетесь <br />
+            с <a class="text-primary font-bold" href="#" target="_blank"
+              >Политикой обработки персональных данных</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </Fragment>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .appointment {
+    position: relative;
+
+    .container {
+      gap: rem(45);
+
+      @include media("lg") {
+        gap: rem(30);
+      }
+      @include media("sm") {
+        gap: rem(25);
+      }
+    }
+
+    &__title {
+      font-size: clamp(1.25rem, 1.0769rem + 0.7692vw, 2rem);
+
+      strong {
+        color: var(--primary);
+        font-weight: 700;
+      }
+    }
+
+    &__content {
+      position: relative;
+      padding: rem(38) 0 rem(100);
+      background: #fff url("/assets/img/appointment-bg.png") no-repeat
+        right/cover;
+      background-size: auto 100%;
+
+      @include media("lg") {
+        padding: rem(35) 0 rem(50);
+      }
+      @include media("sm") {
+        padding: rem(25) 0 rem(35);
+      }
+
+      form {
+        width: 100%;
+        max-width: rem(880);
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: rem(30) rem(20);
+
+        @include media("sm") {
+          grid-template-columns: 1fr;
+          gap: rem(15);
+        }
+      }
+
+      input {
+        padding: rem(20) rem(15);
+        width: 100%;
+        color: #000;
+        background: #fff;
+        border: rem(1) solid var(--primary);
+        border-radius: rem(20);
+
+        @include media("lg") {
+          padding: rem(15);
+          border-radius: rem(15);
+        }
+      }
+
+      button {
+        height: 100%;
+        width: rem(305);
+
+        @include media("sm") {
+          width: 100%;
+          height: rem(50);
+        }
+      }
+
+      .group-row {
+        flex-wrap: wrap;
+        gap: rem(15);
+
+        @include media("sm") {
+          order: 5;
+        }
+      }
+
+      .text-lg {
+        @include media("lg") {
+          font-size: 1rem;
+        }
+      }
+
+      .text-lg a {
+        margin-left: rem(10);
+        color: var(--primary);
+        font-weight: 700;
+
+        @include media("sm") {
+          margin-left: rem(5);
+        }
+      }
+    }
+  }
+</style>
