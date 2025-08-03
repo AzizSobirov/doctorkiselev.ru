@@ -1,0 +1,281 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button, H4, BgImg } from "ui";
+
+interface Props {
+  variant?: "default" | "secondary";
+  video?: boolean;
+}
+
+const { video } = Astro.props;
+---
+
+<!-- Care -->
+<Section name="care">
+  <H3 data-aos="fade-up"
+    >Комплексная помощь <strong> без госпитализации</strong></H3
+  >
+
+  <div class="care__steps">
+    <div class="hero__advantages-item group-row" data-aos="fade-up">
+      <Image src="steps/1.png" />
+      <div class="group">
+        <H4>Диагностика</H4>
+        <p>
+          неврологический осмотр, при <br /> необходимости направление на <br />
+          МРТ, ЭЭГ, УЗИ
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="hero__advantages-item group-row"
+      data-aos="fade-up"
+      data-aos-delay="50"
+    >
+      <Image src="steps/2.png" />
+      <div class="group">
+        <H4>Лечение</H4>
+        <p>
+          медикаментозное + <br /> немедикаментозные методы <br /> (мануальная терапия,
+          остеопатия, ЛФК)
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="hero__advantages-item group-row"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <Image src="steps/3.png" />
+      <div class="group">
+        <H4>Поддержка</H4>
+        <p>контроль состояния, корректировка схем</p>
+      </div>
+    </div>
+  </div>
+
+  {
+    video && (
+      <div class="care__clinic group-row">
+        <div class="care__clinic-text group">
+          <div class="group-row">
+            <div data-aos="fade-up">
+              <Image src="logo-white.svg" />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="50" />
+            <div data-aos="fade-up" data-aos-delay="100" />
+          </div>
+
+          <p class="text-lg" data-aos="fade-up" data-aos-delay="150">
+            <strong>Клиника Доктора Киселёва</strong> — это современный центр,
+            где неврология практикуется с опорой на реальный результат и
+            индивидуальный подход. Мы предлагаем продуманную программу
+            амбулаторного лечения, позволяющую восстанавливаться без
+            госпитализации. От первичной консультации до этапа поддержки — всё
+            выстроено так, чтобы пациент чувствовал себя стабильно, уверенно и
+            безопасно на каждом этапе.
+          </p>
+        </div>
+
+        <div
+          class="care__clinic-video group-center"
+          data-aos="fade-up"
+          data-fancybox="video"
+          data-src="/assets/videos/hero.mp4"
+        >
+          <BgImg src="clinic-poster.png" />
+
+          <Icon src="play-2.svg" />
+          <div class="text-lg">
+            Узнайте больше о подходе клиники в нашем видеоролике
+          </div>
+        </div>
+      </div>
+    )
+  }
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .care {
+    position: relative;
+
+    .text-h3 {
+      color: var(--text-color);
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+        text-decoration: underline dotted;
+      }
+    }
+
+    &__steps {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(rem(350), 1fr));
+      gap: rem(20);
+
+      @include media("sm") {
+        grid-template-columns: 1fr;
+        gap: rem(15);
+      }
+
+      .hero__advantages-item {
+        img {
+          min-width: rem(140);
+          width: rem(140);
+
+          @include media("lg") {
+            min-width: rem(100);
+            width: rem(100);
+          }
+        }
+      }
+    }
+
+    &__clinic {
+      position: relative;
+      width: 100%;
+      align-items: flex-start;
+      gap: rem(165);
+
+      @include media("3xl") {
+        gap: rem(100);
+      }
+      @include media("xl") {
+        flex-direction: column-reverse;
+        gap: rem(40);
+      }
+      @include media("sm") {
+        gap: rem(20);
+      }
+
+      &-text {
+        min-width: rem(560);
+        width: rem(560);
+        gap: rem(40);
+
+        @include media("2xl") {
+          min-width: rem(500);
+          width: rem(500);
+        }
+        @include media("xl") {
+          min-width: 100%;
+          width: 100%;
+        }
+        @include media("sm") {
+          gap: rem(20);
+        }
+
+        .group-row {
+          gap: rem(40);
+
+          @include media("sm") {
+            gap: rem(15);
+          }
+
+          div {
+            padding: rem(15);
+            @include size(rem(70));
+            border-radius: rem(20);
+
+            @include media("sm") {
+              border-radius: rem(10);
+              --size: #{rem(50)};
+            }
+
+            &:nth-child(1) {
+              background: var(--primary);
+            }
+
+            &:nth-child(2) {
+              background: var(--secondary);
+            }
+
+            &:nth-child(3) {
+              background: #abf7e0;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+
+        .text-lg {
+          line-height: 1.5;
+
+          @include media("2xl") {
+            font-size: 1rem;
+          }
+          @include media("sm") {
+            font-size: rem(14);
+          }
+        }
+
+        strong {
+          color: var(--primary);
+        }
+      }
+
+      &-video {
+        position: relative;
+        min-width: 65%;
+        height: rem(435);
+        color: #fff;
+        text-align: center;
+        border-radius: rem(35) 0 0 rem(35);
+        overflow: hidden;
+        flex-direction: column;
+        gap: rem(20);
+        cursor: pointer;
+        --icon-size: #{rem(100)};
+
+        .bg-img::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: var(--primary);
+          opacity: 0.7;
+        }
+
+        @include media("3xl") {
+          min-width: 62%;
+
+          .text-lg {
+            font-size: 1rem;
+          }
+        }
+        @include media("2xl") {
+          min-width: 60%;
+        }
+        @include media("xl") {
+          min-width: 100%;
+          width: 100%;
+          border-radius: rem(20);
+        }
+        @include media("sm") {
+          height: rem(280);
+          --icon-size: #{rem(80)};
+        }
+        @include media("xs") {
+          height: rem(240);
+          gap: rem(15);
+          --icon-size: #{rem(70)};
+
+          .text-lg {
+            font-size: rem(14);
+          }
+        }
+      }
+    }
+  }
+</style>

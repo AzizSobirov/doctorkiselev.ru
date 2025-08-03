@@ -1,6 +1,7 @@
 export { default as Advantages } from "./Advantages.astro";
 export { default as Application } from "./Application.astro";
 export { default as Appointment } from "./Appointment.astro";
+export { default as Care } from "./Care.astro";
 export { default as Certificate } from "./Certificate.astro";
 export { default as Clinic } from "./Clinic.astro";
 export { default as Contacts } from "./Contacts.astro";

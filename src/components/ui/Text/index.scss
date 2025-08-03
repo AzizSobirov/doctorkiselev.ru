@@ -25,7 +25,7 @@
 
 .text-h3 {
   color: var(--primary);
-  font-size: clamp(1.5rem, 1.2692rem + 1.0256vw, 2.5rem);
+  font-size: clamp(1.25rem, 0.9615rem + 1.2821vw, 2.5rem);
   font-weight: 700;
 }
 
@@ -35,7 +35,7 @@
   font-weight: 700;
 
   @include media(sm) {
-    font-size: rem(18);
+    font-size: rem(16);
   }
 }
 
