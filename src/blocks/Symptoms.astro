@@ -1,14 +1,193 @@
 ---
-import { Section,H2,H3,P, Image, Icon, Button } from "ui";
+import { Section, H2, H3, P, Image, Icon, Button, BgImg } from "ui";
+import { symptoms } from "store";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <!-- Symptoms -->
-<Section name="symptoms"> .symptoms </Section>
+<Section name="symptoms">
+  <div class="symptoms__header group">
+    <H3 set:html={title} data-aos="fade-up" />
+    <P data-aos="fade-up" data-aos-delay="50">
+      Грыжа диска поясничного отдела
+      <strong>проявляется следующими признаками:</strong>
+    </P>
+  </div>
+
+  <div class="symptoms__content group-row">
+    <ul class="symptoms__list">
+      {
+        symptoms.map((item, index) => (
+          <li
+            class="symptoms__item"
+            data-aos="fade-up"
+            data-aos-delay={50 + index * 50}
+          >
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+
+    <div
+      class="symptoms__application group"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <BgImg src="symptoms-bg.png" />
+
+      <div class="symptoms__application-text">
+        <strong>Не откладывайте</strong> лечение! <br />
+        Болезнь со временем <strong>только прогрессирует! </strong>
+        <br /><br />
+        <div class="text-lg">Оставьте заявку и начните лечение уже завтра</div>
+      </div>
+      <Button variant="white" data-modal="callback">ОТПРАВИТЬ ЗАЯВКУ</Button>
+    </div>
+  </div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .symptoms {
     position: relative;
+
+    &__header {
+      width: 100%;
+      gap: rem(30);
+
+      @include media("sm") {
+        gap: rem(20);
+
+        .text-p {
+          font-size: rem(14);
+        }
+      }
+
+      .text-h3 {
+        color: inherit;
+        font-weight: inherit;
+      }
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__content {
+      width: 100%;
+      align-items: flex-start;
+      gap: rem(20);
+
+      @include media("xl") {
+        flex-direction: column;
+        gap: rem(30);
+      }
+    }
+
+    &__list {
+      min-width: 65%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(40) rem(20);
+
+      @include media("3xl") {
+        min-width: 60%;
+      }
+      @include media("xl") {
+        min-width: 100%;
+        width: 100%;
+      }
+      @include media("sm") {
+        margin-top: rem(10);
+        grid-template-columns: 1fr;
+        gap: rem(25);
+      }
+    }
+
+    &__item {
+      position: relative;
+      padding: rem(45) rem(50) rem(35);
+      width: 100%;
+      border: rem(1) solid #ff4a37;
+      border-radius: rem(30);
+
+      @include media("3xl") {
+        padding: rem(35) rem(30) rem(25);
+      }
+      @include media("sm") {
+        padding: rem(25) rem(20) rem(20);
+        font-size: rem(14);
+        border-radius: rem(20);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: rem(45);
+        transform: translateY(-50%);
+        background: var(--background)
+          url('data:image/svg+xml,<svg width="46" height="40" viewBox="0 0 46 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.15677 40C1.7438 40 1.37848 39.9026 1.06081 39.7077C0.743145 39.5129 0.496069 39.2558 0.319587 38.9363C0.128985 38.6221 0.0230962 38.2824 0.00191829 37.9173C-0.01573 37.5505 0.0883948 37.181 0.314293 36.8088L21.1481 1.06372C21.374 0.691592 21.6457 0.421274 21.9634 0.252764C22.2811 0.0842541 22.627 0 23.0011 0C23.3753 0 23.7203 0.0842541 24.0362 0.252764C24.3521 0.421274 24.6239 0.691592 24.8516 1.06372L45.688 36.8088C45.9139 37.181 46.0171 37.5496 45.9977 37.9147C45.98 38.2833 45.8742 38.6238 45.68 38.9363C45.5035 39.2558 45.2565 39.5129 44.9388 39.7077C44.6211 39.9026 44.2567 40 43.8455 40H2.15677ZM23.0011 33.723C23.4635 33.723 23.8509 33.5677 24.1633 33.257C24.4756 32.9463 24.6309 32.561 24.6292 32.1011C24.6274 31.6412 24.4712 31.2568 24.1606 30.9479C23.85 30.6389 23.4635 30.4827 23.0011 30.4792C22.5387 30.4757 22.1523 30.631 21.8416 30.9452C21.531 31.2594 21.3748 31.6447 21.3731 32.1011C21.3713 32.5575 21.5275 32.9428 21.8416 33.257C22.1558 33.5712 22.5423 33.7265 23.0011 33.723ZM23.0011 27.8489C23.3788 27.8489 23.6938 27.7225 23.9462 27.4697C24.1986 27.217 24.3247 26.9045 24.3247 26.5324V16.0005C24.3247 15.6266 24.1977 15.3133 23.9435 15.0606C23.6894 14.8078 23.3744 14.6823 22.9985 14.684C22.6226 14.6858 22.3084 14.8113 22.0561 15.0606C21.8037 15.3098 21.6775 15.6231 21.6775 16.0005V26.5324C21.6775 26.9045 21.8046 27.217 22.0587 27.4697C22.3128 27.7225 22.6279 27.8489 23.0038 27.8489" fill="url(%23paint0_linear_469_5020)" /><defs><linearGradient id="paint0_linear_469_5020" x1="46" y1="40" x2="9.5" y2="8.5" gradientUnits="userSpaceOnUse"><stop stop-color="%23FF4A37" /><stop offset="1" stop-color="%23FF8376" /></linearGradient></defs></svg>')
+          center/contain no-repeat;
+        width: rem(46);
+        height: rem(40);
+
+        @include media("3xl") {
+          left: rem(30);
+          width: rem(40);
+          height: rem(35);
+        }
+        @include media("sm") {
+          left: rem(20);
+          width: rem(30);
+          height: rem(25);
+        }
+      }
+    }
+
+    &__application {
+      position: relative;
+      padding: rem(50) rem(30) rem(50) rem(50);
+      min-width: 40%;
+      height: rem(475);
+      color: #fff;
+      font-size: clamp(1.125rem, 1.0385rem + 0.3846vw, 1.5rem);
+      border-radius: rem(30) 0 0 rem(30);
+      overflow: hidden;
+      justify-content: center;
+      gap: rem(20);
+
+      @include media("3xl") {
+        min-width: 42%;
+      }
+      @include media("xl") {
+        min-width: 100%;
+        width: 100%;
+        height: auto;
+        padding: rem(30) rem(20);
+        border-radius: rem(20);
+      }
+      @include media("sm") {
+        .text-lg {
+          font-size: rem(16);
+        }
+      }
+
+      .btn {
+        color: var(--secondary);
+        box-shadow: 0 0 29px 0 rgba(0, 0, 0, 0.25);
+
+        @include media("xs") {
+          width: 100%;
+        }
+      }
+    }
   }
 </style>
