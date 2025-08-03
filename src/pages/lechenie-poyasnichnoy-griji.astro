@@ -1,0 +1,33 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Лечение поясничной грыжи">
+  <main>
+    <Blocks.Hero
+      title="Лечение <br/> <strong>поясничной грыжи </strong>"
+      video="lechenie-grij.mp4"
+    />
+    <Blocks.Pricing
+      title="Стоимость <strong>лечения поясничной грыжи</strong>"
+      isMain={true}
+    />
+    <Blocks.MainGoal />
+    <Blocks.Symptoms title="Симптомы <strong>поясничной грыжи</strong>" />
+    <Blocks.Care />
+    <Blocks.Appointment
+      title="Запишитесь на консультацию <strong>специалиста!</strong>"
+    />
+    <Blocks.Founder />
+    <Blocks.Result />
+    <Blocks.Specialists />
+    <Blocks.Clinic />
+    <Blocks.Partners />
+    <Blocks.Reviews />
+    <Blocks.Application />
+    <Blocks.Certificate />
+    <Blocks.Faq />
+    <Blocks.Contacts />
+  </main>
+</App>

@@ -1,22 +1,65 @@
 ---
 import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 import { services } from "@/store";
+
+interface Props {
+  title: string;
+  type?: "default" | "lechenie-grij";
+  isMain?: boolean;
+}
+
+const { title, type = "default", isMain = false }: Props = Astro.props;
 ---
 
 <!-- Services -->
 <Section name="services">
-  <H2 class="uppercase" data-aos="fade-up">
-    Услуги <strong>нашей клиники</strong>
-  </H2>
+  <H2 class="uppercase" data-aos="fade-up" set:html={title} />
 
-  <div class="services__list">
-    {
-      services.map((service, index) => (
-        <div
-          class="services__item"
-          data-aos="fade-up"
-          data-aos-delay={`${index * 50}`}
-        >
+  {
+    isMain && (
+      <div class="services__list is-main">
+        {services.map((service, index) => (
+          <div
+            class="services__item"
+            class:list={index === 0 ? "is-first" : ""}
+            data-aos="fade-up"
+            data-aos-delay={`${index * 50}`}
+          >
+            <a href="/service" class="services__item-link" />
+
+            <button class="services__item-btn icon">
+              <svg
+                width="59"
+                height="59"
+                viewBox="0 0 59 59"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="29.5" cy="29.5" r="29.5" fill="white" />
+                <path
+                  d="M22 15L36.5 29.5L22 44"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <Image
+              class="services__item-img"
+              src={`services/${index + 1}.svg`}
+            />
+            <span class="services__item-title">{service}</span>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    type == "lechenie-grij" && (
+      <div class="services__list" data-type="lechenie-grij">
+        <div class="services__item" data-aos="fade-up" data-aos-delay="0">
           <a href="/service" class="services__item-link" />
 
           <button class="services__item-btn icon">
@@ -37,12 +80,79 @@ import { services } from "@/store";
               />
             </svg>
           </button>
-          <Image class="services__item-img" src={`services/${index + 1}.svg`} />
-          <span class="services__item-title">{service}</span>
+
+          <Image
+            class="services__item-img"
+            src="services/7.svg"
+            alt="Лечение грыж"
+          />
+          <span class="services__item-title">Лечение поясничной грыжи</span>
         </div>
-      ))
-    }
-  </div>
+
+        <div class="services__item" data-aos="fade-up" data-aos-delay="0">
+          <a href="/service" class="services__item-link" />
+
+          <button class="services__item-btn icon">
+            <svg
+              width="59"
+              height="59"
+              viewBox="0 0 59 59"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="29.5" cy="29.5" r="29.5" fill="white" />
+              <path
+                d="M22 15L36.5 29.5L22 44"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+
+          <Image
+            class="services__item-img"
+            src="services/8.svg"
+            alt="Лечение грыж"
+          />
+          <span class="services__item-title">Лечение грыжи шейного отдела</span>
+        </div>
+
+        <div class="services__item" data-aos="fade-up" data-aos-delay="0">
+          <a href="/service" class="services__item-link" />
+
+          <button class="services__item-btn icon">
+            <svg
+              width="59"
+              height="59"
+              viewBox="0 0 59 59"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="29.5" cy="29.5" r="29.5" fill="white" />
+              <path
+                d="M22 15L36.5 29.5L22 44"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+
+          <Image
+            class="services__item-img"
+            src="services/9.svg"
+            alt="Лечение грыж"
+          />
+          <span class="services__item-title">
+            Лечение грыжи грудного отдела
+          </span>
+        </div>
+      </div>
+    )
+  }
 </Section>
 
 <style lang="scss" is:global>
@@ -61,6 +171,28 @@ import { services } from "@/store";
 
       @include media("xs") {
         gap: rem(12);
+      }
+
+      &[data-type="lechenie-grij"] {
+        .services__item {
+          &:nth-child(1) {
+            --primary: #8cb9de;
+          }
+          &:nth-child(2) {
+            --primary: #43a4a4;
+          }
+          &:nth-child(3) {
+            --primary: #8cb9de;
+          }
+
+          @include media("3xl", min-width) {
+            padding: rem(40) rem(30);
+          }
+
+          &-title {
+            font-size: clamp(1.25rem, 1.1635rem + 0.3846vw, 1.625rem);
+          }
+        }
       }
     }
 
@@ -101,9 +233,8 @@ import { services } from "@/store";
         --icon-size: #{rem(40)};
       }
 
-      &:nth-child(1) {
+      &.is-first {
         padding: rem(55);
-        --primary: #43a4a4;
         --basis: #{rem(750)};
 
         @include media("3xl") {
@@ -129,6 +260,10 @@ import { services } from "@/store";
             align-self: flex-start;
           }
         }
+      }
+
+      &:nth-child(1) {
+        --primary: #43a4a4;
       }
 
       &:nth-child(2) {

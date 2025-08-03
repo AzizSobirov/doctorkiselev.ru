@@ -1,0 +1,157 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button, BgImg } from "ui";
+import { mainGoalList } from "store";
+---
+
+<!-- Main Goal -->
+<Section name="main-goal">
+  <H3 data-aos="fade-up">
+    Основные цель лечения грыжи- создание <br /><strong>
+      оптимальных условий восстановления через:</strong
+    >
+  </H3>
+
+  <div class="main-goal__content group-row">
+    <ul class="main-goal__tags group">
+      {
+        mainGoalList?.map((item, index) => (
+          <li
+            class="main-goal__tag founder__about-tag row"
+            data-aos="fade-up"
+            data-aos-delay={index * 50}
+          >
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+
+    <div
+      class="main-goal__video group-center"
+      data-aos="fade-up"
+      data-fancybox="video"
+      data-src="/assets/videos/hero.mp4"
+    >
+      <BgImg src="clinic-poster.png" />
+
+      <Icon src="play-2.svg" />
+      <div class="text-lg">
+        Узнайте больше о подходе клиники в нашем видеоролике
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .main-goal {
+    position: relative;
+
+    .container {
+      gap: rem(35);
+
+      @include media("sm") {
+        gap: rem(25);
+      }
+    }
+
+    .text-h3 {
+      color: inherit;
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__content {
+      width: 100%;
+      align-items: flex-start;
+      gap: rem(20);
+
+      @include media("xl") {
+        flex-direction: column-reverse;
+        gap: rem(30);
+      }
+    }
+
+    &__tags {
+      min-width: rem(705);
+      gap: rem(20);
+
+      @include media("3xl") {
+        min-width: rem(600);
+      }
+      @include media("2xl") {
+        min-width: rem(500);
+      }
+      @include media("xl") {
+        min-width: 100%;
+        width: 100%;
+      }
+      @include media("md") {
+        gap: rem(15);
+      }
+      @include media("sm") {
+        margin-top: rem(-10);
+        gap: rem(12);
+      }
+    }
+
+    &__tag {
+      width: 100%;
+      background: transparent;
+      border: rem(1) solid #d3d3d3;
+    }
+
+    &__video {
+      position: relative;
+      min-width: 65%;
+      height: rem(525);
+      color: #fff;
+      text-align: center;
+      border-radius: rem(35) 0 0 rem(35);
+      overflow: hidden;
+      flex-direction: column;
+      gap: rem(20);
+      cursor: pointer;
+      --icon-size: #{rem(100)};
+
+      .bg-img::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--primary);
+        opacity: 0.7;
+      }
+
+      @include media("3xl") {
+        .text-lg {
+          font-size: 1rem;
+        }
+      }
+      @include media("xl") {
+        min-width: 100%;
+        width: 100%;
+        border-radius: rem(20);
+      }
+      @include media("sm") {
+        height: rem(280);
+        --icon-size: #{rem(80)};
+      }
+      @include media("xs") {
+        height: rem(240);
+        gap: rem(15);
+        --icon-size: #{rem(70)};
+
+        .text-lg {
+          font-size: rem(14);
+        }
+      }
+    }
+  }
+</style>
