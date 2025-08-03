@@ -12,6 +12,7 @@ export { default as Intro } from "./Intro.astro";
 export { default as MainGoal } from "./MainGoal.astro";
 export { default as Partners } from "./Partners.astro";
 export { default as Pricing } from "./Pricing.astro";
+export { default as Protrusion } from "./Protrusion.astro";
 export { default as Result } from "./Result.astro";
 export { default as Reviews } from "./Reviews.astro";
 export { default as Services } from "./Services.astro";

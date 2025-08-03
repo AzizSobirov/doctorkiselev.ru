@@ -1,0 +1,70 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Protrusion -->
+<Section name="protrusion">
+  <H3 data-aos="fade-up">
+    Что такое <strong>протрузия — простыми словами</strong>
+  </H3>
+  <P data-aos="fade-up" data-aos-delay="50">
+    <strong>Протрузия</strong> — это начальная стадия межпозвоночной грыжи. При ней
+    диск между позвонками выступает за пределы позвоночника, но не разрывается. Это
+    может вызывать боль, онемение, слабость в конечностях и нарушение подвижности.
+    <br /><br />
+    Главное отличие от грыжи — при про трузии фиброзное кольцо ещё не разорвано,
+    а значит, проблему можно решить без операции, если начать лечение вовремя.
+  </P>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .protrusion {
+    position: relative;
+    height: rem(900);
+    background: url("/assets/img/protrusion-bg.png") no-repeat bottom/cover;
+
+    @include media("3xl") {
+      height: rem(800);
+    }
+    @include media("xl") {
+      height: rem(700);
+    }
+    @include media("lg") {
+      padding-bottom: rem(320);
+      height: auto;
+      background-size: 100% auto;
+    }
+    @include media("md") {
+      padding-bottom: rem(250);
+    }
+    @include media("sm") {
+      padding-bottom: rem(180);
+    }
+    @include media("xxs") {
+      padding-bottom: rem(160);
+    }
+
+    .text-h3 {
+      color: inherit;
+      font-weight: inherit;
+    }
+
+    .text-p {
+      max-width: 50%;
+
+      @include media("lg") {
+        max-width: 80%;
+      }
+      @include media("sm") {
+        max-width: 100%;
+        font-size: rem(14);
+      }
+    }
+
+    strong {
+      color: var(--primary);
+    }
+  }
+</style>

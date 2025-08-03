@@ -4,23 +4,32 @@ import { symptoms } from "store";
 
 interface Props {
   title: string;
+  type?: "default" | "protrusion";
 }
 
-const { title } = Astro.props;
+const { title, type } = Astro.props;
 ---
 
 <!-- Symptoms -->
 <Section name="symptoms">
   <div class="symptoms__header group">
     <H3 set:html={title} data-aos="fade-up" />
-    <P data-aos="fade-up" data-aos-delay="50">
-      Грыжа диска поясничного отдела
-      <strong>проявляется следующими признаками:</strong>
-    </P>
+
+    {
+      type !== "protrusion" && (
+        <P data-aos="fade-up" data-aos-delay="50">
+          Грыжа диска поясничного отдела
+          <strong>проявляется следующими признаками:</strong>
+        </P>
+      )
+    }
   </div>
 
   <div class="symptoms__content group-row">
-    <ul class="symptoms__list">
+    <ul
+      class="symptoms__list"
+      class:list={type === "protrusion" ? "is-protrusion" : ""}
+    >
       {
         symptoms.map((item, index) => (
           <li
@@ -36,17 +45,43 @@ const { title } = Astro.props;
 
     <div
       class="symptoms__application group"
+      class:list={type === "protrusion" ? "is-protrusion" : ""}
       data-aos="fade-up"
       data-aos-delay="100"
     >
-      <BgImg src="symptoms-bg.png" />
+      <BgImg
+        src={type === "protrusion" ? "symptoms-bg-2.png" : "symptoms-bg.png"}
+      />
 
-      <div class="symptoms__application-text">
-        <strong>Не откладывайте</strong> лечение! <br />
-        Болезнь со временем <strong>только прогрессирует! </strong>
-        <br /><br />
-        <div class="text-lg">Оставьте заявку и начните лечение уже завтра</div>
-      </div>
+      {
+        type === "protrusion" ? (
+          <div class="symptoms__application-text">
+            <strong>
+              Без лечения протрузия может перерасти в полноценную грыжу,
+            </strong>
+            вызвать защемление нервов, нарушение координации и даже потребовать
+            хирургического вмешательства.
+            <br />
+            <br />
+            Чем <strong>раньше начато лечение,</strong> тем выше шанс полного
+            <strong>восстановления без последствий.</strong>
+            <br />
+            <br />
+            <strong>Оставьте заявку и начните лечение уже завтра!</strong>
+          </div>
+        ) : (
+          <div class="symptoms__application-text">
+            <strong>Не откладывайте</strong> лечение! <br />
+            Болезнь со временем <strong>только прогрессирует! </strong>
+            <br />
+            <br />
+            <div class="text-lg">
+              Оставьте заявку и начните лечение уже завтра
+            </div>
+          </div>
+        )
+      }
+
       <Button variant="white" data-modal="callback">ОТПРАВИТЬ ЗАЯВКУ</Button>
     </div>
   </div>
@@ -97,8 +132,16 @@ const { title } = Astro.props;
       grid-template-columns: repeat(2, 1fr);
       gap: rem(40) rem(20);
 
+      &.is-protrusion {
+        min-width: 50%;
+      }
+
       @include media("3xl") {
         min-width: 60%;
+
+        &.is-protrusion {
+          min-width: 48%;
+        }
       }
       @include media("xl") {
         min-width: 100%;
@@ -163,6 +206,13 @@ const { title } = Astro.props;
       overflow: hidden;
       justify-content: center;
       gap: rem(20);
+
+      &.is-protrusion {
+        min-width: 55%;
+        .btn {
+          color: var(--primary);
+        }
+      }
 
       @include media("3xl") {
         min-width: 42%;

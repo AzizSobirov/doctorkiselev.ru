@@ -2,58 +2,131 @@
 import { Section, H2, H3, P, Image, Icon, Button, H4, BgImg } from "ui";
 
 interface Props {
-  variant?: "default" | "secondary";
+  title: string;
+  type?: "default" | "protrusion";
   video?: boolean;
 }
 
-const { video } = Astro.props;
+const { title, type = "default", video } = Astro.props;
 ---
 
 <!-- Care -->
 <Section name="care">
-  <H3 data-aos="fade-up"
-    >Комплексная помощь <strong> без госпитализации</strong></H3
-  >
+  <H3 data-aos="fade-up" set:html={title} />
 
-  <div class="care__steps">
-    <div class="hero__advantages-item group-row" data-aos="fade-up">
-      <Image src="steps/1.png" />
-      <div class="group">
-        <H4>Диагностика</H4>
-        <p>
-          неврологический осмотр, при <br /> необходимости направление на <br />
-          МРТ, ЭЭГ, УЗИ
-        </p>
-      </div>
-    </div>
+  {
+    type === "default" && (
+      <div class="care__steps">
+        <div class="hero__advantages-item group-row" data-aos="fade-up">
+          <Image src="steps/1.png" />
+          <div class="group">
+            <H4>Диагностика</H4>
+            <p>
+              неврологический осмотр, при <br /> необходимости направление на
+              <br />
+              МРТ, ЭЭГ, УЗИ
+            </p>
+          </div>
+        </div>
 
-    <div
-      class="hero__advantages-item group-row"
-      data-aos="fade-up"
-      data-aos-delay="50"
-    >
-      <Image src="steps/2.png" />
-      <div class="group">
-        <H4>Лечение</H4>
-        <p>
-          медикаментозное + <br /> немедикаментозные методы <br /> (мануальная терапия,
-          остеопатия, ЛФК)
-        </p>
-      </div>
-    </div>
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="50"
+        >
+          <Image src="steps/2.png" />
+          <div class="group">
+            <H4>Лечение</H4>
+            <p>
+              медикаментозное + <br /> немедикаментозные методы <br />
+              (мануальная терапия, остеопатия, ЛФК)
+            </p>
+          </div>
+        </div>
 
-    <div
-      class="hero__advantages-item group-row"
-      data-aos="fade-up"
-      data-aos-delay="100"
-    >
-      <Image src="steps/3.png" />
-      <div class="group">
-        <H4>Поддержка</H4>
-        <p>контроль состояния, корректировка схем</p>
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <Image src="steps/3.png" />
+          <div class="group">
+            <H4>Поддержка</H4>
+            <p>контроль состояния, корректировка схем</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    )
+  }
+
+  {
+    type === "protrusion" && (
+      <div class="care__steps">
+        <div class="hero__advantages-item group-row" data-aos="fade-up">
+          <Image src="steps/1.png" />
+          <div class="group">
+            <H4>Диагностика</H4>
+            <p>
+              неврологический осмотр, при <br /> необходимости направление на
+              <br />
+              МРТ, ЭЭГ, УЗИ
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="50"
+        >
+          <Image src="steps/2.png" />
+          <div class="group">
+            <H4>Лечение</H4>
+            <p>
+              медикаментозное + <br /> немедикаментозные методы <br />
+              (мануальная терапия, остеопатия, ЛФК)
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <Image src="steps/3-2.png" />
+          <div class="group">
+            <H4>Остеопатия</H4>
+            <p>Глубокая проработка мышц и фасций, устранение причины боли</p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          <Image src="steps/4.png" />
+          <div class="group">
+            <H4>Лечебная физкультура</H4>
+            <p>Укрепление мышечного корсета под контролем специалиста</p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <Image src="steps/5.png" />
+          <div class="group">
+            <H4>Остеопатия</H4>
+            <p>Стимуляция восстановления тканей, снятие воспаления</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   {
     video && (
@@ -115,7 +188,7 @@ const { video } = Astro.props;
     &__steps {
       width: 100%;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(rem(350), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(rem(450), 1fr));
       gap: rem(20);
 
       @include media("sm") {

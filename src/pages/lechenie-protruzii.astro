@@ -1,0 +1,39 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Лечение протрузии">
+  <main>
+    <Blocks.Hero
+      title="Лечение <strong>протрузии без операции</strong>"
+      video="hero.mp4"
+    />
+    <Blocks.Pricing
+      title="Стоимость <strong>лечения протрузии</strong>"
+      isMain={true}
+    />
+    <Blocks.Protrusion />
+    <Blocks.Symptoms
+      title="Как проявляется  <strong>протрузия </strong>"
+      type="protrusion"
+    />
+    <Blocks.Care
+      title="Комплексная подход к <strong>лечению протрузии</strong>"
+      type="protrusion"
+    />
+    <Blocks.Appointment
+      title="Запишитесь на консультацию <strong>мануального терапевта!</strong>"
+    />
+    <Blocks.Result />
+    <Blocks.Founder />
+    <Blocks.Specialists />
+    <Blocks.Clinic />
+    <Blocks.Partners />
+    <Blocks.Reviews />
+    <Blocks.Application />
+    <Blocks.Certificate />
+    <Blocks.Faq />
+    <Blocks.Contacts />
+  </main>
+</App>
