@@ -4,11 +4,12 @@ import { Section, H4, P, BgImg, Image, Icon, Button } from "ui";
 interface Props {
   title: string;
   subtitle?: string;
+  desc?: string;
   video: string;
   isMain?: boolean;
 }
 
-const { title, subtitle, video, isMain = false } = Astro.props;
+const { title, subtitle, desc, video, isMain = false } = Astro.props;
 ---
 
 <!-- Hero -->
@@ -37,6 +38,17 @@ const { title, subtitle, video, isMain = false } = Astro.props;
           data-aos-delay="50"
           set:html={title}
         />
+
+        {
+          desc && (
+            <p
+              class="text-base"
+              data-aos="fade-up"
+              data-aos-delay="75"
+              set:html={desc}
+            />
+          )
+        }
 
         <ul class="hero__text-tags group-row">
           <li
@@ -283,6 +295,10 @@ const { title, subtitle, video, isMain = false } = Astro.props;
         &:has(span) {
           line-height: 0.9;
         }
+      }
+
+      p.text-base {
+        max-width: rem(660);
       }
 
       &-tags {
