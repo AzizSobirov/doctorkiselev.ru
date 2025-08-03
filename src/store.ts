@@ -53,6 +53,7 @@ export const pricing = [
     price: "5 000 ₽",
   },
   {
+    discount: "АКЦИЯ ДО 1 АВГУСТА",
     name: "Мануальная терапия, 60 минут",
     realprice: "12 000 ₽",
     price: "7 000 ₽",

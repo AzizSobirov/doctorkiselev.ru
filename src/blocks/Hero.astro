@@ -275,6 +275,14 @@ const { title, subtitle, video, isMain = false } = Astro.props;
         @include media("lg") {
           margin: rem(-20) 0 rem(-10);
         }
+
+        span {
+          font-size: 0.7em;
+        }
+
+        &:has(span) {
+          line-height: 0.9;
+        }
       }
 
       &-tags {

@@ -1,0 +1,118 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  title?: string;
+  list?: string[];
+}
+
+const { title, list }: Props = Astro.props;
+---
+
+<!-- Suitable -->
+<Section name="suitable" only>
+  <div class="suitable__content">
+    <div class="container">
+      <div class="suitable__title" set:html={title} data-aos="fade-up" />
+      <ul class="suitable__tags">
+        {
+          list?.map((item, index) => (
+            <li
+              class="suitable__tag founder__about-tag row"
+              data-aos="fade-up"
+              data-aos-delay={index * 50}
+            >
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .suitable {
+    position: relative;
+
+    @include media("sm") {
+      padding: 0;
+    }
+
+    .container {
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(20);
+      }
+    }
+
+    &__content {
+      position: relative;
+      padding: rem(50) 0 rem(80);
+      width: 100%;
+      background: #fff url("/assets/img/suitable-bg.png") no-repeat center/cover;
+
+      @include media("lg") {
+        padding: rem(30) 0 rem(40);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(20%, -50%);
+        @include size(rem(546));
+        background: url("/assets/img/suitable-kids.png") no-repeat
+          center/contain;
+        pointer-events: none;
+
+        @include media("3xl") {
+          transform: translate(35%, -50%);
+          --size: #{rem(500)};
+        }
+        @include media("xl") {
+          transform: translate(30%, -50%);
+          --size: #{rem(480)};
+        }
+        @include media("lg") {
+          display: none;
+        }
+      }
+    }
+
+    &__title {
+      font-size: clamp(1.25rem, 1.1346rem + 0.5128vw, 1.75rem);
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__tags {
+      width: 100%;
+      max-width: rem(850);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(30) rem(20);
+
+      @include media("xl") {
+        max-width: rem(680);
+      }
+      @include media("lg") {
+        max-width: 100%;
+      }
+      @include media("sm") {
+        grid-template-columns: 1fr;
+        gap: rem(15);
+      }
+    }
+
+    &__tag {
+      border: rem(1) solid #d3d3d3;
+    }
+  }
+</style>

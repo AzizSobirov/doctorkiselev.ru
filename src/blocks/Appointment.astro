@@ -9,47 +9,45 @@ const { title }: Props = Astro.props;
 ---
 
 <!-- Appointment -->
-<Section name="appointment">
-  <Fragment slot="header">
-    <div class="appointment__content">
-      <div class="container">
-        <div class="appointment__title" data-aos="fade-up" set:html={title} />
+<Section name="appointment" only>
+  <div class="appointment__content">
+    <div class="container">
+      <div class="appointment__title" data-aos="fade-up" set:html={title} />
 
-        <form class="the-form">
-          <input
-            type="text"
-            name="phone"
-            placeholder="Ваш телефон"
-            required
-            data-aos="fade-up"
-          />
-          <Button class="uppercase" data-aos="fade-up">ОТПРАВИТЬ ЗАЯВКУ</Button>
-          <div class="group-row">
-            <div class="text-lg" data-aos="fade-up">
-              Или запишитесь по телефону <a
-                href="tel:+79163771754"
-                target="_blank">+7 (916) 377-17-54</a
-              >
-            </div>
-            <div class="group-row" data-aos="fade-up">
-              <a href="#" target="_blank" title="Написать в WhatsApp">
-                <Icon src="whatsapp-primary.svg" />
-              </a>
-              <a href="#" target="_blank" title="Написать в Telegram">
-                <Icon src="telegram-primary.svg" />
-              </a>
-            </div>
-          </div>
-          <div class="text-xs" data-aos="fade-up">
-            Отправляя заявку Вы соглашаетесь <br />
-            с <a class="text-primary font-bold" href="#" target="_blank"
-              >Политикой обработки персональных данных</a
+      <form class="the-form">
+        <input
+          type="text"
+          name="phone"
+          placeholder="Ваш телефон"
+          required
+          data-aos="fade-up"
+        />
+        <Button class="uppercase" data-aos="fade-up">ОТПРАВИТЬ ЗАЯВКУ</Button>
+        <div class="group-row">
+          <div class="text-lg" data-aos="fade-up">
+            Или запишитесь по телефону <a
+              href="tel:+79163771754"
+              target="_blank">+7 (916) 377-17-54</a
             >
           </div>
-        </form>
-      </div>
+          <div class="group-row" data-aos="fade-up">
+            <a href="#" target="_blank" title="Написать в WhatsApp">
+              <Icon src="whatsapp-primary.svg" />
+            </a>
+            <a href="#" target="_blank" title="Написать в Telegram">
+              <Icon src="telegram-primary.svg" />
+            </a>
+          </div>
+        </div>
+        <div class="text-xs" data-aos="fade-up">
+          Отправляя заявку Вы соглашаетесь <br />
+          с <a class="text-primary font-bold" href="#" target="_blank"
+            >Политикой обработки персональных данных</a
+          >
+        </div>
+      </form>
     </div>
-  </Fragment>
+  </div>
 </Section>
 
 <style lang="scss" is:global>
@@ -57,6 +55,10 @@ const { title }: Props = Astro.props;
 
   .appointment {
     position: relative;
+
+    @include media("sm") {
+      padding: 0;
+    }
 
     .container {
       gap: rem(45);

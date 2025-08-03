@@ -1,0 +1,100 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  title?: string;
+  desc?: string;
+  subtitle?: string;
+  list?: string[];
+}
+
+const { title, desc, subtitle, list } = Astro.props as Props;
+---
+
+<!-- Treat -->
+<Section name="treat">
+  <H3 class="treat__title" set:html={title} data-aos="fade-up" />
+  <p
+    class="treat__desc"
+    set:html={desc}
+    data-aos="fade-up"
+    data-aos-delay="50"
+  />
+
+  <div
+    class="treat__subtitle"
+    data-aos="fade-up"
+    data-aos-delay="100"
+    set:html={subtitle}
+  />
+
+  <ul class="treat__tags">
+    {
+      list?.map((item, index) => (
+        <li
+          class="treat__tag founder__about-tag row"
+          data-aos="fade-up"
+          data-aos-delay={150 + index * 50}
+        >
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .treat {
+    position: relative;
+
+    &__title {
+      color: inherit;
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__desc {
+      margin-top: rem(-10);
+      line-height: 1.5;
+
+      @include media("sm") {
+        margin-top: 0;
+        font-size: rem(14);
+      }
+    }
+
+    &__subtitle {
+      font-size: clamp(1.25rem, 1.1346rem + 0.5128vw, 1.75rem);
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__tags {
+      margin-top: rem(-20);
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(rem(350), 1fr));
+      gap: rem(30) rem(20);
+
+      @include media("md") {
+        gap: rem(15);
+      }
+      @include media("sm") {
+        margin-top: rem(-10);
+        gap: rem(12);
+      }
+    }
+
+    &__tag {
+      background: transparent;
+      border: rem(1) solid #d3d3d3;
+    }
+  }
+</style>
