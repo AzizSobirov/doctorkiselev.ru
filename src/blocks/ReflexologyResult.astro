@@ -1,0 +1,195 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Reflexology Result -->
+<Section name="refleksoterapiya is-result">
+  <H2 class="uppercase" data-aos="fade-up"
+    >результаты <strong>рефлексотерапии</strong></H2
+  >
+
+  <div class="refleksoterapiya__result group-row">
+    <div class="refleksoterapiya__result-bg">
+      <Image
+        src="refleksoterapiya-result.png"
+        data-aos="zoom-in"
+        data-aos-delay="50"
+      />
+    </div>
+
+    <ul class="refleksoterapiya__result-list group">
+      <li data-aos="fade-up">Улучшение сна</li>
+      <li data-aos="fade-up" data-aos-delay="25">
+        Снятие хронического напряжения
+      </li>
+      <li data-aos="fade-up" data-aos-delay="50">Уменьшение боли</li>
+    </ul>
+
+    <ul class="refleksoterapiya__result-list group">
+      <li data-aos="fade-up">Улучшение общего самочувствия</li>
+      <li data-aos="fade-up" data-aos-delay="25">Стабилизация эмоций</li>
+      <li data-aos="fade-up" data-aos-delay="50">Повышение энергии</li>
+    </ul>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .refleksoterapiya.is-result {
+    background: url('data:image/svg+xml,<svg width="2282" height="1234" viewBox="0 0 2282 1234" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M779.5 1048C713.064 1035.49 650.848 1002.76 602.837 955.317C559.588 912.452 526.065 857.593 516.474 797.009C504.117 737.355 537.144 667.517 599.692 654.7C1014.84 574.644 1316.48 1028.74 1719.8 971.738C1792.44 924.596 1855.9 862.568 1896.21 785.494C1986.45 635.745 1910.24 427.248 1752.73 359.041C1600.77 282.557 1424.32 279.047 1257.89 294.879C1078.82 298.539 962.533 461.872 789.878 485.856C690.695 504.07 588.501 502.05 488.675 489.254C424.023 477.433 347.834 475.307 301 427C347.734 475.484 423.944 477.818 488.599 489.819C588.447 502.886 690.695 505.171 790.122 487.144C963.524 463.282 1079.96 300.341 1258.11 297.122C1424.34 281.535 1600.42 285.359 1751.43 361.537C1907.87 429.667 1982.91 635.428 1893.55 784.108C1853.55 860.6 1790.48 922.314 1718.2 969.262C1320.63 1026 1015.39 572.494 599.31 653.301C536.106 666.339 502.809 737.323 515.451 797.164C525.242 858.026 559.004 912.897 602.438 955.724C650.655 1003.12 713.028 1035.69 779.5 1048Z" fill="%238CA3DE"/><path d="M848.011 197.683C901.152 179.055 959.662 176.908 1013.99 191.403C1062.34 204.387 1108.68 229.854 1140.26 269.193C1173.42 306.763 1178.29 369.937 1139.07 404.746C879.205 636.013 492.992 462.924 206.866 640.106C143.77 686.447 96.9345 762.92 107.551 843.083C127.56 990.822 285.719 1073.16 423.754 1073.9C566.195 1077.18 702.963 1016.6 816.943 934.381C943.611 857.714 959.318 692.773 1072.9 604.304C1135.98 550.57 1209.46 509.956 1285.76 477.898C1337.26 459.411 1393.07 429.167 1446.96 444.366C1393.07 428.963 1337.14 459.037 1285.54 477.371C1209.09 509.209 1135.44 549.623 1072.05 603.317C957.765 692.052 941.738 856.727 815.634 932.56C701.764 1014.4 565.389 1074.49 423.826 1071.09C286.573 1070.27 130.104 988.192 110.53 842.733C100.094 763.854 146.075 688.489 208.646 642.447C491.911 466.212 879.557 638.448 1140.1 405.759C1179.76 370.439 1174.57 306.146 1141.07 268.554C1109.18 229.073 1062.63 203.713 1014.13 190.852C959.651 176.502 901.084 178.866 848.011 197.683Z" fill="%238CA3DE" fill-opacity="0.5"/><path d="M1595.11 398.897C1552.12 383.847 1504.8 382.131 1460.87 393.869C1421.77 404.383 1384.31 424.993 1358.8 456.799C1332.01 487.185 1328.11 538.177 1359.78 566.283C1569.91 753.208 1882.17 613.124 2113.87 756.527C2164.96 794.04 2202.92 856.001 2194.32 920.964C2178.09 1040.68 2050 1107.31 1938.28 1107.9C1822.98 1110.54 1712.32 1061.49 1620.11 994.951C1517.61 932.858 1504.93 799.421 1413.13 727.887C1362.13 684.42 1302.71 651.551 1241.02 625.6C1199.36 610.631 1154.24 586.152 1110.65 598.426C1154.24 585.949 1199.49 610.258 1241.24 625.073C1303.08 650.804 1362.68 683.474 1413.98 726.901C1506.48 798.699 1519.48 931.871 1621.42 993.13C1713.52 1059.29 1823.79 1107.85 1938.21 1105.09C2049.15 1104.41 2175.55 1038.05 2191.34 920.613C2199.76 856.935 2162.65 796.081 2112.09 758.869C1883.25 616.411 1569.56 755.643 1358.76 567.297C1326.63 538.679 1330.86 486.568 1357.99 456.16C1383.82 424.211 1421.49 403.709 1460.73 393.318C1504.81 381.725 1552.19 383.658 1595.11 398.897Z" fill="%238CA3DE" fill-opacity="0.5"/></svg>')
+      center/cover no-repeat;
+    background-size: 115% auto;
+
+    @include media("lg") {
+      background-position: auto 0;
+    }
+  }
+
+  .refleksoterapiya__result {
+    position: relative;
+    width: 100%;
+    height: rem(790);
+    justify-content: center;
+    gap: 25%;
+
+    @include media("2xl") {
+      height: rem(600);
+      gap: 22%;
+    }
+    @include media("lg") {
+      height: auto;
+      flex-direction: column;
+      gap: rem(15);
+    }
+
+    &-bg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      pointer-events: none;
+      @include size(rem(790));
+
+      @include media("2xl") {
+        --size: #{rem(600)};
+      }
+      @include media("lg") {
+        all: unset;
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+
+        @include media("lg") {
+          height: auto;
+          max-height: rem(480);
+        }
+      }
+    }
+
+    &-list {
+      position: relative;
+      z-index: 2;
+      min-width: 30%;
+      gap: rem(200);
+      --item-1-margin: #{rem(80)};
+      --item-2-margin: #{rem(45)};
+
+      @include media("2xl") {
+        gap: rem(120);
+        --item-1-margin: #{rem(60)};
+        --item-2-margin: #{rem(30)};
+      }
+      @include media("lg") {
+        width: 100%;
+        min-width: auto;
+        text-align: left !important;
+        flex-direction: row;
+        align-items: stretch !important;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: rem(15) rem(20);
+        --item-1-margin: 0;
+        --item-2-margin: 0;
+      }
+      @include media("xs") {
+        gap: rem(12);
+      }
+
+      &:nth-child(2) {
+        align-items: flex-end;
+
+        li {
+          &:nth-child(1) {
+            margin-right: var(--item-1-margin);
+          }
+          &:nth-child(2) {
+            margin-right: var(--item-2-margin);
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        li {
+          &:nth-child(1) {
+            margin-left: var(--item-1-margin);
+          }
+          &:nth-child(2) {
+            margin-left: var(--item-2-margin);
+          }
+        }
+      }
+
+      li {
+        position: relative;
+        padding: rem(20) rem(20) rem(20) rem(35);
+        min-width: rem(356);
+        background: #fff;
+        border-radius: 0 rem(20) rem(20) 0;
+
+        @include media("2xl") {
+          padding: rem(15) rem(20);
+          min-width: rem(300);
+          font-size: rem(14);
+          border-radius: rem(15);
+        }
+        @include media("lg") {
+          padding-left: rem(60);
+          min-width: 100%;
+          width: 100%;
+        }
+        @include media("sm") {
+          padding: rem(12) rem(12) rem(12) rem(50);
+          font-size: rem(12);
+          border-radius: rem(10);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translate(-75%, -50%);
+          @include size(rem(80));
+          background: url('data:image/svg+xml,<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" fill="url(%23paint0_linear_2174_1177)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M33.924 54.9382C28.038 50.4282 20 42.9782 20 35.9342C20 24.1662 31 19.7722 40 28.8602C49 19.7722 60 24.1662 60 35.9342C60 42.9782 51.96 50.4282 46.076 54.9382C43.412 56.9782 42.08 58.0002 40 58.0002C37.92 58.0002 36.588 56.9802 33.924 54.9382ZM49 30.5002C49.3978 30.5002 49.7794 30.6582 50.0607 30.9395C50.342 31.2208 50.5 31.6024 50.5 32.0002V34.5002H53C53.3978 34.5002 53.7794 34.6582 54.0607 34.9395C54.342 35.2208 54.5 35.6024 54.5 36.0002C54.5 36.398 54.342 36.7796 54.0607 37.0609C53.7794 37.3422 53.3978 37.5002 53 37.5002H50.5V40.0002C50.5 40.398 50.342 40.7795 50.0607 41.0609C49.7794 41.3422 49.3978 41.5002 49 41.5002C48.6022 41.5002 48.2206 41.3422 47.9393 41.0609C47.658 40.7795 47.5 40.398 47.5 40.0002V37.5002H45C44.6022 37.5002 44.2206 37.3422 43.9393 37.0609C43.658 36.7796 43.5 36.398 43.5 36.0002C43.5 35.6024 43.658 35.2208 43.9393 34.9395C44.2206 34.6582 44.6022 34.5002 45 34.5002H47.5V32.0002C47.5 31.6024 47.658 31.2208 47.9393 30.9395C48.2206 30.6582 48.6022 30.5002 49 30.5002Z" fill="white"/><defs><linearGradient id="paint0_linear_2174_1177" x1="18.5" y1="6" x2="66.5" y2="80" gradientUnits="userSpaceOnUse"><stop stop-color="%233FDDDD"/><stop offset="1" stop-color="%2343A4A4"/></linearGradient></defs></svg>')
+            center/contain no-repeat;
+
+          @include media("2xl") {
+            --size: #{rem(60)};
+          }
+          @include media("lg") {
+            transform: translate(-10%, -50%);
+            --size: #{rem(50)};
+          }
+          @include media("sm") {
+            --size: #{rem(45)};
+          }
+        }
+      }
+    }
+  }
+</style>

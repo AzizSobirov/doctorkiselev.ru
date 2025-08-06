@@ -1,0 +1,81 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button, BgImg } from "ui";
+---
+
+<!-- Refleksoterapiya -->
+<Section name="refleksoterapiya" main only>
+  <div class="refleksoterapiya__content">
+    <BgImg src="refleksoterapiya-bg.png" />
+
+    <div class="container">
+      <H3>Что такое <strong>рефлексотерапия</strong></H3>
+      <P>
+        <strong>Рефлексотерапия</strong> — это метод лечения, при котором врач воздействует
+        на биологически активные точки на теле пациента (чаще всего с помощью тонких
+        игл, пальцев или магнитов), чтобы запустить процессы самовосстановления организма.
+        <br /><br />
+        Метод основан на знаниях традиционной китайской медицины и подтверждён современной
+        нейрофизиологией. Воздействие на определённые точки может улучшать работу
+        внутренних органов, снимать боль и нормализовать нервную систему.
+      </P>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .refleksoterapiya {
+    position: relative;
+
+    &.is-main {
+      @include media("sm") {
+        padding: 0 !important;
+      }
+    }
+
+    &__content {
+      position: relative;
+      padding: rem(60) 0 rem(100);
+      width: 100%;
+
+      @include media("sm") {
+        padding: rem(25) 0 rem(40);
+      }
+    }
+
+    .container {
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(20);
+      }
+    }
+
+    .text-h3 {
+      color: inherit;
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    .text-p {
+      max-width: 50%;
+      line-height: 1.5;
+
+      @include media("lg") {
+        max-width: 80%;
+      }
+      @include media("sm") {
+        max-width: 100%;
+        font-size: rem(14);
+      }
+
+      strong {
+        color: var(--primary);
+      }
+    }
+  }
+</style>

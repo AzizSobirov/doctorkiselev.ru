@@ -3,7 +3,7 @@ import { Section, H2, H3, P, Image, Icon, Button, H4, BgImg } from "ui";
 
 interface Props {
   title: string;
-  type?: "default" | "protrusion";
+  type?: "default" | "protrusion" | "reflexology";
   video?: boolean;
 }
 
@@ -129,6 +129,78 @@ const { title, type = "default", video } = Astro.props;
   }
 
   {
+    type === "reflexology" && (
+      <div class="care__steps is-reflexology">
+        <div class="hero__advantages-item group-row" data-aos="fade-up">
+          <Image src="steps/1.png" />
+          <div class="group">
+            <H4>Первичная консультация</H4>
+            <p>
+              Врач изучает жалобы, историю болезни и подбирает индивидуальные
+              точки воздействия
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="50"
+        >
+          <Image src="steps/2-2.png" />
+          <div class="group">
+            <H4>Сеанс</H4>
+            <p>
+              Пациент ложится на кушетку, врач аккуратно воздействует на точки
+              (чаще всего с помощью игл)
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <Image src="steps/3-3.png" />
+          <div class="group">
+            <H4>Ощущения</H4>
+            <p>
+              Процедура безболезненная, может сопровождаться ощущением тепла,
+              лёгкости, расслабления
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          <Image src="steps/4-2.png" />
+          <div class="group">
+            <H4>Рекомендации</H4>
+            <p>
+              После сеанса врач может назначить курс из 5–10 процедур и дать
+              <br /> рекомендации по питанию, отдыху, упражнениям
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <video autoplay muted loop>
+            <source src="/assets/videos/steps.mp4" />
+          </video>
+        </div>
+      </div>
+    )
+  }
+
+  {
     video && (
       <div class="care__clinic group-row">
         <div class="care__clinic-text group">
@@ -204,6 +276,32 @@ const { title, type = "default", video } = Astro.props;
           @include media("lg") {
             min-width: rem(100);
             width: rem(100);
+          }
+        }
+      }
+
+      &.is-reflexology {
+        .hero__advantages-item {
+          &:nth-last-child(2) {
+            grid-column-start: span 2;
+
+            @include media(rem(1485)) {
+              grid-column-start: span 1;
+            }
+          }
+          &:last-child {
+            padding: 0 !important;
+
+            @include media(rem(1485)) {
+              display: none;
+            }
+
+            video {
+              height: 100%;
+              width: 100%;
+              border-radius: inherit;
+              object-fit: cover;
+            }
           }
         }
       }

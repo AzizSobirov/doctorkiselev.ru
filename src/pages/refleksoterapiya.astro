@@ -1,0 +1,38 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Рефлексотерапия">
+  <main>
+    <Blocks.Hero
+      title="<strong>Рефлексотерапия</strong>"
+      video="refleksoterapiya.mp4"
+    />
+    <Blocks.Pricing
+      title="Стоимость <strong>рефлексотерапии</strong>"
+      isMain={true}
+    />
+    <Blocks.Refleksoterapiya />
+    <Blocks.ReflexologyIndicators />
+    <Blocks.Care
+      title="Как проходит сеанс  <strong> рефлексотерапии</strong>"
+      type="reflexology"
+    />
+    <Blocks.ReflexologyResult />
+    <Blocks.Appointment
+      title="Запишитесь на консультацию <strong>рефлексотерапевта!</strong>"
+    />
+
+    <Blocks.Founder />
+    <Blocks.Result />
+    <Blocks.Specialists />
+    <Blocks.Clinic />
+    <Blocks.Partners />
+    <Blocks.Reviews />
+    <Blocks.Application />
+    <Blocks.Certificate />
+    <Blocks.Faq />
+    <Blocks.Contacts />
+  </main>
+</App>
