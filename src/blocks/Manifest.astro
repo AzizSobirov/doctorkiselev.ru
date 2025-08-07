@@ -1,0 +1,144 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button, BgImg } from "ui";
+---
+
+<!-- Manifest -->
+<Section name="manifest">
+  <H3 data-aos="fade-up">Как <strong>проявляется боль</strong></H3>
+
+  <div class="manifest__content group-row">
+    <ul class="manifest__list group">
+      <li data-aos="fade-up">Стреляющая, резкая боль при наклоне</li>
+      <li data-aos="fade-up" data-aos-delay="50">
+        Тянущая боль после долгого сидения
+      </li>
+      <li data-aos="fade-up" data-aos-delay="100">
+        Боль отдаёт в ягодицу или ногу
+      </li>
+      <li data-aos="fade-up" data-aos-delay="150">
+        Скованность и «тугость» по утрам
+      </li>
+      <li data-aos="fade-up" data-aos-delay="200">
+        Боль после физической нагрузки
+      </li>
+    </ul>
+
+    <div class="manifest__application group" data-aos="fade-up">
+      <BgImg src="manifest-bg.png" />
+
+      <p class="manifest__application-desc">
+        Острая боль может перейти в хроническую. Длительное напряжение вызывает
+        спазмы, компенсаторные искажения осанки.
+        <br /><br />
+        Без лечения даже незначительная протрузия может перерасти в грыжу. Раннее
+        вмешательство — залог быстрого восстановления.
+        <br /><br />
+        <strong>Оставьте заявку и начните лечение уже завтра!</strong>
+      </p>
+      <Button variant="white" data-modal="callback">ОТПРАВИТЬ ЗАЯВКУ</Button>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .manifest {
+    position: relative;
+
+    .text-h3 {
+      color: var(--text-color);
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__content {
+      width: 100%;
+      gap: 5%;
+
+      @include media("lg") {
+        flex-direction: column;
+        gap: rem(30);
+      }
+      @include media("sm") {
+        gap: rem(20);
+      }
+    }
+
+    &__list {
+      flex-grow: 1;
+      width: 30%;
+      gap: rem(25);
+
+      @include media("lg") {
+        width: 100%;
+        gap: rem(20);
+      }
+      @include media("sm") {
+        gap: rem(15);
+      }
+
+      li {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(10);
+
+        @include media("sm") {
+          font-size: rem(14);
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          @include size(rem(34));
+          background: url('data:image/svg+xml,<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.8456 28.3333C5.6246 28.3333 5.4291 28.2809 5.2591 28.176C5.0891 28.0712 4.95688 27.9328 4.86243 27.7609C4.76043 27.5919 4.70377 27.4091 4.69243 27.2127C4.68299 27.0153 4.73871 26.8165 4.8596 26.6163L16.0088 7.38361C16.1297 7.18339 16.2751 7.03795 16.4451 6.94728C16.6151 6.85661 16.8002 6.81128 17.0004 6.81128C17.2007 6.81128 17.3853 6.85661 17.5543 6.94728C17.7234 7.03795 17.8688 7.18339 17.9907 7.38361L29.1413 26.6163C29.2622 26.8165 29.3174 27.0148 29.307 27.2113C29.2976 27.4096 29.2409 27.5928 29.137 27.7609C29.0426 27.9328 28.9103 28.0712 28.7403 28.176C28.5703 28.2809 28.3753 28.3333 28.1553 28.3333H5.8456ZM17.0004 24.9559C17.2479 24.9559 17.4552 24.8724 17.6223 24.7052C17.7895 24.538 17.8726 24.3307 17.8717 24.0833C17.8707 23.8358 17.7872 23.629 17.6209 23.4628C17.4547 23.2966 17.2479 23.2125 17.0004 23.2106C16.753 23.2087 16.5462 23.2923 16.3799 23.4614C16.2137 23.6304 16.1301 23.8377 16.1292 24.0833C16.1282 24.3288 16.2118 24.5361 16.3799 24.7052C16.548 24.8742 16.7549 24.9578 17.0004 24.9559ZM17.0004 21.7954C17.2025 21.7954 17.3711 21.7274 17.5062 21.5914C17.6412 21.4554 17.7088 21.2873 17.7088 21.087V15.4204C17.7088 15.2192 17.6408 15.0506 17.5048 14.9146C17.3688 14.7786 17.2002 14.7111 16.999 14.712C16.7978 14.713 16.6297 14.7805 16.4947 14.9146C16.3596 15.0487 16.2921 15.2173 16.2921 15.4204V21.087C16.2921 21.2873 16.3601 21.4554 16.4961 21.5914C16.6321 21.7274 16.8007 21.7954 17.0018 21.7954" fill="url(%23paint0_linear_487_7045)" /><defs><linearGradient id="paint0_linear_487_7045" x1="29.3082" y1="28.3333" x2="9.68523" y2="11.4897" gradientUnits="userSpaceOnUse"><stop stop-color="%23FF4A37" /><stop offset="1" stop-color="%23FF8376" /></linearGradient></defs></svg>')
+            center/contain no-repeat;
+        }
+      }
+    }
+
+    &__application {
+      position: relative;
+      padding: rem(40);
+      width: 70%;
+      border-radius: rem(30);
+      gap: rem(20);
+      overflow: hidden;
+
+      @include media("xl") {
+        width: 60%;
+      }
+      @include media("lg") {
+        width: 100%;
+      }
+      @include media("sm") {
+        padding: rem(20);
+        border-radius: rem(20);
+      }
+
+      &-desc {
+        color: #fff;
+        line-height: 1.35;
+        max-width: rem(720);
+
+        @include media("sm") {
+          font-size: rem(14);
+        }
+      }
+
+      .btn {
+        color: var(--secondary);
+        box-shadow: 0 0 29px 0 rgba(0, 0, 0, 0.25);
+
+        @include media("sm") {
+          width: 100%;
+        }
+      }
+    }
+  }
+</style>

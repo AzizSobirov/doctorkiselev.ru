@@ -1,0 +1,94 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  list?: string[];
+}
+
+const { title, subtitle, list } = Astro.props as Props;
+---
+
+<!-- Causes -->
+<Section name="causes">
+  {title && <H2 class="uppercase" data-aos="fade-up" set:html={title} />}
+  {subtitle && <H3 data-aos="fade-up" set:html={subtitle} />}
+
+  <ul class="causes__list">
+    {
+      list &&
+        list.map((item, index) => (
+          <li data-aos="fade-up" data-aos-delay={index * 50} set:html={item} />
+        ))
+    }
+  </ul>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .causes {
+    position: relative;
+
+    .text-h3 {
+      color: inherit;
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(rem(380), 1fr));
+      gap: rem(40) rem(20);
+
+      @include media("sm") {
+        grid-template-columns: 1fr;
+        gap: rem(15);
+      }
+
+      li {
+        position: relative;
+        padding: rem(10) rem(15) rem(10) rem(90);
+        width: 100%;
+        min-height: rem(60);
+        background: linear-gradient(to right, transparent 0% 5%, #fff 5% 100%);
+        border-radius: rem(20);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        @include media("2xl") {
+          padding: rem(8) rem(12) rem(8) rem(70);
+        }
+        @include media("sm") {
+          padding: rem(6) rem(10) rem(6) rem(60);
+          min-height: rem(50);
+          font-size: rem(14);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translate(0, -50%);
+          @include size(rem(80));
+          background: url('data:image/svg+xml,<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" fill="url(%23paint0_linear_2175_1180)" /><circle cx="40" cy="40" r="40" fill="url(%23paint1_linear_2175_1180)" /><path d="M22.7817 57C22.4405 57 22.1387 56.9172 21.8763 56.7516C21.6139 56.586 21.4098 56.3674 21.264 56.0958C21.1066 55.8288 21.0191 55.5401 21.0016 55.2297C20.987 54.9179 21.073 54.6038 21.2596 54.2875L38.4701 23.9042C38.6567 23.5879 38.8813 23.3581 39.1437 23.2148C39.4061 23.0716 39.6919 23 40.0009 23C40.31 23 40.595 23.0716 40.856 23.2148C41.117 23.3581 41.3415 23.5879 41.5295 23.9042L58.7422 54.2875C58.9288 54.6038 59.0141 54.9172 58.9981 55.2275C58.9835 55.5408 58.896 55.8303 58.7357 56.0958C58.5899 56.3674 58.3858 56.586 58.1234 56.7516C57.8609 56.9172 57.5599 57 57.2202 57H22.7817ZM40.0009 51.6646C40.3829 51.6646 40.7029 51.5325 40.961 51.2684C41.219 51.0043 41.3473 50.6768 41.3458 50.2859C41.3444 49.895 41.2154 49.5683 40.9588 49.3057C40.7022 49.0431 40.3829 48.9103 40.0009 48.9073C39.619 48.9043 39.2997 49.0364 39.0431 49.3035C38.7865 49.5705 38.6575 49.898 38.656 50.2859C38.6546 50.6739 38.7836 51.0014 39.0431 51.2684C39.3026 51.5355 39.6219 51.6675 40.0009 51.6646ZM40.0009 46.6715C40.3129 46.6715 40.5732 46.5641 40.7816 46.3493C40.9901 46.1344 41.0944 45.8688 41.0944 45.5525V36.6004C41.0944 36.2826 40.9894 36.0163 40.7795 35.8015C40.5695 35.5866 40.3093 35.4799 39.9987 35.4814C39.6882 35.4829 39.4287 35.5896 39.2202 35.8015C39.0117 36.0133 38.9075 36.2797 38.9075 36.6004V45.5525C38.9075 45.8688 39.0125 46.1344 39.2224 46.3493C39.4324 46.5641 39.6926 46.6715 40.0031 46.6715" fill="%23F3F3F3" /><defs><linearGradient id="paint0_linear_2175_1180" x1="80" y1="80" x2="9.14629" y2="26.8281" gradientUnits="userSpaceOnUse"><stop stop-color="%23FF4A37" /><stop offset="1" stop-color="%23FF8376" /></linearGradient><linearGradient id="paint1_linear_2175_1180" x1="80" y1="80" x2="9.14629" y2="26.8281" gradientUnits="userSpaceOnUse"><stop stop-color="%23FF4A37" /><stop offset="1" stop-color="%23FF8376" /></linearGradient></defs></svg>')
+            center/contain no-repeat;
+
+          @include media("2xl") {
+            --size: #{rem(60)};
+          }
+          @include media("sm") {
+            --size: #{rem(50)};
+          }
+        }
+      }
+    }
+  }
+</style>

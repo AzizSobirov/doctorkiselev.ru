@@ -1,7 +1,9 @@
 export { default as Advantages } from "./Advantages.astro";
 export { default as Application } from "./Application.astro";
 export { default as Appointment } from "./Appointment.astro";
+export { default as Area } from "./Area.astro";
 export { default as Care } from "./Care.astro";
+export { default as Causes } from "./Causes.astro";
 export { default as Certificate } from "./Certificate.astro";
 export { default as Clinic } from "./Clinic.astro";
 export { default as Contacts } from "./Contacts.astro";
@@ -13,6 +15,7 @@ export { default as Indications } from "./Indications.astro";
 export { default as Intro } from "./Intro.astro";
 export { default as Joints } from "./Joints.astro";
 export { default as MainGoal } from "./MainGoal.astro";
+export { default as Manifest } from "./Manifest.astro";
 export { default as Partners } from "./Partners.astro";
 export { default as Pricing } from "./Pricing.astro";
 export { default as Protrusion } from "./Protrusion.astro";

@@ -3,7 +3,7 @@ import { Section, H2, H3, P, Image, Icon, Button, H4, BgImg } from "ui";
 
 interface Props {
   title: string;
-  type?: "default" | "protrusion" | "reflexology";
+  type?: "default" | "protrusion" | "reflexology" | "boli-v-poyasnise";
   video?: boolean;
 }
 
@@ -183,6 +183,73 @@ const { title, type = "default", video } = Astro.props;
             <p>
               После сеанса врач может назначить курс из 5–10 процедур и дать
               <br /> рекомендации по питанию, отдыху, упражнениям
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <video autoplay muted loop>
+            <source src="/assets/videos/steps.mp4" />
+          </video>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    type === "boli-v-poyasnise" && (
+      <div class="care__steps is-reflexology">
+        <div class="hero__advantages-item group-row" data-aos="fade-up">
+          <Image src="steps/1.png" />
+          <div class="group">
+            <H4>Диагностика</H4>
+            <p>
+              Осмотр, тесты на подвижность, при необходимости — направление на
+              МРТ
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="50"
+        >
+          <Image src="steps/2.png" />
+          <div class="group">
+            <H4>Мануальная терапия</H4>
+            <p>
+              Мягкое ручное воздействие на зажатые мышцы, суставы, позвонки.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <Image src="steps/3-2.png" />
+          <div class="group">
+            <H4>Остеопатия и рефлексотерапия</H4>
+            <p>Гармонизация работы мышц, органов, нервной системы.</p>
+          </div>
+        </div>
+
+        <div
+          class="hero__advantages-item group-row"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          <Image src="steps/4.png" />
+          <div class="group">
+            <H4>Лечебная физкультура и восстановление</H4>
+            <p>
+              Укрепление мышц спины, рекомендации для <br /> повседневной жизни.
             </p>
           </div>
         </div>

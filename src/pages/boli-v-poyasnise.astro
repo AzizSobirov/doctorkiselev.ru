@@ -1,0 +1,55 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Боли в пояснице">
+  <main>
+    <Blocks.Hero
+      title="<span><strong>Боль в пояснице — </strong> сигнал,  <br/>который нельзя игнорировать</span>"
+      desc="Лечим боли в пояснице без таблеток и операций. Определяем настоящую причину и возвращаем подвижность мягкими методами."
+      video="lechenie-grij.mp4"
+    />
+    <Blocks.Causes
+      title="Почему возникает  <strong>боль в пояснице</strong>"
+      list={[
+        "Остеохондроз",
+        "Смещение позвонков",
+        "Мышечные спазмы",
+        "Межпозвоночные грыжи и протрузии",
+        "Сдавление нервных корешков",
+        "Плоскостопие и перекос таза",
+        "Сидячая работа и малоподвижный образ жизни",
+        "Последствия травм",
+      ]}
+    />
+    <Blocks.Manifest />
+    <Blocks.Care
+      title="Как проходит сеанс  <strong> Только результат.</strong>"
+      type="boli-v-poyasnise"
+    />
+
+    <Blocks.Appointment
+      title="Запишитесь — и мы поможем вам <strong>вернуть свободу движений</strong>"
+    />
+    <Blocks.Treatments
+      title="Что даёт  <strong>курс лечения </strong>"
+      list={[
+        "Облегчение боли уже после первых сеансов",
+        "Возвращение подвижности",
+        "Улучшение качества жизни",
+        "Профилактика осложнений",
+        "Поддержка и рекомендации на будущее",
+      ]}
+    />
+    <Blocks.Result />
+    <Blocks.Specialists />
+    <Blocks.Clinic />
+    <Blocks.Partners />
+    <Blocks.Reviews />
+    <Blocks.Application />
+    <Blocks.Certificate />
+    <Blocks.Faq />
+    <Blocks.Contacts />
+  </main>
+</App>

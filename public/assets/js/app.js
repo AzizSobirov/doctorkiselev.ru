@@ -439,6 +439,66 @@ if (specialists) {
   });
 }
 
+// Area
+const area = document.querySelector(".area");
+if (area) {
+  const areas = area.querySelectorAll(".area__list li");
+  const points = area.querySelectorAll(".area__img div");
+
+  // Add mouse hover interaction
+  areas.forEach((item) => {
+    const areaType = item.getAttribute("data-area");
+
+    // Mouse enter - highlight corresponding point
+    item.addEventListener("mouseenter", () => {
+      // Reset all areas and points
+      areas.forEach((a) => a.classList.remove("active"));
+      points.forEach((p) => p.classList.remove("active"));
+
+      // Activate current area and point
+      item.classList.add("active");
+      const matchingPoint = area.querySelector(
+        `.area__img div[data-area="${areaType}"]`
+      );
+      if (matchingPoint) {
+        matchingPoint.classList.add("active");
+      }
+    });
+
+    // Mouse leave - reset to default state if not clicked
+    item.addEventListener("mouseleave", () => {
+      if (!item.classList.contains("clicked")) {
+        item.classList.remove("active");
+        const matchingPoint = area.querySelector(
+          `.area__img div[data-area="${areaType}"]`
+        );
+        if (matchingPoint) {
+          matchingPoint.classList.remove("active");
+        }
+      }
+    });
+
+    // Click handling to maintain active state
+    item.addEventListener("click", () => {
+      // Remove clicked state from all items
+      areas.forEach((a) => a.classList.remove("clicked"));
+      points.forEach((p) => p.classList.remove("active"));
+
+      // Add clicked state to current item
+      item.classList.add("clicked");
+      item.classList.add("active");
+
+      // Activate corresponding point
+      const matchingPoint = area.querySelector(
+        `.area__img div[data-area="${areaType}"]`
+      );
+      if (matchingPoint) {
+        matchingPoint.classList.add("active");
+      }
+    });
+  });
+}
+
 // Footer
 const currentYear = document.getElementById("current-year");
 if (currentYear) {

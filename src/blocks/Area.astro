@@ -1,0 +1,192 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Area -->
+<Section name="area">
+  <H3 data-aos="fade-up">Определите <strong>зону боли</strong></H3>
+
+  <div class="area__content">
+    <div class="area__img">
+      <div data-area="shoulder"></div>
+      <div data-area="lumbar"></div>
+      <div data-area="thoracic"></div>
+      <div data-area="sacral"></div>
+      <Image src="area-body.png" data-aos="zoom-in" data-aos-delay="50" />
+    </div>
+
+    <ul class="area__list">
+      <li data-aos="fade-up" data-area="shoulder">
+        <strong>Шейный отдел</strong> — отдаёт в плечи, руки, затылок
+      </li>
+      <li data-aos="fade-up" data-aos-delay="50" data-area="lumbar">
+        <strong>Поясничный отдел</strong> — тянет вниз, усиливается при наклонах
+      </li>
+      <li data-aos="fade-up" data-aos-delay="100" data-area="thoracic">
+        <strong>Грудной отдел</strong> — боль между лопатками, при вдохе
+      </li>
+      <li data-aos="fade-up" data-aos-delay="150" data-area="sacral">
+        <strong>Крестцовый отдел</strong> — может отдавать в ноги, ягодицы
+      </li>
+    </ul>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .area {
+    position: relative;
+
+    .container {
+      gap: rem(20);
+    }
+
+    .text-h3 {
+      color: inherit;
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__content {
+      position: relative;
+      height: rem(700);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include media("3xl") {
+        height: rem(600);
+      }
+      @include media("xl") {
+        height: rem(500);
+      }
+      @include media("md") {
+        height: auto;
+        flex-direction: column;
+        gap: rem(30);
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+      width: rem(600);
+      height: 100%;
+
+      @include media("md") {
+        position: relative;
+        left: 0;
+        transform: unset;
+        width: 100%;
+        height: auto;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+
+        @include media("md") {
+          max-height: rem(450);
+        }
+        @include media("sm") {
+          max-height: rem(350);
+        }
+      }
+
+      div {
+        position: absolute;
+        z-index: 2;
+        @include size(rem(60));
+        border-radius: 100%;
+        background: #ff4a37;
+        filter: blur(15px);
+        transition: var(--transition-ease);
+        opacity: 0;
+
+        &[data-area="shoulder"] {
+          top: rem(180);
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        &[data-area="lumbar"] {
+          bottom: rem(120);
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        &[data-area="thoracic"] {
+          top: rem(250);
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        &[data-area="sacral"] {
+          bottom: rem(50);
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__list {
+      width: 80%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 70% 40%;
+
+      @include media("xl") {
+        width: 95%;
+        gap: 50% 35%;
+      }
+      @include media("md") {
+        gap: rem(15);
+      }
+      @include media("sm") {
+        grid-template-columns: 1fr;
+      }
+
+      li {
+        padding: rem(20) rem(30);
+        font-size: rem(18);
+        line-height: 1.35;
+        background: #fff;
+        border-radius: rem(30);
+        cursor: pointer;
+        transition: var(--transition-ease);
+
+        &.active {
+          box-shadow: 0 0 27px 0 #ff4a37;
+        }
+
+        @include media("3xl") {
+          padding: rem(15) rem(20);
+          font-size: 1rem;
+          border-radius: rem(20);
+        }
+        @include media("md") {
+          &.active {
+            box-shadow: 0 0 10px 0 #ff4a37;
+          }
+        }
+      }
+
+      strong {
+        color: #ff4a37;
+      }
+    }
+  }
+</style>
