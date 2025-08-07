@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="Site description">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/aos.min.css">
+  <link rel="stylesheet" href="/assets/css/swiper.min.css">
+  <link rel="stylesheet" href="/assets/css/fancybox.min.css">
+  <title>Специалисты</title>
+
+  <link rel="stylesheet" href="/assets/css/app.hAVXfUKr.css">
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header__top row-between">
+          <nav class="header__top-menu">
+            <ul class="menu">
+              <li class="menu-item"><a href="/pricing">Цены на услуги</a></li>
+              <li class="menu-item"><a href="/about">О клинике</a></li>
+              <li class="menu-item"><a href="/doctors">Специалисты</a></li>
+              <li class="menu-item"><a href="/reviews">Отзывы</a></li>
+              <li class="menu-item"><a href="/contacts">Контакты</a></li>
+            </ul>
+          </nav>
+
+          <div class="header__top-additional group-row">
+            <div class="row" aria-label="Время работы ">
+              <i class="icon">
+                <img src="/assets/img/icons/clock.svg" alt loading="lazy">
+              </i>
+
+
+              <div class="text-sm">Ежедневно с 9:00 до 20:00</div>
+            </div>
+            <div class="row" aria-label="Адрес клиники">
+              <i class="icon">
+                <img src="/assets/img/icons/marker.svg" alt loading="lazy">
+              </i>
+
+
+              <div class="text-sm">г. Москва, ул. Грина, д.1 к.3</div>
+            </div>
+          </div>
+
+          <div class="header__top-contacts group-row">
+            <a href="#" title="Whatsapp" target="_blank">
+              <i class="icon">
+                <img src="/assets/img/icons/whatsapp.svg" alt loading="lazy">
+              </i>
+
+
+            </a>
+
+            <a href="#" title="Telegram" target="_blank">
+              <i class="icon">
+                <img src="/assets/img/icons/telegram.svg" alt loading="lazy">
+              </i>
+
+
+            </a>
+
+            <a href="tel:+79163771754" title="Телефон" target="_blank" class="text-lg">
+              +7 (916) 377-17-54
+            </a>
+          </div>
+        </div>
+
+        <div class="header__bottom row-between">
+          <a href="/" class="header__logo">
+            <img src="/assets/img/logo.svg" alt="logo" loading="lazy">
+          </a>
+
+          <nav class="header__catalog">
+            <ul class="menu">
+              <li class="menu-item"><a href="#">Мануальная терапия</a></li>
+              <li class="menu-item"><a href="#">Остеопатия</a></li>
+              <li class="menu-item"><a href="#">Неврология </a></li>
+              <li class="menu-item menu-item-has-children">
+                <a href="#">Лечение грыжи </a>
+                <ul class="sub-menu">
+                  <li class="menu-item">
+                    <a href="#">Грыжа шейного отдела</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Грыжа поясничного отдела</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Грыжа грудного отдела</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="menu-item"><a href="#">Лечение протрузии </a></li>
+              <li class="menu-item"><a href="#">Рефлексотерапия </a></li>
+              <li class="menu-item menu-item-has-children">
+                <a href="#"> Симптомы </a>
+                <ul class="sub-menu">
+                  <li class="menu-item">
+                    <a href="#">Боль в спине</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Боль в шее</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Боль в пояснице </a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Головная боль</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="header__bottom-contacts group-row">
+            <a href="tel:+79163771754" title="Телефон" target="_blank" class="text-xl text-primary font-bold row">
+              <i class="icon">
+                <img src="/assets/img/icons/call.svg" alt loading="lazy">
+              </i>
+
+
+              +7 (916) 377-17-54
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile__menu">
+        <div class="mobile__menu-tabs">
+          <div class="mobile__menu-tab" data-toggle="catalog" role="button" tabindex="0" aria-label="Каталог">
+            <img src="/assets/img/logo-white.svg" alt loading="lazy">
+            <span>Услуги</span>
+          </div>
+
+          <div class="mobile__menu-tab" data-toggle="menu" role="button" tabindex="0" aria-label="Меню">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0 1.79032C0 1.0777 0.577697 0.5 1.29032 0.5H7.74194C8.45456 0.5 9.03226 1.0777 9.03226 1.79032V8.24194C9.03226 8.95456 8.45456 9.53226 7.74194 9.53226H1.29032C0.577697 9.53226 0 8.95456 0 8.24194V1.79032Z"
+                fill="currentColor"></path>
+              <path
+                d="M10.9677 1.79032C10.9677 1.0777 11.5454 0.5 12.2581 0.5H18.7097C19.4223 0.5 20 1.0777 20 1.79032V8.24194C20 8.95456 19.4223 9.53226 18.7097 9.53226H12.2581C11.5454 9.53226 10.9677 8.95456 10.9677 8.24194V1.79032Z"
+                fill="currentColor"></path>
+              <path
+                d="M10.9677 12.1129C10.9677 11.4003 11.5454 10.8226 12.2581 10.8226H18.7097C19.4223 10.8226 20 11.4003 20 12.1129V18.5645C20 19.2771 19.4223 19.8548 18.7097 19.8548H12.2581C11.5454 19.8548 10.9677 19.2771 10.9677 18.5645V12.1129Z"
+                fill="currentColor"></path>
+              <path
+                d="M0 12.1129C0 11.4003 0.577697 10.8226 1.29032 10.8226H7.74194C8.45456 10.8226 9.03226 11.4003 9.03226 12.1129V18.5645C9.03226 19.2771 8.45456 19.8548 7.74194 19.8548H1.29032C0.577697 19.8548 0 19.2771 0 18.5645V12.1129Z"
+                fill="currentColor"></path>
+            </svg>
+            <span>Меню</span>
+          </div>
+
+          <a href="/about" class="mobile__menu-tab" id="tab-link" title="О нас">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M8.49995 0.166504C3.8976 0.166504 0.166626 3.89744 0.166626 8.49982C0.166626 13.1022 3.8976 16.8332 8.49995 16.8332C13.1024 16.8332 16.8333 13.1022 16.8333 8.49982C16.8333 3.89744 13.1024 0.166504 8.49995 0.166504ZM8.49995 15.1665C4.82397 15.1665 1.83331 12.1758 1.83331 8.49982C1.83331 4.82381 4.82393 1.83318 8.49995 1.83318C12.176 1.83318 15.1666 4.82381 15.1666 8.49982C15.1666 12.1758 12.176 15.1665 8.49995 15.1665ZM9.54346 5.1665C9.54346 5.77072 9.10354 6.20818 8.50842 6.20818C7.88924 6.20818 7.4601 5.77068 7.4601 5.15494C7.4601 4.56314 7.90085 4.12486 8.50842 4.12486C9.10354 4.12486 9.54346 4.56314 9.54346 5.1665ZM7.66846 7.6665H9.3351V12.6665H7.66846V7.6665Z"
+                fill="currentColor"></path>
+            </svg>
+            <span>О нас</span>
+          </a>
+
+          <div class="mobile__menu-tab" data-toggle="contacts" role="button" tabindex="0" aria-label="Связаться">
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M5 2.5V1M11 2.5V1M8 16C4.99475 16 3.4925 16 2.55875 15.0115C1.625 14.023 1.625 12.4315 1.625 9.25C1.625 6.0685 1.625 4.477 2.55875 3.4885C3.4925 2.5 4.99475 2.5 8 2.5C11.0052 2.5 12.5075 2.5 13.4412 3.4885C14.375 4.477 14.375 6.0685 14.375 9.25C14.375 12.4315 14.375 14.023 13.4412 15.0115C12.5075 16 11.0052 16 8 16Z"
+                stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path
+                d="M9.51349 6.61975C9.51349 7.01758 9.35546 7.39911 9.07415 7.68041C8.79285 7.96172 8.41132 8.11975 8.01349 8.11975C7.61567 8.11975 7.23414 7.96172 6.95283 7.68041C6.67153 7.39911 6.51349 7.01758 6.51349 6.61975C6.51349 6.22193 6.67153 5.8404 6.95283 5.55909C7.23414 5.27779 7.61567 5.11975 8.01349 5.11975C8.41132 5.11975 8.79285 5.27779 9.07415 5.55909C9.35546 5.8404 9.51349 6.22193 9.51349 6.61975ZM5.04724 12.037C5.84074 10.8145 7.10149 10.357 8.01349 10.3578C8.92549 10.3585 10.1495 10.8153 10.943 12.0378C10.994 12.1165 11.0082 12.2133 10.9617 12.2958C10.7765 12.625 10.1997 13.2783 9.78424 13.3225C9.30574 13.3728 8.05399 13.3803 8.01424 13.3803C7.97449 13.3803 6.68524 13.3728 6.20674 13.3225C5.78974 13.2775 5.21374 12.625 5.02774 12.295C4.98199 12.2133 4.99624 12.1165 5.04724 12.037Z"
+                stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>Связаться</span>
+
+            <div class="mobile__menu-contacts group">
+              <a href="#" class="icon" target="_blank">
+                <img src="/assets/img/icons/phone-primary.svg" alt loading="lazy">
+              </a>
+              <a href="#" class="icon" target="_blank">
+                <img src="/assets/img/icons/whatsapp-primary.svg" alt loading="lazy">
+              </a>
+              <a href="#" class="icon" target="_blank">
+                <img src="/assets/img/icons/telegram-primary.svg" alt loading="lazy">
+              </a>
+              <a href="#" class="icon" target="_blank">
+                <img src="/assets/img/icons/email-primary.svg" alt loading="lazy">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile__menu-content">
+          <div class="mobile__menu-close" id="close" role="button" aria-label="Закрыть меню" tabindex="0">
+            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L22 22" stroke="#0988D0"></path>
+              <path d="M1 1L22 22" stroke="#0988D0"></path>
+              <path d="M1 1L22 22" stroke="#0988D0"></path>
+              <path d="M22 1L1 22" stroke="#0988D0"></path>
+              <path d="M22 1L1 22" stroke="#0988D0"></path>
+              <path d="M22 1L1 22" stroke="#0988D0"></path>
+            </svg>
+          </div>
+          <div id="menu-content"></div>
+        </div>
+      </div>
+    </header>
+    <!-- Main -->
+
+    <main>
+      <!-- Intro -->
+      <section class="intro">
+
+
+        <div class="container">
+
+          <div class="intro__content">
+            <div class="bg-img">
+              <img src="/assets/img/intro/doctors.png" alt loading="lazy">
+            </div>
+            <div class="text-h3" data-aos="fade-up">
+
+              <strong>Специалисты</strong>
+              <br>
+              Клиники Доктора Киселева
+
+            </div>
+          </div>
+
+        </div>
+
+
+      </section>
+      <!-- Doctors -->
+      <section class="doctors">
+
+
+        <div class="container">
+
+          <div class="doctors__list">
+            <div class="specialist is-secondary">
+              <div class="specialist__img is-secondary" data-aos="fade-up">
+                <img src="/assets/img/clinic/doctor.png" alt loading="lazy">
+
+                <button class="btn btn-primary" data-modal="callback" data-aos="fade-up" data-aos-delay="150">
+
+                  Записаться на прием
+
+                </button>
+
+
+              </div>
+
+              <div class="specialist__info is-secondary">
+
+
+                <div class="group">
+                  <div class="specialist__info-name" data-aos="fade-up"><strong>Киселев</strong> Антон Сергеевич</div>
+                  <div class="specialist__info-spec" data-aos="fade-up">Основатель клиники</div>
+                </div>
+
+                <ul class="specialist__directions group-row is-secondary">
+                  <li data-aos="fade-up">Невролог</li>
+                  <li data-aos="fade-up" data-aos-delay="50">Мануальный терапевт</li>
+                  <li data-aos="fade-up" data-aos-delay="100">Рефлексотерапевт</li>
+                  <li data-aos="fade-up" data-aos-delay="150">Остеопат</li>
+                  <li data-aos="fade-up" data-aos-delay="200">Спортивный врач</li>
+                </ul>
+
+
+
+                <div class="specialist__actions group">
+
+                  <a class="btn btn-outline" href="/doctor" data-aos="fade-up" data-aos-delay="200">
+
+                    Подробнее о специалисте
+
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="specialist is-secondary">
+              <div class="specialist__img is-secondary" data-aos="fade-up">
+                <img src="/assets/img/clinic/doctor.png" alt loading="lazy">
+
+                <button class="btn btn-primary" data-modal="callback" data-aos="fade-up" data-aos-delay="150">
+
+                  Записаться на прием
+
+                </button>
+
+
+              </div>
+
+              <div class="specialist__info is-secondary">
+
+
+                <div class="group">
+                  <div class="specialist__info-name" data-aos="fade-up"><strong>Шагзадинов</strong> Вадим Алексеевич
+                  </div>
+                  <div class="specialist__info-spec" data-aos="fade-up">Невролог</div>
+                </div>
+
+                <ul class="specialist__directions group-row is-secondary">
+                  <li data-aos="fade-up">Невролог</li>
+                  <li data-aos="fade-up" data-aos-delay="50">Мануальный терапевт</li>
+                  <li data-aos="fade-up" data-aos-delay="100">Рефлексотерапевт</li>
+                  <li data-aos="fade-up" data-aos-delay="150">Остеопат</li>
+                  <li data-aos="fade-up" data-aos-delay="200">Спортивный врач</li>
+                </ul>
+
+
+
+                <div class="specialist__actions group">
+
+                  <a class="btn btn-outline" href="/doctor" data-aos="fade-up" data-aos-delay="200">
+
+                    Подробнее о специалисте
+
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="specialist is-secondary">
+              <div class="specialist__img is-secondary" data-aos="fade-up">
+                <img src="/assets/img/clinic/doctor.png" alt loading="lazy">
+
+                <button class="btn btn-primary" data-modal="callback" data-aos="fade-up" data-aos-delay="150">
+
+                  Записаться на прием
+
+                </button>
+
+
+              </div>
+
+              <div class="specialist__info is-secondary">
+
+
+                <div class="group">
+                  <div class="specialist__info-name" data-aos="fade-up"><strong>Анисимов</strong> Евгений Сергеевич
+                  </div>
+                  <div class="specialist__info-spec" data-aos="fade-up">Основатель клиники</div>
+                </div>
+
+                <ul class="specialist__directions group-row is-secondary">
+                  <li data-aos="fade-up">Невролог</li>
+                  <li data-aos="fade-up" data-aos-delay="50">Мануальный терапевт</li>
+                  <li data-aos="fade-up" data-aos-delay="100">Рефлексотерапевт</li>
+                  <li data-aos="fade-up" data-aos-delay="150">Остеопат</li>
+                  <li data-aos="fade-up" data-aos-delay="200">Спортивный врач</li>
+                </ul>
+
+
+
+                <div class="specialist__actions group">
+
+                  <a class="btn btn-outline" href="/doctor" data-aos="fade-up" data-aos-delay="200">
+
+                    Подробнее о специалисте
+
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="specialist is-secondary">
+              <div class="specialist__img is-secondary" data-aos="fade-up">
+                <img src="/assets/img/clinic/doctor.png" alt loading="lazy">
+
+                <button class="btn btn-primary" data-modal="callback" data-aos="fade-up" data-aos-delay="150">
+
+                  Записаться на прием
+
+                </button>
+
+
+              </div>
+
+              <div class="specialist__info is-secondary">
+
+
+                <div class="group">
+                  <div class="specialist__info-name" data-aos="fade-up"><strong>Фадеев</strong> Павел Александрович
+                  </div>
+                  <div class="specialist__info-spec" data-aos="fade-up">Физический терапевт</div>
+                </div>
+
+                <ul class="specialist__directions group-row is-secondary">
+                  <li data-aos="fade-up">Невролог</li>
+                  <li data-aos="fade-up" data-aos-delay="50">Мануальный терапевт</li>
+                  <li data-aos="fade-up" data-aos-delay="100">Рефлексотерапевт</li>
+                  <li data-aos="fade-up" data-aos-delay="150">Остеопат</li>
+                  <li data-aos="fade-up" data-aos-delay="200">Спортивный врач</li>
+                </ul>
+
+
+
+                <div class="specialist__actions group">
+
+                  <a class="btn btn-outline" href="/doctor" data-aos="fade-up" data-aos-delay="200">
+
+                    Подробнее о специалисте
+
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </section>
+      <!-- Contacts -->
+      <section class="contacts">
+
+
+        <div class="container">
+
+          <div class="contacts__map" data-aos="fade-up">
+            <div class="contacts__details group">
+              <div class="contacts__title">Контакты</div>
+
+              <ul class="contacts__list group">
+                <li class="col">
+                  <span class="text-sm">Адрес:</span>
+                  <div class="row">
+                    <i class="icon">
+                      <img src="/assets/img/icons/marker-2.svg" alt loading="lazy">
+                    </i>
+
+
+                    <p class="text-lg">г.Москва, ул. Грина д.1, к3</p>
+                  </div>
+                </li>
+
+                <li class="col">
+                  <span class="text-sm">Телефон:</span>
+                  <div class="row">
+                    <i class="icon">
+                      <img src="/assets/img/icons/call-2.svg" alt loading="lazy">
+                    </i>
+
+
+                    <a href="tel:+79163771754" target="_blank" class="text-lg">
+                      +7 (916) 377-17-54
+                    </a>
+                  </div>
+                </li>
+
+                <li class="col">
+                  <span class="text-sm">График работы:</span>
+                  <div class="row">
+                    <i class="icon">
+                      <img src="/assets/img/icons/clock-2.svg" alt loading="lazy">
+                    </i>
+
+
+                    <p class="text-lg">Ежедневно с 9:00 до 20:00</p>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="contacts__btns group-row">
+                <button class="btn btn-white" data-modal="callback">
+                  ОТПРАВИТЬ ЗАЯВКУ
+                </button>
+
+                <div class="group-row">
+                  <a href="#" target="_blank" title="Whatsapp">
+                    <i class="icon">
+                      <img src="/assets/img/icons/whatsapp-white.svg" alt loading="lazy">
+                    </i>
+
+
+                  </a>
+                  <a href="#" target="_blank" title="Telegram">
+                    <i class="icon">
+                      <img src="/assets/img/icons/telegram-white.svg" alt loading="lazy">
+                    </i>
+
+
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <iframe
+              src="https://yandex.uz/map-widget/v1/?ll=37.568743%2C55.561884&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjYyNjM1MBI30KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsINGD0LvQuNGG0LAg0JPRgNC40L3QsCwgMdC6MyIKDbxUFkIVkz5eQg%2C%2C&z=13.6&scroll=false"
+              width="560" height="400" allowfullscreen="true" title="map"></iframe>
+          </div>
+
+        </div>
+
+
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__wrapper">
+          <div class="footer__item group">
+            <a href="/" class="footer__logo">
+              <img src="/assets/img/logo.svg" alt loading="lazy">
+              <span class="col">
+                <strong>ДОКТОР КИСЕЛЕВ</strong>
+                <span>КЛИНИКА</span>
+              </span>
+            </a>
+
+            <p>© 2025 . Доктор Киселев</p>
+
+            <a class="text-gray" href="#" target="_blank" title="Политика конфиденциальности">
+              Политика конфиденциальности
+            </a>
+
+            <a href="https://seo-tex.ru/" target="_blank" title="Разработка сайта" class="footer__dev">
+              <div class="icon">
+                <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M13.4857 0.651367C5.70161 0.651367 0 6.27452 0 14.1441C0 16.2745 0.416494 18.231 1.17772 19.9702L7.95637 13.7963L5.55801 11.0282L20.7383 8.01365L15.7404 22.7963L13.342 20.0282L6.76437 26.0282C8.7176 27.0716 10.9867 27.6514 13.4857 27.6514C21.3127 27.6514 27 22.0282 27 14.1586C27 6.28904 21.3127 0.651367 13.4857 0.651367Z"
+                    fill="currentColor"></path>
+                </svg>
+              </div>
+              <span>
+                Разработка <br>
+                и продвижение
+              </span>
+            </a>
+          </div>
+
+          <div class="footer__item">
+            <ul class="menu">
+              <li class="menu-item">
+                <a href="/">Цены на услуги</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">О клинике</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Специалисты</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Отзывы</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Контакты</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__item">
+            <ul class="menu">
+              <li class="menu-item">
+                <a href="/">Мануальная терапия</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Остеопатия</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Невролог</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Лечение поясничной грыжи</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Лечение грыжи шейного отдела</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Лечение грыжи грудного отдела</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__item">
+            <ul class="menu">
+              <li class="menu-item">
+                <a href="/">Лечение протрузии </a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Рефлексотерапия</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Боль в суставах</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Головные боли</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Боли в спине</a>
+              </li>
+              <li class="menu-item">
+                <a href="/">Боли в пояснице</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__item">
+            <div class="footer__license group" data-fancybox="license" data-src="/assets/img/license.png">
+              <img src="/assets/img/license.png" alt loading="lazy">
+              <p>Лицензия №Л123124-24</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Modal -->
+    <div class="modal-overlay">
+      <div class="modal" data-template="callback">
+        <div class="modal-form">
+          <div class="btn-close" data-modal="close"></div>
+
+          <div class="modal-title">Запишитесь на консультацию</div>
+
+          <form class="the-form">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="tel" name="phone" placeholder="Ваш телефон" required>
+            <button class="btn uppercase btn-primary">
+              ОТПРАВИТЬ ЗАЯВКУ
+            </button>
+            <div class="text-xs">
+              Отправляя заявку Вы соглашаетесь <br>
+              с <a href="#" class="font-bold">Политикой обработки персональных данных</a>
+            </div>
+          </form>
+
+          <div class="modal__footer">
+            <div class="text-lg">
+              Или запишитесь по телефону <a class="font-bold" href="tel:+79163771754" target="_blank">
+                +7 (916) 377-17-54</a>
+            </div>
+
+            <div class="group-row">
+              <a href="#" target="_blank" title="Whatsapp">
+                <i class="icon">
+                  <img src="/assets/img/icons/whatsapp-white.svg" alt loading="lazy">
+                </i>
+
+
+              </a>
+              <a href="#" target="_blank" title="Telegram">
+                <i class="icon">
+                  <img src="/assets/img/icons/telegram-white.svg" alt loading="lazy">
+                </i>
+
+
+              </a>
+            </div>
+          </div>
+
+          <div class="modal__img">
+            <img src="/assets/img/modal-form.png" alt loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" data-template="success">
+        <div class="modal-form">
+          <div class="btn-close" data-modal="close"></div>
+
+          <div class="modal-title"><strong>Спасибо</strong> за заявку!</div>
+          <p class="modal-desc">
+            Наш менеджер скоро свяжется <br> с вами для уточнения деталей
+          </p>
+
+          <div class="modal__img">
+            <img src="/assets/img/modal-success.png" alt loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- Scripts -->
+  <script src="/assets/js/aos.min.js"></script>
+  <script src="/assets/js/swiper.min.js"></script>
+  <script src="/assets/js/fancybox.min.js"></script>
+  <script src="/assets/js/app.js?v=23ee1"></script>
+</body>
+
+</html>
