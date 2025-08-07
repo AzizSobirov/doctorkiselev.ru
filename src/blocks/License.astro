@@ -44,6 +44,14 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
   .license {
     position: relative;
 
+    .container {
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(25);
+      }
+    }
+
     .text-h3 {
       color: var(--text-color);
       font-weight: inherit;

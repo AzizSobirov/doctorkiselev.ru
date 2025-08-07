@@ -1,0 +1,29 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Certificates -->
+<Section name="license">
+  <H3 data-aos="fade-up">Сертификаты и <strong>дипломы</strong></H3>
+
+  <div class="license__swiper" data-aos="fade-up">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          Array.from({ length: 5 }, (_, index) => (
+            <div
+              class="swiper-slide"
+              data-fancybox="licenses"
+              data-src="/assets/img/licenses/1.png"
+            >
+              <Image src="licenses/1.png" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</Section>

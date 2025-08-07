@@ -1,11 +1,11 @@
 ---
-import { H2, H3, P, Image, Button } from "ui";
+import { H2, H3, P, Image, Button, Icon } from "ui";
 
 interface Props {
   class?: string;
   name?: string;
   spec?: string;
-  variant?: "default" | "secondary";
+  variant?: "default" | "secondary" | "main";
 }
 
 const {
@@ -19,7 +19,10 @@ const {
 <div class="specialist" class:list={classname}>
   <div
     class="specialist__img"
-    class:list={variant == "secondary" ? "is-secondary" : ""}
+    class:list={[
+      variant == "secondary" ? "is-secondary" : "",
+      variant == "main" ? "is-main" : "",
+    ]}
     data-aos="fade-up"
   >
     <Image src="clinic/doctor.png" />
@@ -31,12 +34,35 @@ const {
         </Button>
       )
     }
+
+    {
+      variant === "main" && (
+        <button
+          class="btn-play"
+          data-fancybox="video"
+          data-src="/assets/videos/hero.mp4"
+        >
+          <Icon src="play-2.svg" />
+        </button>
+      )
+    }
   </div>
 
   <div
     class="specialist__info"
-    class:list={variant == "secondary" ? "is-secondary" : ""}
+    class:list={[
+      variant == "secondary" ? "is-secondary" : "",
+      variant == "main" ? "is-main" : "",
+    ]}
   >
+    {
+      variant === "main" && (
+        <div class="specialist__info-experience" data-aos="fade-up">
+          СТАЖ 17 ЛЕТ
+        </div>
+      )
+    }
+
     <div class="group">
       <div class="specialist__info-name" set:html={name} data-aos="fade-up" />
       <div class="specialist__info-spec" data-aos="fade-up">{spec}</div>
@@ -47,26 +73,46 @@ const {
       class:list={variant == "secondary" ? "is-secondary" : ""}
     >
       <li data-aos="fade-up">Невролог</li>
-      <li data-aos="fade-up" data-aos-delay="25">Мануальный терапевт</li>
-      <li data-aos="fade-up" data-aos-delay="50">Рефлексотерапевт</li>
-      <li data-aos="fade-up" data-aos-delay="75">Остеопат</li>
-      <li data-aos="fade-up" data-aos-delay="100">Спортивный врач</li>
+      <li data-aos="fade-up" data-aos-delay="50">Мануальный терапевт</li>
+      <li data-aos="fade-up" data-aos-delay="100">Рефлексотерапевт</li>
+      <li data-aos="fade-up" data-aos-delay="150">Остеопат</li>
+      <li data-aos="fade-up" data-aos-delay="200">Спортивный врач</li>
     </ul>
+
+    {
+      variant === "main" && (
+        <div class="specialist__info-desc" data-aos="fade-up">
+          Принимая во внимание показатели успешности, синтетическое тестирование
+          обеспечивает актуальность модели развития. А ещё базовые сценарии
+          поведения пользователей призывают нас к новым свершениям, которые, в
+          свою очередь, должны быть объявлены нарушающими общечеловеческие нормы
+          этики и морали. Внезапно, представители современных социальных
+          резервов формируют глобальную экономическую сеть и при этом — в равной
+          степени предоставлены сами себе.
+        </div>
+      )
+    }
 
     <div class="specialist__actions group">
       {
-        variant === "default" && (
+        (variant === "default" || variant === "main") && (
           <Button data-modal="callback" data-aos="fade-up" data-aos-delay="150">
             Записаться на прием
           </Button>
         )
       }
-      <Button
-        href="/doctor"
-        variant="outline"
-        data-aos="fade-up"
-        data-aos-delay="200">Подробнее о специалисте</Button
-      >
+      {
+        variant !== "main" && (
+          <Button
+            href="/doctor"
+            variant="outline"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            Подробнее о специалисте
+          </Button>
+        )
+      }
     </div>
   </div>
 </div>
@@ -105,6 +151,15 @@ const {
         }
       }
 
+      &.is-main {
+        min-width: 40%;
+        width: 40%;
+
+        img {
+          max-height: 115%;
+        }
+      }
+
       @include media("3xl") {
         --size: #{rem(480)};
       }
@@ -116,6 +171,11 @@ const {
         width: 100%;
         min-height: unset;
         height: rem(380);
+
+        &.is-main {
+          min-width: 100%;
+          width: 100%;
+        }
       }
       @include media("sm") {
         height: rem(220);
@@ -148,6 +208,22 @@ const {
           max-width: calc(100% - rem(30)) !important;
         }
       }
+
+      .btn-play {
+        position: absolute;
+        bottom: rem(20);
+        right: rem(20);
+        --icon-size: #{rem(100)};
+
+        @include media("3xl") {
+          --icon-size: #{rem(80)};
+        }
+        @include media("sm") {
+          bottom: rem(15);
+          right: rem(15);
+          --icon-size: #{rem(60)};
+        }
+      }
     }
 
     &__info {
@@ -161,12 +237,32 @@ const {
         gap: rem(15);
       }
 
+      &-experience {
+        padding: rem(10) rem(30);
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase;
+        background: var(--secondary);
+        border-radius: rem(15);
+      }
+
       &-name {
         font-size: clamp(1.5rem, 1.3269rem + 0.7692vw, 2.25rem);
 
         strong {
           color: var(--primary);
           display: block;
+        }
+      }
+
+      &-desc {
+        margin-bottom: rem(10);
+        max-width: 90%;
+        line-height: 1.35;
+
+        @include media("sm") {
+          max-width: 100%;
+          font-size: rem(14);
         }
       }
     }

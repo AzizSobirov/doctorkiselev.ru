@@ -1,0 +1,22 @@
+---
+import TheSpecialist from "@/components/TheSpecialist.astro";
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Doctor -->
+<Section name="doctor">
+  <TheSpecialist
+    class="is-main"
+    name="<strong>Киселев</strong> Антон Сергеевич"
+    spec="Основатель клиники"
+    variant="main"
+  />
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .doctor {
+    position: relative;
+  }
+</style>
