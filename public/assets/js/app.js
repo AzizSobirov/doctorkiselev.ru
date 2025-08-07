@@ -539,6 +539,28 @@ let reviewsSwiper = new Swiper(".reviews .reviews__swiper .swiper", {
   },
 });
 
+let licensesSwiper = new Swiper(".license .license__swiper .swiper", {
+  slidesPerView: "auto",
+  spaceBetween: 12,
+  navigation: {
+    nextEl: ".license .swiper-button-next",
+    prevEl: ".license .swiper-button-prev",
+  },
+  breakpoints: {
+    475: {
+      spaceBetween: 15,
+    },
+    1025: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+    1280: {
+      slidesPerView: 4,
+      spaceBetween: 20,
+    },
+  },
+});
+
 // Initialize the fancybox
 const fancyboxTriggers = Array.from(
   document.querySelectorAll("[data-fancybox]")

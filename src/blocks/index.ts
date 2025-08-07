@@ -15,6 +15,7 @@ export { default as Hero } from "./Hero.astro";
 export { default as Indications } from "./Indications.astro";
 export { default as Intro } from "./Intro.astro";
 export { default as Joints } from "./Joints.astro";
+export { default as License } from "./License.astro";
 export { default as MainGoal } from "./MainGoal.astro";
 export { default as Manifest } from "./Manifest.astro";
 export { default as Partners } from "./Partners.astro";

@@ -1,8 +1,8 @@
 ---
-import { Section, H2, H3, P, Image, Icon, Button, BgImg } from "ui";
+import { Section, H2, H3, P, Image, Icon, Button, BgImg, H4 } from "ui";
 
 interface Props {
-  name: "pricing" | "doctors";
+  name: "pricing" | "doctors" | "reviews" | "about";
 }
 
 const { name }: Props = Astro.props;
@@ -13,7 +13,7 @@ const { name }: Props = Astro.props;
   {
     name === "pricing" && (
       <>
-        <div class="intro__pricing">
+        <div class="intro__content">
           <BgImg src="intro/pricing.png" />
           <H3 data-aos="fade-up">
             <strong>Прайс-лист</strong>
@@ -27,13 +27,94 @@ const { name }: Props = Astro.props;
   {
     name === "doctors" && (
       <>
-        <div class="intro__pricing">
+        <div class="intro__content">
           <BgImg src="intro/doctors.png" />
           <H3 data-aos="fade-up">
             <strong>Специалисты</strong>
             <br />
             Клиники Доктора Киселева
           </H3>
+        </div>
+      </>
+    )
+  }
+
+  {
+    name === "reviews" && (
+      <>
+        <div class="intro__content">
+          <BgImg src="intro/doctors.png" />
+          <H3 data-aos="fade-up">
+            <strong>Отзывы</strong>
+          </H3>
+        </div>
+      </>
+    )
+  }
+
+  {
+    name === "about" && (
+      <>
+        <div class="intro__content">
+          <BgImg src="intro/about.png" />
+          <H3 data-aos="fade-up">
+            <strong>О клинике Доктора Киселева</strong>
+          </H3>
+          <P data-aos="fade-up" data-aos-delay="50">
+            Мы — современная клиника неврологии и физиотерапии,
+            специализирующаяся на безоперационном лечении грыж межпозвоночных
+            дисков, болей в спине и нарушений опорно-двигательной системы. Наш
+            подход основан на точной диагностике, индивидуальной стратегии
+            восстановления и применении эффективных, щадящих методов,
+            позволяющих избежать хирургического вмешательства и вернуть
+            подвижность без риска для здоровья.
+          </P>
+        </div>
+
+        <div class="hero__advantages group-row">
+          <div class="hero__advantages-item group-row" data-aos="fade-up">
+            <Image src="hero/advantage-1.png" />
+            <div class="group">
+              <H4>Без операций и минимум лекарств</H4>
+              <p>естественные методы восстановления.</p>
+            </div>
+          </div>
+
+          <div
+            class="hero__advantages-item group-row"
+            data-aos="fade-up"
+            data-aos-delay="50"
+          >
+            <Image src="hero/advantage-2.png" />
+            <div class="group">
+              <H4>Адаптивная программа лечения</H4>
+              <p>с учётом особенностей каждого пациента.</p>
+            </div>
+          </div>
+
+          <div
+            class="hero__advantages-item group-row"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <Image src="hero/advantage-3.png" />
+            <div class="group">
+              <H4>Опытные специалисты</H4>
+              <p>сертифицированные врачи с многолетней практикой.</p>
+            </div>
+          </div>
+
+          <div
+            class="hero__advantages-item group-row"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            <Image src="hero/advantage-4.png" />
+            <div class="group">
+              <H4>Поддержка на всех этапах</H4>
+              <p>от первичной консультации до максимального восстановления.</p>
+            </div>
+          </div>
         </div>
       </>
     )
@@ -51,12 +132,17 @@ const { name }: Props = Astro.props;
       font-weight: inherit;
     }
 
-    &__pricing {
+    &__content {
       position: relative;
       padding: rem(70) rem(74);
       width: 100%;
+      color: #fff;
       border-radius: rem(32);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
 
       @include media("xl") {
         padding: rem(50) rem(60);
@@ -67,6 +153,19 @@ const { name }: Props = Astro.props;
       @include media("sm") {
         padding: rem(20);
         border-radius: rem(20);
+        gap: rem(20);
+      }
+
+      .text-p {
+        max-width: 70%;
+
+        @include media("lg") {
+          max-width: 80%;
+        }
+        @include media("sm") {
+          max-width: 100%;
+          font-size: rem(14);
+        }
       }
     }
   }

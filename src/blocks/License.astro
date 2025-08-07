@@ -1,0 +1,154 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- License -->
+<Section name="license">
+  <H3 data-aos="fade-up">Документы и <strong>лицензии</strong></H3>
+
+  <div class="license__swiper" data-aos="fade-up">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          Array.from({ length: 5 }, (_, index) => (
+            <div
+              class="swiper-slide"
+              data-fancybox="licenses"
+              data-src="/assets/img/licenses/1.png"
+            >
+              <Image src="licenses/1.png" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <div class="license__blockquote" data-aos="fade-up">
+    Наша клиника основана 17 лет назад и с тех пор остаётся надёжным медицинским
+    центром, где сочетаются опыт, профессионализм и индивидуальный подход к
+    каждому пациенту. За годы работы мы помогли тысячам людей справиться с
+    хроническими болями, последствиями травм и нарушениями позвоночника без
+    операций. Постоянное обновление методик, высокоточная диагностика и команда
+    квалифицированных специалистов позволяют нам достигать стабильных
+    результатов и возвращать пациентам качество жизни.
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .license {
+    position: relative;
+
+    .text-h3 {
+      color: var(--text-color);
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__swiper {
+      position: relative;
+      width: 100%;
+
+      .swiper {
+        width: 100%;
+
+        @include media("lg") {
+          overflow: visible;
+        }
+      }
+
+      .swiper-slide {
+        cursor: zoom-in;
+
+        @include media("lg") {
+          width: rem(320);
+        }
+        @include media("sm") {
+          width: rem(280);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        z-index: 1 !important;
+        margin: 0 !important;
+        transform: translateY(-50%) !important;
+        width: rem(45);
+        height: rem(45);
+        color: #fff;
+        background: #43a4a4;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        --swiper-navigation-sides-offset: #{rem(-60)};
+
+        @include media("3xl") {
+          --swiper-navigation-sides-offset: #{rem(20)};
+        }
+        @include media("lg") {
+          display: none;
+        }
+
+        &::after {
+          font-size: rem(24);
+        }
+
+        &.swiper-button-disabled {
+          color: #5e5e5e;
+          background: #c3c3c3;
+          opacity: 1;
+          pointer-events: none;
+        }
+      }
+    }
+
+    &__blockquote {
+      position: relative;
+      margin: rem(20) auto 0;
+      padding: rem(40) rem(70);
+      width: 100%;
+      max-width: rem(745);
+      text-align: center;
+      background-color: #fff;
+      border-radius: rem(30);
+
+      @include media("sm") {
+        padding: rem(30) rem(20) rem(20);
+        border-radius: rem(20);
+        font-size: rem(14);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: rem(144);
+        height: rem(36);
+        background: url('data:image/svg+xml,<svg width="144" height="36" viewBox="0 0 144 36" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="72" cy="18" r="18" fill="%2343A4A4" /><circle cx="34" cy="18" r="12" fill="%2343A4A4" /><circle cx="7" cy="18" r="7" fill="%2343A4A4" /><circle cx="137" cy="18" r="7" fill="%2343A4A4" /><circle cx="110" cy="18" r="12" fill="%2343A4A4" /></svg>')
+          center/contain no-repeat;
+
+        @include media("sm") {
+          width: rem(120);
+          height: rem(30);
+        }
+      }
+    }
+  }
+</style>

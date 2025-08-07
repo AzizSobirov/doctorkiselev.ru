@@ -3,49 +3,117 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 
 interface Props {
   title: string;
+  variant?: "default" | "reviews";
 }
 
-const { title }: Props = Astro.props;
+const { title, variant = "default" }: Props = Astro.props;
 ---
 
 <!-- Appointment -->
 <Section name="appointment" only>
   <div class="appointment__content">
     <div class="container">
-      <div class="appointment__title" data-aos="fade-up" set:html={title} />
+      {
+        variant === "default" ? (
+          <>
+            <div
+              class="appointment__title"
+              data-aos="fade-up"
+              set:html={title}
+            />
 
-      <form class="the-form">
-        <input
-          type="text"
-          name="phone"
-          placeholder="Ваш телефон"
-          required
-          data-aos="fade-up"
-        />
-        <Button class="uppercase" data-aos="fade-up">ОТПРАВИТЬ ЗАЯВКУ</Button>
-        <div class="group-row">
-          <div class="text-lg" data-aos="fade-up">
-            Или запишитесь по телефону <a
-              href="tel:+79163771754"
-              target="_blank">+7 (916) 377-17-54</a
+            <form class="the-form">
+              <input
+                type="text"
+                name="phone"
+                placeholder="Ваш телефон"
+                required
+                data-aos="fade-up"
+              />
+              <Button class="uppercase" data-aos="fade-up">
+                ОТПРАВИТЬ ЗАЯВКУ
+              </Button>
+              <div class="group-row">
+                <div class="text-lg" data-aos="fade-up">
+                  Или запишитесь по телефону
+                  <a href="tel:+79163771754" target="_blank">
+                    +7 (916) 377-17-54
+                  </a>
+                </div>
+                <div class="group-row" data-aos="fade-up">
+                  <a href="#" target="_blank" title="Написать в WhatsApp">
+                    <Icon src="whatsapp-primary.svg" />
+                  </a>
+                  <a href="#" target="_blank" title="Написать в Telegram">
+                    <Icon src="telegram-primary.svg" />
+                  </a>
+                </div>
+              </div>
+              <div class="text-xs" data-aos="fade-up">
+                Отправляя заявку Вы соглашаетесь <br />с
+                <a class="text-primary font-bold" href="#" target="_blank">
+                  Политикой обработки персональных данных
+                </a>
+              </div>
+            </form>
+          </>
+        ) : (
+          <div class="appointment__reviews reviews__text">
+            <p data-aos="fade-up">
+              Каждый день мы получаем десятки благодарных отзывов от пациентов,
+              которым мы помогли. Мы благодарны каждому пациенту который оставил
+              отзыв о нас, тем самым мы можем оценить качество нашей работы.
+            </p>
+
+            <ul class="reviews__platforms group">
+              <li
+                class="reviews__platform group-row"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <Image
+                  class="reviews__platform-logo"
+                  src="partners/yandex.svg"
+                />
+                <div class="reviews__platform-stars row">
+                  <Icon src="star-filled.svg" />
+                  <Icon src="star-filled.svg" />
+                  <Icon src="star-filled.svg" />
+                  <Icon src="star-filled.svg" />
+                  <Icon src="star-outlined.svg" />
+                </div>
+                <span class="reviews__platform-rating">4,9</span>
+              </li>
+
+              <li
+                class="reviews__platform group-row"
+                data-aos="fade-up"
+                data-aos-delay="150"
+              >
+                <Image class="reviews__platform-logo" src="partners/3.svg" />
+                <div class="reviews__platform-stars row">
+                  <Icon src="star-filled.svg" />
+                  <Icon src="star-filled.svg" />
+                  <Icon src="star-filled.svg" />
+                  <Icon src="star-filled.svg" />
+                  <Icon src="star-filled.svg" />
+                </div>
+                <span class="reviews__platform-rating">5,0</span>
+              </li>
+            </ul>
+
+            <Button
+              variant="outline"
+              class="uppercase"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-modal="callback"
             >
+              Оставить отзыв
+            </Button>
           </div>
-          <div class="group-row" data-aos="fade-up">
-            <a href="#" target="_blank" title="Написать в WhatsApp">
-              <Icon src="whatsapp-primary.svg" />
-            </a>
-            <a href="#" target="_blank" title="Написать в Telegram">
-              <Icon src="telegram-primary.svg" />
-            </a>
-          </div>
-        </div>
-        <div class="text-xs" data-aos="fade-up">
-          Отправляя заявку Вы соглашаетесь <br />
-          с <a class="text-primary font-bold" href="#" target="_blank"
-            >Политикой обработки персональных данных</a
-          >
-        </div>
-      </form>
+        )
+      }
     </div>
   </div>
 </Section>
@@ -154,6 +222,18 @@ const { title }: Props = Astro.props;
         @include media("sm") {
           margin-left: rem(5);
         }
+      }
+    }
+
+    &__reviews {
+      max-width: rem(415);
+
+      @include media("sm") {
+        max-width: 100%;
+      }
+
+      .btn {
+        height: rem(54);
       }
     }
   }
