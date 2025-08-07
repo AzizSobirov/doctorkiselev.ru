@@ -1,0 +1,126 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Therapy -->
+<Section name="therapy">
+  <H3 data-aos="fade-up">Подбираем терапию <strong>под ваш случай</strong></H3>
+
+  <div class="therapy__content group-row">
+    <ul class="therapy__content-list">
+      <li data-aos="fade-up">Мануальная терапия</li>
+      <li data-aos="fade-up" data-aos-delay="25">Остеопатия</li>
+      <li data-aos="fade-up" data-aos-delay="50">ЛФК</li>
+      <li data-aos="fade-up" data-aos-delay="75">Рефлексотерапия</li>
+      <li data-aos="fade-up" data-aos-delay="100">Массаж и физиопроцедуры</li>
+      <li data-aos="fade-up" data-aos-delay="125">Сопровождение невролога</li>
+    </ul>
+
+    <div class="therapy__content-img">
+      <Image src="therapy.png" data-aos="zoom-in" />
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .therapy {
+    position: relative;
+
+    .container {
+      gap: rem(40);
+    }
+
+    .text-h3 {
+      color: inherit;
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+        text-decoration: underline dotted;
+      }
+    }
+
+    &__content {
+      width: 100%;
+      justify-content: space-between;
+      gap: rem(40);
+
+      @include media("lg") {
+        flex-direction: column-reverse;
+      }
+
+      &-list {
+        width: 100%;
+        max-width: 70%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: rem(50) rem(20);
+
+        @include media("2xl") {
+          max-width: 60%;
+          gap: rem(35) rem(20);
+        }
+        @include media("lg") {
+          max-width: 100%;
+        }
+        @include media("sm") {
+          grid-template-columns: 1fr;
+          gap: rem(15);
+        }
+
+        li {
+          position: relative;
+          padding: rem(10) rem(15) rem(10) rem(90);
+          width: 100%;
+          min-height: rem(60);
+          background: linear-gradient(
+            to right,
+            transparent 0% 5%,
+            #fff 5% 100%
+          );
+          border-radius: rem(20);
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+
+          @include media("2xl") {
+            padding: rem(8) rem(12) rem(8) rem(70);
+          }
+          @include media("sm") {
+            padding: rem(6) rem(10) rem(6) rem(60);
+            min-height: rem(50);
+            font-size: rem(14);
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            @include size(rem(80));
+            background: url('data:image/svg+xml,<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" fill="url(%23paint0_linear_2176_1181)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M33.924 54.938C28.038 50.4279 20 42.978 20 35.934C20 24.166 31 19.772 40 28.86C49 19.772 60 24.166 60 35.934C60 42.978 51.96 50.4279 46.076 54.938C43.412 56.978 42.08 58 40 58C37.92 58 36.588 56.9799 33.924 54.938ZM49 30.5C49.3978 30.5 49.7794 30.658 50.0607 30.9393C50.342 31.2206 50.5 31.6021 50.5 32V34.5H53C53.3978 34.5 53.7794 34.658 54.0607 34.9393C54.342 35.2206 54.5 35.6021 54.5 36C54.5 36.3978 54.342 36.7793 54.0607 37.0606C53.7794 37.3419 53.3978 37.5 53 37.5H50.5V40C50.5 40.3978 50.342 40.7793 50.0607 41.0606C49.7794 41.3419 49.3978 41.5 49 41.5C48.6022 41.5 48.2206 41.3419 47.9393 41.0606C47.658 40.7793 47.5 40.3978 47.5 40V37.5H45C44.6022 37.5 44.2206 37.3419 43.9393 37.0606C43.658 36.7793 43.5 36.3978 43.5 36C43.5 35.6021 43.658 35.2206 43.9393 34.9393C44.2206 34.658 44.6022 34.5 45 34.5H47.5V32C47.5 31.6021 47.658 31.2206 47.9393 30.9393C48.2206 30.658 48.6022 30.5 49 30.5Z" fill="white"/><defs><linearGradient id="paint0_linear_2176_1181" x1="18.5" y1="6" x2="66.5" y2="80" gradientUnits="userSpaceOnUse"><stop stop-color="%233FDDDD"/><stop offset="1" stop-color="%2343A4A4"/></linearGradient></defs></svg>')
+              center/contain no-repeat;
+
+            @include media("2xl") {
+              --size: #{rem(60)};
+            }
+            @include media("sm") {
+              --size: #{rem(50)};
+            }
+          }
+        }
+      }
+
+      &-img {
+        margin: 0 auto;
+
+        @include media("lg") {
+          max-width: rem(480);
+        }
+      }
+    }
+  }
+</style>

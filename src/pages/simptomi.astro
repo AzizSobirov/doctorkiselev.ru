@@ -1,0 +1,26 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Симптомы">
+  <main>
+    <Blocks.Hero
+      title="<span><strong>Симптомы,</strong> с которыми <br/> мы работаем</span>"
+      desc="Боль, напряжение, хроническая усталость — это сигналы организма о нарушениях. Мы поможем найти причину и избавиться от дискомфорта."
+      video="simptomi.mp4"
+    />
+    <Blocks.Simptomi />
+    <Blocks.Appointment title="Рассказать <strong>врачу о симптомах</strong>" />
+    <Blocks.Therapy />
+    <Blocks.Result />
+    <Blocks.Specialists />
+    <Blocks.Clinic />
+    <Blocks.Partners />
+    <Blocks.Reviews />
+    <Blocks.Application />
+    <Blocks.Certificate />
+    <Blocks.Faq />
+    <Blocks.Contacts />
+  </main>
+</App>
