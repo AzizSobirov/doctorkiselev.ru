@@ -1,0 +1,50 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Боль в суставах">
+  <main>
+    <Blocks.Hero
+      title="<span><strong>Боль в суставах —</strong> сигнал, <br/> который нельзя игнорировать</span>"
+      desc="Помогаем точно установить причину боли и восстановить подвижность суставов без таблеток и операций."
+      video="bol-v-sustavax.mp4"
+    />
+    <Blocks.Joints />
+    <Blocks.Treat
+      title="Работаем с болью  <strong>в любых суставах</strong>"
+      list={[
+        "Коленные суставы",
+        "Тазобедренные суставы",
+        "Плечевые суставы",
+        "Локтевые суставы",
+        "Суставы кисти и пальцев",
+        "Суставы стопы и голеностопа",
+        "Височно-нижнечелюстной сустав",
+      ]}
+    />
+    <Blocks.Appointment
+      title="Запишитесь — и мы поможем вам <strong>вернуть свободу движений</strong>"
+    />
+    <Blocks.Therapy />
+    <Blocks.Treatments
+      title="Что даёт  <strong>курс лечения </strong>"
+      list={[
+        "Облегчение боли уже после первых сеансов",
+        "Возвращение подвижности",
+        "Улучшение качества жизни",
+        "Профилактика осложнений",
+        "Поддержка и рекомендации на будущее",
+      ]}
+    />
+    <Blocks.Result />
+    <Blocks.Specialists />
+    <Blocks.Clinic />
+    <Blocks.Partners />
+    <Blocks.Reviews />
+    <Blocks.Application />
+    <Blocks.Certificate />
+    <Blocks.Faq />
+    <Blocks.Contacts />
+  </main>
+</App>

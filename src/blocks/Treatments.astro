@@ -1,0 +1,102 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  title?: string;
+  list?: string[];
+}
+
+const { title, list } = Astro.props as Props;
+---
+
+<!-- Treatments -->
+<Section name="treatments">
+  <H3 class="treatments__title" set:html={title} data-aos="fade-up" />
+
+  <ul class="treatments__tags">
+    {
+      list?.map((item, index) => (
+        <li
+          class="treatments__tag founder__about-tag row"
+          data-aos="fade-up"
+          data-aos-delay={150 + index * 50}
+        >
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .treatments {
+    position: relative;
+    min-height: rem(700);
+
+    @include media("3xl") {
+      min-height: rem(600);
+    }
+    @include media("sm") {
+      min-height: rem(500);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 20%;
+      right: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: url("/assets/img/tratments-bg.png") no-repeat;
+      background-position: bottom right;
+      background-size: contain;
+
+      @include media("lg") {
+        top: 10%;
+        max-width: 80%;
+      }
+      @include media("sm") {
+        top: 5%;
+      }
+    }
+
+    &__title {
+      color: inherit;
+      font-weight: inherit;
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__tags {
+      margin-top: rem(-20);
+      width: 100%;
+      max-width: 80%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(40) rem(20);
+
+      @include media("xl") {
+        max-width: 100%;
+        gap: rem(30) rem(20);
+      }
+      @include media("md") {
+        margin-top: 0;
+        grid-template-columns: 1fr;
+        gap: rem(15);
+      }
+      @include media("sm") {
+        gap: rem(12);
+      }
+    }
+
+    &__tag {
+      background: transparent;
+      border: rem(1) solid #d3d3d3;
+    }
+  }
+</style>

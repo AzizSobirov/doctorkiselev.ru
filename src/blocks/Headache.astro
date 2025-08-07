@@ -1,0 +1,192 @@
+---
+import { Section, H2, H3, H4, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Headache -->
+<Section name="headache">
+  <H2 class="uppercase" data-aos="fade-up"
+    >разные типы боли — <strong> разные причины</strong></H2
+  >
+
+  <div class="headache__reasons">
+    <div class="headache__reason group-row" data-aos="fade-up">
+      <Image src="headache/1.png" />
+      <div class="group">
+        <div class="headache__reason-title">Тензионная (стрессовая)</div>
+        <p class="headache__reason-desc">
+          Чувство давления, «обруча» вокруг головы, связано с мышечным
+          напряжением и стрессом
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="headache__reason group-row"
+      data-aos="fade-up"
+      data-aos-delay="50"
+    >
+      <Image src="headache/2.png" />
+      <div class="group">
+        <div class="headache__reason-title">Шейно-вертеброгенная</div>
+        <p class="headache__reason-desc">
+          Боль отдаёт в затылок или виски, связана с шейным отделом позвоночника
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="headache__reason group-row"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <Image src="headache/3.png" />
+      <div class="group">
+        <div class="headache__reason-title">Сосудистая</div>
+        <p class="headache__reason-desc">
+          Пульсирующая боль, часто при ВСД, погодной чувствительности
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="headache__reason group-row"
+      data-aos="fade-up"
+      data-aos-delay="150"
+    >
+      <Image src="headache/4.png" />
+      <div class="group">
+        <div class="headache__reason-title">Мигренозная</div>
+        <p class="headache__reason-desc">
+          Острая, односторонняя, с тошнотой, чувствительностью к свету
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="headache__reason group-row"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
+      <Image src="headache/5.png" />
+      <div class="group">
+        <div class="headache__reason-title">Посттравматическая</div>
+        <p class="headache__reason-desc">
+          После ушибов, сотрясений — может сохраняться годами
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="headache__form group-row"
+      data-aos="fade-up"
+      data-aos-delay="250"
+    >
+      <p class="headache__form-desc">
+        Работаем <strong>не с симптомами</strong> а с <strong
+          >корнем проблемы.</strong
+        >
+        Не откладывайте обращение к специалисту,
+        <strong>запишитесь на приём прямо сейчас</strong>
+      </p>
+      <Button variant="white" data-modal="callback">ЗАПИСАТЬСЯ</Button>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .headache {
+    position: relative;
+
+    &__reasons {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(40);
+
+      @include media("xl") {
+        grid-template-columns: 1fr;
+        gap: rem(20);
+      }
+    }
+
+    &__reason {
+      width: 100%;
+      gap: rem(20);
+
+      @include media("sm") {
+        flex-direction: column;
+        gap: rem(15);
+      }
+
+      img {
+        width: 50%;
+        max-width: rem(415);
+        height: 100%;
+        border-radius: rem(25);
+        object-fit: cover;
+
+        @include media("sm") {
+          width: 100%;
+          max-width: 100%;
+          border-radius: rem(20);
+        }
+      }
+
+      .group {
+        gap: rem(20);
+
+        @include media("sm") {
+          width: 100%;
+          gap: rem(12);
+        }
+      }
+
+      &-title {
+        color: var(--primary);
+        font-size: clamp(1.125rem, 1.0962rem + 0.1282vw, 1.25rem);
+        font-weight: 700;
+      }
+
+      &-desc {
+        line-height: 1.35;
+
+        @include media("sm") {
+          font-size: rem(14);
+        }
+      }
+    }
+
+    &__form {
+      padding: rem(40);
+      width: 100%;
+      color: #fff;
+      background: linear-gradient(-15deg, #43a4a4, #56d3d3);
+      border-radius: rem(25);
+      gap: rem(20);
+
+      @include media("sm") {
+        margin-top: rem(20);
+        padding: rem(20);
+        border-radius: rem(20);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      &-desc {
+        line-height: 1.5;
+        font-size: clamp(1rem, 0.9712rem + 0.1282vw, 1.125rem);
+      }
+
+      .btn {
+        min-width: rem(265);
+        box-shadow: 0 0 29px 0 rgba(0, 0, 0, 0.25);
+
+        @include media("xs") {
+          width: 100%;
+        }
+      }
+    }
+  }
+</style>

@@ -14,33 +14,44 @@ const { title, desc, subtitle, list } = Astro.props as Props;
 <!-- Treat -->
 <Section name="treat">
   <H3 class="treat__title" set:html={title} data-aos="fade-up" />
-  <p
-    class="treat__desc"
-    set:html={desc}
-    data-aos="fade-up"
-    data-aos-delay="50"
-  />
 
-  <div
-    class="treat__subtitle"
-    data-aos="fade-up"
-    data-aos-delay="100"
-    set:html={subtitle}
-  />
+  {
+    desc && (
+      <p
+        class="treat__desc"
+        set:html={desc}
+        data-aos="fade-up"
+        data-aos-delay="50"
+      />
+    )
+  }
 
-  <ul class="treat__tags">
-    {
-      list?.map((item, index) => (
-        <li
-          class="treat__tag founder__about-tag row"
-          data-aos="fade-up"
-          data-aos-delay={150 + index * 50}
-        >
-          {item}
-        </li>
-      ))
-    }
-  </ul>
+  {
+    subtitle && (
+      <div
+        class="treat__subtitle"
+        data-aos="fade-up"
+        data-aos-delay="100"
+        set:html={subtitle}
+      />
+    )
+  }
+
+  {
+    list && (
+      <ul class="treat__tags">
+        {list?.map((item, index) => (
+          <li
+            class="treat__tag founder__about-tag row"
+            data-aos="fade-up"
+            data-aos-delay={150 + index * 50}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    )
+  }
 </Section>
 
 <style lang="scss" is:global>
@@ -87,7 +98,7 @@ const { title, desc, subtitle, list } = Astro.props as Props;
         gap: rem(15);
       }
       @include media("sm") {
-        margin-top: rem(-10);
+        margin-top: 0;
         gap: rem(12);
       }
     }
