@@ -7,6 +7,7 @@ export { default as Causes } from "./Causes.astro";
 export { default as Certificate } from "./Certificate.astro";
 export { default as Clinic } from "./Clinic.astro";
 export { default as Contacts } from "./Contacts.astro";
+export { default as Doctors } from "./Doctors.astro";
 export { default as Faq } from "./Faq.astro";
 export { default as Founder } from "./Founder.astro";
 export { default as Headache } from "./Headache.astro";

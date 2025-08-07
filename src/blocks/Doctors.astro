@@ -1,0 +1,57 @@
+---
+import TheSpecialist from "@/components/TheSpecialist.astro";
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Doctors -->
+<Section name="doctors">
+  <div class="doctors__list">
+    <TheSpecialist
+      class="is-secondary"
+      name="<strong>Киселев</strong> Антон Сергеевич"
+      spec="Основатель клиники"
+      variant="secondary"
+    />
+    <TheSpecialist
+      class="is-secondary"
+      name="<strong>Шагзадинов</strong> Вадим Алексеевич"
+      spec="Невролог"
+      variant="secondary"
+    />
+    <TheSpecialist
+      class="is-secondary"
+      name="<strong>Анисимов</strong> Евгений Сергеевич"
+      spec="Основатель клиники"
+      variant="secondary"
+    />
+    <TheSpecialist
+      class="is-secondary"
+      name="<strong>Фадеев</strong> Павел Александрович"
+      spec="Физический терапевт"
+      variant="secondary"
+    />
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .doctors {
+    position: relative;
+
+    &__list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(120) rem(40);
+
+      @include media("md") {
+        grid-template-columns: 1fr;
+        gap: rem(80);
+      }
+      @include media("sm") {
+        gap: rem(60);
+      }
+    }
+  }
+</style>
